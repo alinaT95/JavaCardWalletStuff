@@ -1,0 +1,875 @@
+// converted by version 1.3
+// on Fri Jul 19 12:32:24 MSK 2019
+
+.package JuBiterPackage {
+	.aid 0xD1:0x56:0x45:0x44:0x32:0x35:0x35:0x31:0x39:0x30:0x20;
+	.version 1.0;
+
+	.imports {
+		0xA0:0x0:0x0:0x0:0x62:0x1:0x1 1.5;		//javacard/framework
+		0xA0:0x0:0x0:0x0:0x62:0x1:0x2 1.5;		//javacard/security
+		0xD1:0x56:0x0:0x1:0x32:0x0:0xB 1.0;		//com/ftsafe/security
+		0xA0:0x0:0x0:0x0:0x62:0x0:0x1 1.0;		//java/lang
+	}
+
+	.applet {
+		0xD1:0x56:0x45:0x44:0x32:0x35:0x35:0x31:0x39:0x30:0x20:0x0 JuBiterPackage;
+	}
+
+	.constantPool {
+		// 0
+		instanceFieldRef byte JuBiterPackage/INS_ED25519_DEMO;
+		// 1
+		instanceFieldRef byte JuBiterPackage/INS_CREATE_XEC_KEY;
+		// 2
+		instanceFieldRef byte JuBiterPackage/INS_SET_XEC_KEY;
+		// 3
+		instanceFieldRef byte JuBiterPackage/INS_GET_XEC_KEY;
+		// 4
+		instanceFieldRef byte JuBiterPackage/INS_SET_MSG;
+		// 5
+		instanceFieldRef byte JuBiterPackage/INS_SIGNATURE_SIGN;
+		// 6
+		instanceFieldRef byte JuBiterPackage/INS_SIGNATURE_VERIFY;
+		// 7
+		instanceFieldRef byte JuBiterPackage/INS_GC;
+		// 8
+		instanceFieldRef byte[] JuBiterPackage/sigBuf;
+		// 9
+		instanceFieldRef byte[] JuBiterPackage/msg;
+		// 10
+		instanceFieldRef short JuBiterPackage/msglen;
+		// 11
+		instanceFieldRef 1.15 JuBiterPackage/sig;
+		// 12
+		instanceFieldRef short JuBiterPackage/siglen;
+		// 13
+		instanceFieldRef 2.5 JuBiterPackage/params;
+		// 14
+		instanceFieldRef 1.0 JuBiterPackage/myKey;
+		// 15
+		instanceFieldRef 2.3 JuBiterPackage/pubkey;
+		// 16
+		instanceFieldRef 2.2 JuBiterPackage/prikey;
+		// 17
+		staticMethodRef 1.15.2(BBBZ)Ljavacard/security/Signature;;		// javacard/security/Signature.getInstance(BBBZ)Ljavacard/security/Signature;
+			.descriptor	Ljavacard/security/Signature;	1.15;
+
+		// 18
+		classRef JuBiterPackage;
+		// 19
+		staticMethodRef JuBiterPackage/<init>()V;
+		// 20
+		virtualMethodRef 0.3.2([BSB)V;		// register([BSB)V
+		// 21
+		classRef 1.12;		// javacard/security/CryptoException
+		// 22
+		virtualMethodRef 0.3.3()Z;		// selectingApplet()Z
+		// 23
+		virtualMethodRef 0.10.1()[B;		// getBuffer()[B
+		// 24
+		virtualMethodRef 0.10.6()S;		// setIncomingAndReceive()S
+		// 25
+		virtualMethodRef 0.10.15()S;		// getIncomingLength()S
+		// 26
+		virtualMethodRef JuBiterPackage/Ed22519demo(S)Z;
+		// 27
+		virtualMethodRef 0.10.8(SS)V;		// setOutgoingAndSend(SS)V
+		// 28
+		staticMethodRef 0.8.13(SB)[B;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+		// 29
+		staticMethodRef 2.4.1(Lcom/ftsafe/security/NamedParameterSpec;SZ)Ljavacard/security/Key;;		// com/ftsafe/security/KeyBuilderX.buildXECKey(Lcom/ftsafe/security/NamedParameterSpec;SZ)Ljavacard/security/Key;
+			.descriptor	Lcom/ftsafe/security/NamedParameterSpec;	2.5;
+			.descriptor	Ljavacard/security/Key;	1.0;
+
+		// 30
+		classRef 2.1;		// com/ftsafe/security/XECKey
+		// 31
+		staticMethodRef 0.7.1(S)V;		// javacard/framework/ISOException.throwIt(S)V
+		// 32
+		staticMethodRef 0.16.3([BSSB)S;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+		// 33
+		staticMethodRef 0.16.1([BS[BSS)S;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+		// 34
+		virtualMethodRef 1.15.3(Ljavacard/security/Key;B)V;		// init(Ljavacard/security/Key;B)V
+			.descriptor	Ljavacard/security/Key;	1.0;
+
+		// 35
+		virtualMethodRef 1.15.5([BSS[BS)S;		// sign([BSS[BS)S
+		// 36
+		virtualMethodRef 1.12.1()S;		// getReason()S
+		// 37
+		staticMethodRef 0.16.2([BS[BSS)S;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+		// 38
+		virtualMethodRef 1.15.7([BSS[BSS)Z;		// verify([BSS[BSS)Z
+		// 39
+		staticMethodRef 0.8.18()V;		// javacard/framework/JCSystem.requestObjectDeletion()V
+		// 40
+		staticMethodRef 0.3.0()V;		// javacard/framework/Applet.<init>()V
+		// 41
+		staticMethodRef 2.5.0(S)Lcom/ftsafe/security/NamedParameterSpec;;		// com/ftsafe/security/NamedParameterSpec.getInstance(S)Lcom/ftsafe/security/NamedParameterSpec;
+			.descriptor	Lcom/ftsafe/security/NamedParameterSpec;	2.5;
+
+		// 42
+		classRef 2.2;		// com/ftsafe/security/XECPrivateKey
+		// 43
+		classRef 2.3;		// com/ftsafe/security/XECPublicKey
+	}
+
+	.class public JuBiterPackage 0 extends 0.3 {		// extends javacard/framework/Applet
+
+		.fields {
+			 1.0 myKey 0;		// Ljavacard/security/Key;
+			 1.15 sig 1;		// Ljavacard/security/Signature;
+			 1.16 keypair 2;		// Ljavacard/security/KeyPair;
+			 2.3 pubkey 3;		// Lcom/ftsafe/security/XECPublicKey;
+			 2.2 prikey 4;		// Lcom/ftsafe/security/XECPrivateKey;
+			 2.5 params 5;		// Lcom/ftsafe/security/NamedParameterSpec;
+			 byte[] sigBuf 6;		// [B
+			 byte[] msg 7;		// [B
+			final byte INS_ED25519_DEMO 8;		// B
+			final byte INS_CREATE_XEC_KEY 9;		// B
+			final byte INS_SET_XEC_KEY 10;		// B
+			final byte INS_GET_XEC_KEY 11;		// B
+			final byte INS_SET_MSG 12;		// B
+			final byte INS_SIGNATURE_SIGN 13;		// B
+			final byte INS_SIGNATURE_VERIFY 14;		// B
+			final byte INS_GC 15;		// B
+			 short siglen 16;		// S
+			 short msglen 17;		// S
+		}
+
+		.publicMethodTable 7 {
+			equals(Ljava/lang/Object;)Z;
+			register()V;
+			register([BSB)V;
+			selectingApplet()Z;
+			deselect()V;
+			getShareableInterfaceObject(Ljavacard/framework/AID;B)Ljavacard/framework/Shareable;;
+			select()Z;
+			process(Ljavacard/framework/APDU;)V;
+		}
+
+		.packageMethodTable 0 {
+			Ed22519demo(S)Z;
+		}
+
+		.method public <init>()V 0 {
+			.stack 5;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 40;		// javacard/framework/Applet.<init>()V
+					aload_0;
+					sconst_1;
+					putfield_b 0;		// byte JuBiterPackage/JuBiterPackage.INS_ED25519_DEMO
+					aload_0;
+					sconst_2;
+					putfield_b 1;		// byte JuBiterPackage/JuBiterPackage.INS_CREATE_XEC_KEY
+					aload_0;
+					sconst_3;
+					putfield_b 2;		// byte JuBiterPackage/JuBiterPackage.INS_SET_XEC_KEY
+					aload_0;
+					sconst_4;
+					putfield_b 3;		// byte JuBiterPackage/JuBiterPackage.INS_GET_XEC_KEY
+					aload_0;
+					sconst_5;
+					putfield_b 4;		// byte JuBiterPackage/JuBiterPackage.INS_SET_MSG
+					aload_0;
+					bspush 6;
+					putfield_b 5;		// byte JuBiterPackage/JuBiterPackage.INS_SIGNATURE_SIGN
+					aload_0;
+					bspush 7;
+					putfield_b 6;		// byte JuBiterPackage/JuBiterPackage.INS_SIGNATURE_VERIFY
+					aload_0;
+					bspush 8;
+					putfield_b 7;		// byte JuBiterPackage/JuBiterPackage.INS_GC
+					aload_0;
+					bspush 100;
+					sconst_2;
+					invokestatic 28;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					putfield_a 8;		// reference JuBiterPackage/JuBiterPackage.sigBuf
+					aload_0;
+					sspush 1024;
+					newarray 11;
+					putfield_a 9;		// reference JuBiterPackage/JuBiterPackage.msg
+					aload_0;
+					sconst_0;
+					putfield_s 10;		// short JuBiterPackage/JuBiterPackage.msglen
+					aload_0;
+					sconst_0;
+					bspush 9;
+					sconst_0;
+					sconst_0;
+					invokestatic 17;		// javacard/security/Signature.getInstance(BBBZ)Ljavacard/security/Signature;
+					putfield_a 11;		// reference JuBiterPackage/JuBiterPackage.sig
+					aload_0;
+					sconst_0;
+					putfield_s 12;		// short JuBiterPackage/JuBiterPackage.siglen
+					aload_0;
+					sspush 257;
+					invokestatic 41;		// com/ftsafe/security/NamedParameterSpec.getInstance(S)Lcom/ftsafe/security/NamedParameterSpec;
+					putfield_a 13;		// reference JuBiterPackage/JuBiterPackage.params
+					return;
+		}
+
+		.method public static install([BSB)V 1 {
+			.stack 5;
+			.locals 0;
+
+				L0:	new 18;		// JuBiterPackage/JuBiterPackage
+					dup;
+					invokespecial 19;		// JuBiterPackage/JuBiterPackage.<init>()V
+					aload_0;
+					sload_1;
+					sconst_1;
+					sadd;
+					aload_0;
+					sload_1;
+					baload;
+					invokevirtual 20;		// register([BSB)V
+					return;
+		}
+
+		.method public process(Ljavacard/framework/APDU;)V 7 {
+			.stack 7;
+			.locals 10;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	aload_0;
+					invokevirtual 22;		// selectingApplet()Z
+					ifeq L2;
+				L1:	return;
+				L2:	aload_1;
+					invokevirtual 23;		// getBuffer()[B
+					astore_2;
+				L3:	aload_1;
+					invokevirtual 24;		// setIncomingAndReceive()S
+					sstore_3;
+				L4:	aload_1;
+					invokevirtual 25;		// getIncomingLength()S
+					sstore 4;
+				L5:	aload_2;
+					sconst_2;
+					baload;
+					sstore 5;
+				L6:	aload_2;
+					sconst_3;
+					baload;
+					sstore 6;
+				L7:	aload_2;
+					sconst_1;
+					baload;
+					stableswitch L46 1 8 L8 L13 L18 L21 L23 L27 L34 L45;
+				L8:	aload_0;
+					sload 5;
+					invokevirtual 26;		// Ed22519demo(S)Z
+					sstore 7;
+				L9:	aload_2;
+					sconst_0;
+					sload 7;
+					sconst_1;
+					if_scmpne L11;
+				L10:	sconst_1;
+					goto L12;
+				L11:	sconst_0;
+				L12:	bastore;
+					aload_1;
+					sconst_0;
+					sconst_1;
+					invokevirtual 27;		// setOutgoingAndSend(SS)V
+					goto_w L47;
+				L13:	aload_0;
+					aconst_null;
+					putfield_a 14;		// reference JuBiterPackage/JuBiterPackage.myKey
+					sload 5;
+					ifeq L16;
+				L14:	sspush -32768;
+					sstore 8;
+				L15:	goto L17;
+				L16:	sconst_0;
+					sstore 8;
+				L17:	sload 8;
+					sconst_0;
+					sor;
+					sstore 8;
+					aload_0;
+					getfield_a_this 13;		// reference JuBiterPackage/JuBiterPackage.params
+					sload 8;
+					sconst_0;
+					invokestatic 29;		// com/ftsafe/security/KeyBuilderX.buildXECKey(Lcom/ftsafe/security/NamedParameterSpec;SZ)Ljavacard/security/Key;
+					putfield_a 14;		// reference JuBiterPackage/JuBiterPackage.myKey
+					goto_w L47;
+				L18:	getfield_a_this 14;		// reference JuBiterPackage/JuBiterPackage.myKey
+					instanceof 0 30;		// T_CLASSORINTERFACE com/ftsafe/security/XECKey
+					ifne L20;
+				L19:	sspush 28169;
+					invokestatic 31;		// javacard/framework/ISOException.throwIt(S)V
+				L20:	getfield_a_this 14;		// reference JuBiterPackage/JuBiterPackage.myKey
+					checkcast 0 30;		// T_CLASSORINTERFACE com/ftsafe/security/XECKey
+					aload_2;
+					sconst_5;
+					bspush 32;
+					invokeinterface 4 30 3;		// com/ftsafe/security/XECKey
+					goto_w L47;
+				L21:	getfield_a_this 14;		// reference JuBiterPackage/JuBiterPackage.myKey
+					checkcast 0 30;		// T_CLASSORINTERFACE com/ftsafe/security/XECKey
+					aload_2;
+					sconst_0;
+					invokeinterface 3 30 2;		// com/ftsafe/security/XECKey
+					sstore 9;
+				L22:	aload_1;
+					sconst_0;
+					sload 9;
+					invokevirtual 27;		// setOutgoingAndSend(SS)V
+					goto_w L47;
+				L23:	sload 6;
+					ifne L25;
+				L24:	aload_0;
+					sconst_0;
+					putfield_s 10;		// short JuBiterPackage/JuBiterPackage.msglen
+					getfield_a_this 9;		// reference JuBiterPackage/JuBiterPackage.msg
+					sconst_0;
+					getfield_a_this 9;		// reference JuBiterPackage/JuBiterPackage.msg
+					arraylength;
+					sconst_0;
+					invokestatic 32;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+				L25:	sload 5;
+					bspush -128;
+					if_scmpne L26;
+				L26:	aload_2;
+					sconst_5;
+					getfield_a_this 9;		// reference JuBiterPackage/JuBiterPackage.msg
+					getfield_s_this 10;		// short JuBiterPackage/JuBiterPackage.msglen
+					sload 4;
+					invokestatic 33;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					aload_0;
+					dup;
+					getfield_s 10;		// short JuBiterPackage/JuBiterPackage.msglen
+					sload 4;
+					sadd;
+					putfield_s 10;		// short JuBiterPackage/JuBiterPackage.msglen
+					goto_w L47;
+				L27:	getfield_a_this 14;		// reference JuBiterPackage/JuBiterPackage.myKey
+					instanceof 0 30;		// T_CLASSORINTERFACE com/ftsafe/security/XECKey
+					ifne L29;
+				L28:	sspush 28169;
+					invokestatic 31;		// javacard/framework/ISOException.throwIt(S)V
+				L29:	getfield_a_this 11;		// reference JuBiterPackage/JuBiterPackage.sig
+					getfield_a_this 14;		// reference JuBiterPackage/JuBiterPackage.myKey
+					sconst_1;
+					invokevirtual 34;		// init(Ljavacard/security/Key;B)V
+					aload_0;
+					getfield_a_this 11;		// reference JuBiterPackage/JuBiterPackage.sig
+					getfield_a_this 9;		// reference JuBiterPackage/JuBiterPackage.msg
+					sconst_0;
+					getfield_s_this 10;		// short JuBiterPackage/JuBiterPackage.msglen
+					getfield_a_this 8;		// reference JuBiterPackage/JuBiterPackage.sigBuf
+					sconst_0;
+					invokevirtual 35;		// sign([BSS[BS)S
+					putfield_s 12;		// short JuBiterPackage/JuBiterPackage.siglen
+					getfield_a_this 8;		// reference JuBiterPackage/JuBiterPackage.sigBuf
+					sconst_0;
+					aload_2;
+					sconst_0;
+					getfield_s_this 12;		// short JuBiterPackage/JuBiterPackage.siglen
+					invokestatic 33;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					aload_1;
+					sconst_0;
+					getfield_s_this 12;		// short JuBiterPackage/JuBiterPackage.siglen
+					invokevirtual 27;		// setOutgoingAndSend(SS)V
+				L30:	goto_w L47;
+				L31:	astore 10;
+				L32:	iipush 39680;
+					aload 10;
+					invokevirtual 36;		// getReason()S
+					s2i;
+					ior;
+					i2s;
+					invokestatic 31;		// javacard/framework/ISOException.throwIt(S)V
+				L33:	goto L47;
+				L34:	getfield_a_this 14;		// reference JuBiterPackage/JuBiterPackage.myKey
+					instanceof 0 30;		// T_CLASSORINTERFACE com/ftsafe/security/XECKey
+					ifne L36;
+				L35:	sspush 28169;
+					invokestatic 31;		// javacard/framework/ISOException.throwIt(S)V
+				L36:	aload_2;
+					sconst_5;
+					getfield_a_this 8;		// reference JuBiterPackage/JuBiterPackage.sigBuf
+					sconst_0;
+					sload 4;
+					invokestatic 37;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					aload_0;
+					sload 4;
+					putfield_s 12;		// short JuBiterPackage/JuBiterPackage.siglen
+					sconst_0;
+					sstore 10;
+				L37:	getfield_a_this 11;		// reference JuBiterPackage/JuBiterPackage.sig
+					getfield_a_this 14;		// reference JuBiterPackage/JuBiterPackage.myKey
+					sconst_2;
+					invokevirtual 34;		// init(Ljavacard/security/Key;B)V
+					getfield_a_this 11;		// reference JuBiterPackage/JuBiterPackage.sig
+					getfield_a_this 9;		// reference JuBiterPackage/JuBiterPackage.msg
+					sconst_0;
+					getfield_s_this 10;		// short JuBiterPackage/JuBiterPackage.msglen
+					getfield_a_this 8;		// reference JuBiterPackage/JuBiterPackage.sigBuf
+					sconst_0;
+					getfield_s_this 12;		// short JuBiterPackage/JuBiterPackage.siglen
+					invokevirtual 38;		// verify([BSS[BSS)Z
+					sstore 10;
+					aload_2;
+					sconst_0;
+					sload 10;
+					sconst_1;
+					if_scmpne L39;
+				L38:	sconst_1;
+					goto L40;
+				L39:	sconst_0;
+				L40:	bastore;
+					aload_1;
+					sconst_0;
+					sconst_1;
+					invokevirtual 27;		// setOutgoingAndSend(SS)V
+				L41:	goto L47;
+				L42:	astore 11;
+				L43:	aload 11;
+					invokevirtual 36;		// getReason()S
+					invokestatic 31;		// javacard/framework/ISOException.throwIt(S)V
+				L44:	goto L47;
+				L45:	aload_0;
+					aconst_null;
+					putfield_a 14;		// reference JuBiterPackage/JuBiterPackage.myKey
+					invokestatic 39;		// javacard/framework/JCSystem.requestObjectDeletion()V
+					goto L47;
+				L46:	sspush 27904;
+					invokestatic 31;		// javacard/framework/ISOException.throwIt(S)V
+				L47:	return;
+			.exceptionTable {
+				// start_block end_block handler_block catch_type_index
+				L29 L30 L31 21;
+				L37 L41 L42 21;
+			}
+		}
+
+		.method  Ed22519demo(S)Z 128 {
+			.stack 7;
+			.locals 5;
+
+				L0:	aload_0;
+					aconst_null;
+					putfield_a 15;		// reference JuBiterPackage/JuBiterPackage.pubkey
+					aload_0;
+					aconst_null;
+					putfield_a 16;		// reference JuBiterPackage/JuBiterPackage.prikey
+					sconst_0;
+					sstore_2;
+				L1:	bspush 32;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 76;
+					bastore;
+					dup;
+					sconst_1;
+					bspush -51;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 8;
+					bastore;
+					dup;
+					sconst_3;
+					bspush -101;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 40;
+					bastore;
+					dup;
+					sconst_5;
+					sconst_m1;
+					bastore;
+					dup;
+					bspush 6;
+					bspush -106;
+					bastore;
+					dup;
+					bspush 7;
+					bspush -38;
+					bastore;
+					dup;
+					bspush 8;
+					bspush -99;
+					bastore;
+					dup;
+					bspush 9;
+					bspush -74;
+					bastore;
+					dup;
+					bspush 10;
+					bspush -61;
+					bastore;
+					dup;
+					bspush 11;
+					bspush 70;
+					bastore;
+					dup;
+					bspush 12;
+					bspush -20;
+					bastore;
+					dup;
+					bspush 13;
+					bspush 17;
+					bastore;
+					dup;
+					bspush 14;
+					bspush 78;
+					bastore;
+					dup;
+					bspush 15;
+					bspush 15;
+					bastore;
+					dup;
+					bspush 16;
+					bspush 91;
+					bastore;
+					dup;
+					bspush 17;
+					bspush -118;
+					bastore;
+					dup;
+					bspush 18;
+					bspush 49;
+					bastore;
+					dup;
+					bspush 19;
+					bspush -97;
+					bastore;
+					dup;
+					bspush 20;
+					bspush 53;
+					bastore;
+					dup;
+					bspush 21;
+					bspush -85;
+					bastore;
+					dup;
+					bspush 22;
+					bspush -90;
+					bastore;
+					dup;
+					bspush 23;
+					bspush 36;
+					bastore;
+					dup;
+					bspush 24;
+					bspush -38;
+					bastore;
+					dup;
+					bspush 25;
+					bspush -116;
+					bastore;
+					dup;
+					bspush 26;
+					bspush -10;
+					bastore;
+					dup;
+					bspush 27;
+					bspush -19;
+					bastore;
+					dup;
+					bspush 28;
+					bspush 79;
+					bastore;
+					dup;
+					bspush 29;
+					bspush -72;
+					bastore;
+					dup;
+					bspush 30;
+					bspush -90;
+					bastore;
+					dup;
+					bspush 31;
+					bspush -5;
+					bastore;
+					astore_3;
+				L2:	bspush 32;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 61;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 64;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 23;
+					bastore;
+					dup;
+					sconst_3;
+					bspush -61;
+					bastore;
+					dup;
+					sconst_4;
+					bspush -24;
+					bastore;
+					dup;
+					sconst_5;
+					bspush 67;
+					bastore;
+					dup;
+					bspush 6;
+					bspush -119;
+					bastore;
+					dup;
+					bspush 7;
+					bspush 90;
+					bastore;
+					dup;
+					bspush 8;
+					bspush -110;
+					bastore;
+					dup;
+					bspush 9;
+					bspush -73;
+					bastore;
+					dup;
+					bspush 10;
+					bspush 10;
+					bastore;
+					dup;
+					bspush 11;
+					bspush -89;
+					bastore;
+					dup;
+					bspush 12;
+					bspush 77;
+					bastore;
+					dup;
+					bspush 13;
+					bspush 27;
+					bastore;
+					dup;
+					bspush 14;
+					bspush 126;
+					bastore;
+					dup;
+					bspush 15;
+					bspush -68;
+					bastore;
+					dup;
+					bspush 16;
+					bspush -100;
+					bastore;
+					dup;
+					bspush 17;
+					bspush -104;
+					bastore;
+					dup;
+					bspush 18;
+					bspush 44;
+					bastore;
+					dup;
+					bspush 19;
+					bspush -49;
+					bastore;
+					dup;
+					bspush 20;
+					bspush 46;
+					bastore;
+					dup;
+					bspush 21;
+					bspush -60;
+					bastore;
+					dup;
+					bspush 22;
+					bspush -106;
+					bastore;
+					dup;
+					bspush 23;
+					bspush -116;
+					bastore;
+					dup;
+					bspush 24;
+					bspush -64;
+					bastore;
+					dup;
+					bspush 25;
+					bspush -51;
+					bastore;
+					dup;
+					bspush 26;
+					bspush 85;
+					bastore;
+					dup;
+					bspush 27;
+					bspush -15;
+					bastore;
+					dup;
+					bspush 28;
+					bspush 42;
+					bastore;
+					dup;
+					bspush 29;
+					bspush -12;
+					bastore;
+					dup;
+					bspush 30;
+					bspush 102;
+					bastore;
+					dup;
+					bspush 31;
+					bspush 12;
+					bastore;
+					astore 4;
+				L3:	getfield_a_this 9;		// reference JuBiterPackage/JuBiterPackage.msg
+					sconst_0;
+					bspush 114;
+					bastore;
+					aload_0;
+					sconst_1;
+					putfield_s 10;		// short JuBiterPackage/JuBiterPackage.msglen
+				L4:	sload_1;
+					ifne L7;
+				L5:	sspush -32768;
+					sstore 5;
+				L6:	sload 5;
+					sconst_0;
+					sor;
+					sstore 5;
+					aload_0;
+					getfield_a_this 13;		// reference JuBiterPackage/JuBiterPackage.params
+					sload 5;
+					sconst_0;
+					invokestatic 29;		// com/ftsafe/security/KeyBuilderX.buildXECKey(Lcom/ftsafe/security/NamedParameterSpec;SZ)Ljavacard/security/Key;
+					checkcast 0 42;		// T_CLASSORINTERFACE com/ftsafe/security/XECPrivateKey
+					putfield_a 16;		// reference JuBiterPackage/JuBiterPackage.prikey
+					getfield_a_this 16;		// reference JuBiterPackage/JuBiterPackage.prikey
+					aload_3;
+					sconst_0;
+					bspush 32;
+					invokeinterface 4 42 3;		// com/ftsafe/security/XECPrivateKey
+					sconst_0;
+					sstore 5;
+					sload 5;
+					sconst_0;
+					sor;
+					sstore 5;
+					aload_0;
+					getfield_a_this 13;		// reference JuBiterPackage/JuBiterPackage.params
+					sload 5;
+					sconst_0;
+					invokestatic 29;		// com/ftsafe/security/KeyBuilderX.buildXECKey(Lcom/ftsafe/security/NamedParameterSpec;SZ)Ljavacard/security/Key;
+					checkcast 0 43;		// T_CLASSORINTERFACE com/ftsafe/security/XECPublicKey
+					putfield_a 15;		// reference JuBiterPackage/JuBiterPackage.pubkey
+					getfield_a_this 15;		// reference JuBiterPackage/JuBiterPackage.pubkey
+					aload 4;
+					sconst_0;
+					bspush 32;
+					invokeinterface 4 43 3;		// com/ftsafe/security/XECPublicKey
+					goto L10;
+				L7:	sload_1;
+					sconst_1;
+					if_scmpne L10;
+				L8:	sspush -32768;
+					sstore 5;
+				L9:	sload 5;
+					sconst_0;
+					sor;
+					sstore 5;
+					aload_0;
+					getfield_a_this 13;		// reference JuBiterPackage/JuBiterPackage.params
+					sload 5;
+					sconst_0;
+					invokestatic 29;		// com/ftsafe/security/KeyBuilderX.buildXECKey(Lcom/ftsafe/security/NamedParameterSpec;SZ)Ljavacard/security/Key;
+					checkcast 0 42;		// T_CLASSORINTERFACE com/ftsafe/security/XECPrivateKey
+					putfield_a 16;		// reference JuBiterPackage/JuBiterPackage.prikey
+					getfield_a_this 16;		// reference JuBiterPackage/JuBiterPackage.prikey
+					aload_3;
+					sconst_0;
+					bspush 32;
+					invokeinterface 4 42 3;		// com/ftsafe/security/XECPrivateKey
+					getfield_a_this 16;		// reference JuBiterPackage/JuBiterPackage.prikey
+					invokeinterface 1 42 1;		// com/ftsafe/security/XECPrivateKey
+					pop;
+					sconst_0;
+					sstore 5;
+					sload 5;
+					sconst_0;
+					sor;
+					sstore 5;
+					aload_0;
+					getfield_a_this 13;		// reference JuBiterPackage/JuBiterPackage.params
+					sload 5;
+					sconst_0;
+					invokestatic 29;		// com/ftsafe/security/KeyBuilderX.buildXECKey(Lcom/ftsafe/security/NamedParameterSpec;SZ)Ljavacard/security/Key;
+					checkcast 0 43;		// T_CLASSORINTERFACE com/ftsafe/security/XECPublicKey
+					putfield_a 15;		// reference JuBiterPackage/JuBiterPackage.pubkey
+					getfield_a_this 15;		// reference JuBiterPackage/JuBiterPackage.pubkey
+					aload 4;
+					sconst_0;
+					bspush 32;
+					invokeinterface 4 43 3;		// com/ftsafe/security/XECPublicKey
+					getfield_a_this 15;		// reference JuBiterPackage/JuBiterPackage.pubkey
+					invokeinterface 1 43 1;		// com/ftsafe/security/XECPublicKey
+					pop;
+				L10:	goto L13;
+				L11:	astore 6;
+				L12:	sspush -25855;
+					invokestatic 31;		// javacard/framework/ISOException.throwIt(S)V
+				L13:	getfield_a_this 11;		// reference JuBiterPackage/JuBiterPackage.sig
+					getfield_a_this 16;		// reference JuBiterPackage/JuBiterPackage.prikey
+					sconst_1;
+					invokevirtual 34;		// init(Ljavacard/security/Key;B)V
+					getfield_a_this 11;		// reference JuBiterPackage/JuBiterPackage.sig
+					getfield_a_this 9;		// reference JuBiterPackage/JuBiterPackage.msg
+					sconst_0;
+					getfield_s_this 10;		// short JuBiterPackage/JuBiterPackage.msglen
+					getfield_a_this 8;		// reference JuBiterPackage/JuBiterPackage.sigBuf
+					sconst_0;
+					invokevirtual 35;		// sign([BSS[BS)S
+					pop;
+				L14:	goto L17;
+				L15:	astore 6;
+				L16:	aload 6;
+					invokevirtual 36;		// getReason()S
+					invokestatic 31;		// javacard/framework/ISOException.throwIt(S)V
+				L17:	getfield_a_this 11;		// reference JuBiterPackage/JuBiterPackage.sig
+					getfield_a_this 15;		// reference JuBiterPackage/JuBiterPackage.pubkey
+					sconst_2;
+					invokevirtual 34;		// init(Ljavacard/security/Key;B)V
+					getfield_a_this 11;		// reference JuBiterPackage/JuBiterPackage.sig
+					getfield_a_this 9;		// reference JuBiterPackage/JuBiterPackage.msg
+					sconst_0;
+					getfield_s_this 10;		// short JuBiterPackage/JuBiterPackage.msglen
+					getfield_a_this 8;		// reference JuBiterPackage/JuBiterPackage.sigBuf
+					sconst_0;
+					bspush 64;
+					invokevirtual 38;		// verify([BSS[BSS)Z
+					sstore_2;
+				L18:	goto L21;
+				L19:	astore 6;
+				L20:	aload 6;
+					invokevirtual 36;		// getReason()S
+					invokestatic 31;		// javacard/framework/ISOException.throwIt(S)V
+				L21:	sload_2;
+					sreturn;
+			.exceptionTable {
+				// start_block end_block handler_block catch_type_index
+				L4 L10 L11 21;
+				L13 L14 L15 21;
+				L17 L18 L19 21;
+			}
+		}
+
+	}
+
+}

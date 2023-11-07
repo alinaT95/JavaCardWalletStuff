@@ -1,0 +1,39 @@
+<JavaCardProject name="EncryptionTest" version="2">
+<USER>
+<PKG name="testpack" aid="22 33 44 55 66 77" major="1" minor="0">
+<APPLET aid="22 33 44 55 66 77 00" instanceaid="" parameter="" authority="" privileges="" index="-10408" name="EncryptionTest"/>
+</PKG>
+</USER>
+<BuildPropertyConfig>
+<JCKit_Option>
+<OutType>EXP JCA CAP</OutType>
+<_SupportInt>1</_SupportInt>
+<_verbos>0</_verbos>
+<_nowarn>0</_nowarn>
+<_debug>1</_debug>
+<_nobanner>0</_nobanner>
+<_noverify>0</_noverify>
+<_mask>0</_mask>
+<_Adddition/>
+</JCKit_Option>
+<JavaCompilerOption>
+<_Source>1.5</_Source>
+<_Target>1.5</_Target>
+<_Encoding>windows-1251</_Encoding>
+<_GenAllDegugInfo>1</_GenAllDegugInfo>
+<_GenNoWarnings>0</_GenNoWarnings>
+<_OutputAboutCompilerDoing>0</_OutputAboutCompilerDoing>
+<_OutputWhereDeprecatedApisAre>1</_OutputWhereDeprecatedApisAre>
+<_Adddition/>
+</JavaCompilerOption>
+<Buildpaths>
+<ClasspathEntry>
+<CPE_CONTAINER name="java_card_kit-3_0_4" kind="K_DEFAULT_SYSTEM_JCRE"/>
+<CPE_CONTAINER name="Jubiter SE" kind="K_FOLDER"/>
+</ClasspathEntry>
+<ConvertorBinDirPath/>
+</Buildpaths>
+<ConverterInfo ConverterKid="FTSAFE" ConverterName="ft222"/>
+</BuildPropertyConfig>
+<solution_relate_to_project/>
+</JavaCardProject>

@@ -1,0 +1,3486 @@
+// converted by version 1.3
+// on Wed Jul 24 11:59:05 MSK 2019
+
+.package wallet {
+	.aid 0x31:0x31:0x32:0x32:0x33:0x33:0x34:0x34:0x35:0x35:0x36:0x36;
+	.version 1.0;
+
+	.imports {
+		0xA0:0x0:0x0:0x0:0x62:0x0:0x1 1.0;		//java/lang
+		0xA0:0x0:0x0:0x0:0x62:0x1:0x1 1.5;		//javacard/framework
+		0xA0:0x0:0x0:0x1:0x51:0x0 1.0;		//org/globalplatform
+		0xD1:0x56:0x0:0x1:0x32:0x0:0xB 1.0;		//com/ftsafe/security
+		0xA0:0x0:0x0:0x0:0x62:0x1:0x2 1.5;		//javacard/security
+	}
+
+	.applet {
+		0x31:0x31:0x32:0x32:0x33:0x33:0x34:0x34:0x35:0x35:0x36:0x36:0x0 WalletApplet;
+	}
+
+	.constantPool {
+		// 0
+		instanceFieldRef short TonCryptoHandler/sigLen;
+		// 1
+		instanceFieldRef short TonCryptoHandler/numberOfBytesReceived;
+		// 2
+		instanceFieldRef short TonCryptoHandler/dataForSigningTotalLen;
+		// 3
+		instanceFieldRef byte[] TonCryptoHandler/privateKeyBufForTest;
+		// 4
+		instanceFieldRef byte[] TonCryptoHandler/publicKeyBufForTest;
+		// 5
+		instanceFieldRef 4.15 TonCryptoHandler/sig;
+		// 6
+		instanceFieldRef byte[] TonCryptoHandler/signatureBytes;
+		// 7
+		instanceFieldRef byte[] TonCryptoHandler/dataForSigning;
+		// 8
+		instanceFieldRef byte[] TonCryptoHandler/tmpBuffer;
+		// 9
+		instanceFieldRef 3.5 TonCryptoHandler/params;
+		// 10
+		instanceFieldRef 3.2 TonCryptoHandler/privateKey;
+		// 11
+		instanceFieldRef 3.3 TonCryptoHandler/publicKey;
+		// 12
+		instanceFieldRef byte[] TonCryptoHandler/privateExponent;
+		// 13
+		instanceFieldRef byte[] TonCryptoHandler/privateSault;
+		// 14
+		instanceFieldRef TonCryptoHandler WalletApplet/cryptoHandler;
+		// 15
+		staticMethodRef 1.16.2([BS[BSS)S;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+		// 16
+		staticFieldRef short[] SHA512/H_INIT_SHORT;
+		// 17
+		staticMethodRef SHA512/compressionFunction([SS[BS)V;
+		// 18
+		staticMethodRef 1.16.3([BSSB)S;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+		// 19
+		staticMethodRef 1.16.4([BS)S;		// javacard/framework/Util.getShort([BS)S
+		// 20
+		staticFieldRef short[] SHA512/K_SHORT;
+		// 21
+		classRef 1.13;		// javacard/framework/SystemException
+		// 22
+		staticMethodRef 0.0.0()V;		// java/lang/Object.<init>()V
+		// 23
+		staticMethodRef 2.3.8(B)Z;		// org/globalplatform/GPSystem.setCardContentState(B)Z
+		// 24
+		virtualMethodRef 1.10.1()[B;		// getBuffer()[B
+		// 25
+		virtualMethodRef 1.10.7()S;		// setOutgoing()S
+		// 26
+		virtualMethodRef 1.10.9(S)V;		// setOutgoingLength(S)V
+		// 27
+		staticMethodRef 4.15.2(BBBZ)Ljavacard/security/Signature;;		// javacard/security/Signature.getInstance(BBBZ)Ljavacard/security/Signature;
+			.descriptor	Ljavacard/security/Signature;	4.15;
+
+		// 28
+		staticMethodRef 2.3.1()B;		// org/globalplatform/GPSystem.getCardContentState()B
+		// 29
+		virtualMethodRef 1.10.4(SS)V;		// sendBytes(SS)V
+		// 30
+		staticMethodRef 1.8.15(SB)[S;		// javacard/framework/JCSystem.makeTransientShortArray(SB)[S
+		// 31
+		staticFieldRef short[] SHA512/w_short;
+		// 32
+		staticMethodRef 3.5.0(S)Lcom/ftsafe/security/NamedParameterSpec;;		// com/ftsafe/security/NamedParameterSpec.getInstance(S)Lcom/ftsafe/security/NamedParameterSpec;
+			.descriptor	Lcom/ftsafe/security/NamedParameterSpec;	3.5;
+
+		// 33
+		staticFieldRef short[] SHA512/h_short;
+		// 34
+		staticMethodRef 3.4.1(Lcom/ftsafe/security/NamedParameterSpec;SZ)Ljavacard/security/Key;;		// com/ftsafe/security/KeyBuilderX.buildXECKey(Lcom/ftsafe/security/NamedParameterSpec;SZ)Ljavacard/security/Key;
+			.descriptor	Lcom/ftsafe/security/NamedParameterSpec;	3.5;
+			.descriptor	Ljavacard/security/Key;	4.0;
+
+		// 35
+		classRef 3.2;		// com/ftsafe/security/XECPrivateKey
+		// 36
+		staticFieldRef short[] SHA512/hashState;
+		// 37
+		classRef 3.3;		// com/ftsafe/security/XECPublicKey
+		// 38
+		staticMethodRef 1.8.13(SB)[B;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+		// 39
+		staticMethodRef SHA512/init()V;
+		// 40
+		virtualMethodRef 1.10.6()S;		// setIncomingAndReceive()S
+		// 41
+		staticMethodRef 1.7.1(S)V;		// javacard/framework/ISOException.throwIt(S)V
+		// 42
+		classRef 4.12;		// javacard/security/CryptoException
+		// 43
+		staticMethodRef 1.16.6([BSS)S;		// javacard/framework/Util.setShort([BSS)S
+		// 44
+		virtualMethodRef 1.10.8(SS)V;		// setOutgoingAndSend(SS)V
+		// 45
+		virtualMethodRef 4.12.1()S;		// getReason()S
+		// 46
+		virtualMethodRef 4.15.3(Ljavacard/security/Key;B)V;		// init(Ljavacard/security/Key;B)V
+			.descriptor	Ljavacard/security/Key;	4.0;
+
+		// 47
+		virtualMethodRef 4.15.5([BSS[BS)S;		// sign([BSS[BS)S
+		// 48
+		staticMethodRef 1.16.1([BS[BSS)S;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+		// 49
+		virtualMethodRef 4.15.7([BSS[BSS)Z;		// verify([BSS[BSS)Z
+		// 50
+		staticMethodRef SHA512/resetUpdateDoFinal([BSS[BS)S;
+		// 51
+		staticFieldRef byte[] SHA512/buffer;
+		// 52
+		staticFieldRef short SHA512/bufferOff;
+		// 53
+		staticMethodRef 1.3.0()V;		// javacard/framework/Applet.<init>()V
+		// 54
+		classRef TonCryptoHandler;
+		// 55
+		staticMethodRef TonCryptoHandler/<init>()V;
+		// 56
+		staticFieldRef short SHA512/bufferLeft;
+		// 57
+		classRef WalletApplet;
+		// 58
+		staticMethodRef WalletApplet/<init>()V;
+		// 59
+		virtualMethodRef 1.3.2([BSB)V;		// register([BSB)V
+		// 60
+		virtualMethodRef 1.3.3()Z;		// selectingApplet()Z
+		// 61
+		virtualMethodRef TonCryptoHandler/setupKey()V;
+		// 62
+		staticMethodRef CommonHandler/finishPersonalization(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		// 63
+		staticMethodRef CommonHandler/getAppInfo(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		// 64
+		virtualMethodRef TonCryptoHandler/getPublicMasterKey(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		// 65
+		virtualMethodRef TonCryptoHandler/importPublicKey(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		// 66
+		virtualMethodRef TonCryptoHandler/importPrivateKey(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		// 67
+		virtualMethodRef TonCryptoHandler/setDataForSigning(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		// 68
+		virtualMethodRef TonCryptoHandler/signShortMessage(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		// 69
+		virtualMethodRef TonCryptoHandler/verifySignature(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+	}
+
+	.class public CommonHandler 0 extends 0.0 {		// extends java/lang/Object
+
+		.publicMethodTable 1 {
+			equals(Ljava/lang/Object;)Z;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>()V 0 {
+			.stack 1;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 22;		// java/lang/Object.<init>()V
+					return;
+		}
+
+		.method public static finishPersonalization(Ljavacard/framework/APDU;)V 1 {
+			.stack 1;
+			.locals 0;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	bspush 23;
+					invokestatic 23;		// org/globalplatform/GPSystem.setCardContentState(B)Z
+					pop;
+					return;
+		}
+
+		.method public static getAppInfo(Ljavacard/framework/APDU;)V 2 {
+			.stack 3;
+			.locals 2;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_0;
+					invokevirtual 24;		// getBuffer()[B
+					astore_1;
+				L1:	sconst_1;
+					sstore_2;
+				L2:	aload_0;
+					invokevirtual 25;		// setOutgoing()S
+					pop;
+					aload_0;
+					sload_2;
+					invokevirtual 26;		// setOutgoingLength(S)V
+					aload_1;
+					sconst_0;
+					invokestatic 28;		// org/globalplatform/GPSystem.getCardContentState()B
+					bastore;
+					aload_0;
+					sconst_0;
+					sload_2;
+					invokevirtual 29;		// sendBytes(SS)V
+					return;
+		}
+
+	}
+
+	.class public Constants 1 extends 0.0 {		// extends java/lang/Object
+
+		.fields {
+			public static final short SW_INCORRECT_ALG = -25591;		// S
+			public static final short SW_DATA_FOR_SIGNING_IS_TOO_LONG = -25590;		// S
+			public static final byte APP_INSTALLED = 7;		// B
+			public static final byte APP_PERSONALIZED = 23;		// B
+		}
+
+		.publicMethodTable 1 {
+			equals(Ljava/lang/Object;)Z;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>()V 0 {
+			.stack 1;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 22;		// java/lang/Object.<init>()V
+					return;
+		}
+
+	}
+
+	.class public SHA512 2 extends 0.0 {		// extends java/lang/Object
+
+		.fields {
+			private static final short[] H_INIT_SHORT = {27145,-6553,-3140,-14072,-17561,-20859,-31542,-22725,15470,-3214,-364,-2005,-23217,-2758,24349,14065,20750,21119,-21018,-32047,-25851,26764,11070,27679,8067,-9813,-1215,-17045,23520,-13031,4990,8569};		// [S
+			private static final short[] K_SHORT = {17034,12184,-10456,-20958,28983,17553,9199,26061,-19008,-1073,-5043,15151,-5707,-9307,-32375,-9284,14678,-15781,-3256,-19144,23025,4593,-18939,-12263,-28097,-32092,-20711,20379,-21732,24277,-9619,-32488,-10233,-21864,-23805,578,4739,23297,17776,28606,9265,-31298,20196,-19828,21772,32195,-10753,-19230,29374,23924,-3461,-30353,-32546,-19970,15126,-26959,-25636,1703,9671,4661,-15973,-3724,-12439,9876,-7013,27073,-24847,19154,-4162,18310,14415,9699,4033,-25146,-29812,-10827,9228,-24116,30636,-25499,11753,11375,22827,629,19060,-31574,28326,-7037,23728,-22052,-17087,-1068,30457,-30502,-31983,21429,-26562,20818,-4506,-8277,-22479,-14739,11700,12816,-20477,10184,-26373,8511,-16551,32711,-16657,3812,-14624,3059,15784,-28734,-10841,-28345,-27894,-22747,1738,25425,-8189,-32145,5161,10599,2574,28272,10167,2693,18130,12284,11803,8504,23590,-14042,19756,28156,23236,10989,21304,3347,-25195,-19489,25866,29524,-29777,25566,30314,2747,15479,-19800,-32318,-14034,18413,-20762,-28046,11397,5250,13627,-23873,-5983,19697,868,-22502,26187,-17342,12289,-15797,-29840,-12040,-26735,-14484,20899,1620,-16848,-11886,-6119,-10513,21016,-10599,1572,21861,-22256,-3058,13701,22385,8234,4202,-24464,12987,-11848,6564,-16106,-18222,-12088,7735,27656,20801,-21677,10056,30540,-8306,-5223,13488,-17227,-7781,18600,14620,3251,-14903,23139,20184,-21942,-7359,-30005,23452,-13745,30563,-7309,26670,28659,-10574,-18269,29839,-32018,24047,-19716,30885,25455,17175,12128,-31544,30740,-24080,-21646,-29497,520,6756,14828,-28482,-6,9059,7720,-23472,27883,-8574,-16919,-16647,-23561,-19770,30997,-14735,30962,-7310,21291,-13785,16078,-5594,24988,-11898,-18233,8640,-15865,-5414,32214,-12832,-5346,-2691,20351,-4498,-11912,1776,26538,29207,28602,2659,32197,-23864,-26458,4415,-26620,-16647,3502,7025,2869,4892,18203,10459,30709,8964,32132,13002,-21637,16583,9363,15518,-16886,5577,-16708,17181,26564,-25584,3404,19653,-11074,-13506,17078,22911,10652,-923,32298,24523,28587,15062,-1300,27716,6540,19015,22551};		// [S
+			private static short[] h_short;		// [S
+			private static short[] w_short;		// [S
+			private static short[] hashState;		// [S
+			private static byte[] buffer;		// [B
+			private static short bufferOff;		// S
+			private static short bufferLeft;		// S
+		}
+
+		.publicMethodTable 1 {
+			equals(Ljava/lang/Object;)Z;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>()V 0 {
+			.stack 1;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 22;		// java/lang/Object.<init>()V
+					return;
+		}
+
+		.method public static init()V 1 {
+			.stack 2;
+			.locals 0;
+
+				L0:	bspush 64;
+					sconst_2;
+					invokestatic 30;		// javacard/framework/JCSystem.makeTransientShortArray(SB)[S
+					putstatic_a 31;		// reference wallet/SHA512.w_short
+					bspush 32;
+					sconst_2;
+					invokestatic 30;		// javacard/framework/JCSystem.makeTransientShortArray(SB)[S
+					putstatic_a 33;		// reference wallet/SHA512.h_short
+					bspush 32;
+					sconst_2;
+					invokestatic 30;		// javacard/framework/JCSystem.makeTransientShortArray(SB)[S
+					putstatic_a 36;		// reference wallet/SHA512.hashState
+					sspush 128;
+					sconst_2;
+					invokestatic 38;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					putstatic_a 51;		// reference wallet/SHA512.buffer
+					return;
+		}
+
+		.method public static resetUpdateDoFinal([BSS[BS)S 2 {
+			.stack 5;
+			.locals 7;
+
+				L0:	sconst_0;
+					putstatic_s 52;		// short wallet/SHA512.bufferOff
+					sspush 128;
+					putstatic_s 56;		// short wallet/SHA512.bufferLeft
+					aload_0;
+					sload_1;
+					getstatic_a 51;		// reference wallet/SHA512.buffer
+					getstatic_s 52;		// short wallet/SHA512.bufferOff
+					getstatic_s 56;		// short wallet/SHA512.bufferLeft
+					invokestatic 15;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					sload_1;
+					getstatic_s 56;		// short wallet/SHA512.bufferLeft
+					sadd;
+					sstore_1;
+					sspush 128;
+					putstatic_s 56;		// short wallet/SHA512.bufferLeft
+					sconst_0;
+					putstatic_s 52;		// short wallet/SHA512.bufferOff
+					sconst_0;
+					sstore 10;
+				L1:	sload 10;
+					bspush 32;
+					if_scmpge L3;
+				L2:	getstatic_a 36;		// reference wallet/SHA512.hashState
+					sload 10;
+					getstatic_a 16;		// reference wallet/SHA512.H_INIT_SHORT
+					sload 10;
+					saload;
+					sastore;
+					getstatic_a 33;		// reference wallet/SHA512.h_short
+					sload 10;
+					getstatic_a 36;		// reference wallet/SHA512.hashState
+					sload 10;
+					saload;
+					sastore;
+					sinc 10 1;
+					goto L1;
+				L3:	getstatic_a 33;		// reference wallet/SHA512.h_short
+					sconst_0;
+					getstatic_a 51;		// reference wallet/SHA512.buffer
+					sconst_0;
+					invokestatic 17;		// wallet/SHA512.compressionFunction([SS[BS)V
+					sconst_0;
+					sstore 10;
+				L4:	sload 10;
+					bspush 32;
+					if_scmpge_w L11;
+				L5:	sconst_0;
+					sstore 5;
+				L6:	sload 10;
+					sconst_3;
+					sadd;
+					sstore 6;
+				L7:	sload 10;
+					sconst_3;
+					sadd;
+					sstore 7;
+				L8:	getstatic_a 36;		// reference wallet/SHA512.hashState
+					sload 7;
+					saload;
+					sstore 8;
+				L9:	getstatic_a 33;		// reference wallet/SHA512.h_short
+					sload 6;
+					saload;
+					sstore 9;
+				L10:	getstatic_a 36;		// reference wallet/SHA512.hashState
+					sload 7;
+					sload 8;
+					sload 9;
+					sadd;
+					sload 5;
+					sadd;
+					sastore;
+					sload 8;
+					sload 9;
+					sand;
+					sload 8;
+					sload 9;
+					sor;
+					getstatic_a 36;		// reference wallet/SHA512.hashState
+					sload 7;
+					saload;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 5;
+					sinc 6 -1;
+					sinc 7 -1;
+					getstatic_a 36;		// reference wallet/SHA512.hashState
+					sload 7;
+					saload;
+					sstore 8;
+					getstatic_a 33;		// reference wallet/SHA512.h_short
+					sload 6;
+					saload;
+					sstore 9;
+					getstatic_a 36;		// reference wallet/SHA512.hashState
+					sload 7;
+					sload 8;
+					sload 9;
+					sadd;
+					sload 5;
+					sadd;
+					sastore;
+					sload 8;
+					sload 9;
+					sand;
+					sload 8;
+					sload 9;
+					sor;
+					getstatic_a 36;		// reference wallet/SHA512.hashState
+					sload 7;
+					saload;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 5;
+					sinc 6 -1;
+					sinc 7 -1;
+					getstatic_a 36;		// reference wallet/SHA512.hashState
+					sload 7;
+					saload;
+					sstore 8;
+					getstatic_a 33;		// reference wallet/SHA512.h_short
+					sload 6;
+					saload;
+					sstore 9;
+					getstatic_a 36;		// reference wallet/SHA512.hashState
+					sload 7;
+					sload 8;
+					sload 9;
+					sadd;
+					sload 5;
+					sadd;
+					sastore;
+					sload 8;
+					sload 9;
+					sand;
+					sload 8;
+					sload 9;
+					sor;
+					getstatic_a 36;		// reference wallet/SHA512.hashState
+					sload 7;
+					saload;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 5;
+					sinc 6 -1;
+					sinc 7 -1;
+					getstatic_a 36;		// reference wallet/SHA512.hashState
+					sload 7;
+					saload;
+					sstore 8;
+					getstatic_a 33;		// reference wallet/SHA512.h_short
+					sload 6;
+					saload;
+					sstore 9;
+					getstatic_a 36;		// reference wallet/SHA512.hashState
+					sload 7;
+					sload 8;
+					sload 9;
+					sadd;
+					sload 5;
+					sadd;
+					sastore;
+					sinc 10 4;
+					goto_w L4;
+				L11:	sload_2;
+					sspush 128;
+					ssub;
+					sstore 10;
+				L12:	aload_0;
+					sload_1;
+					getstatic_a 51;		// reference wallet/SHA512.buffer
+					getstatic_s 52;		// short wallet/SHA512.bufferOff
+					sload 10;
+					invokestatic 15;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					getstatic_s 56;		// short wallet/SHA512.bufferLeft
+					sload 10;
+					ssub;
+					putstatic_s 56;		// short wallet/SHA512.bufferLeft
+					getstatic_s 52;		// short wallet/SHA512.bufferOff
+					sload 10;
+					sadd;
+					putstatic_s 52;		// short wallet/SHA512.bufferOff
+					getstatic_a 51;		// reference wallet/SHA512.buffer
+					getstatic_s 52;		// short wallet/SHA512.bufferOff
+					bspush -128;
+					bastore;
+					getstatic_s 56;		// short wallet/SHA512.bufferLeft
+					sconst_1;
+					ssub;
+					putstatic_s 56;		// short wallet/SHA512.bufferLeft
+					getstatic_s 52;		// short wallet/SHA512.bufferOff
+					sconst_1;
+					sadd;
+					putstatic_s 52;		// short wallet/SHA512.bufferOff
+					getstatic_a 51;		// reference wallet/SHA512.buffer
+					getstatic_s 52;		// short wallet/SHA512.bufferOff
+					getstatic_s 56;		// short wallet/SHA512.bufferLeft
+					sconst_0;
+					invokestatic 18;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					getstatic_a 51;		// reference wallet/SHA512.buffer
+					getstatic_a 51;		// reference wallet/SHA512.buffer
+					arraylength;
+					sconst_2;
+					ssub;
+					bspush 8;
+					sload_2;
+					smul;
+					bspush 8;
+					sshr;
+					sspush 255;
+					sand;
+					s2b;
+					bastore;
+					getstatic_a 51;		// reference wallet/SHA512.buffer
+					getstatic_a 51;		// reference wallet/SHA512.buffer
+					arraylength;
+					sconst_1;
+					ssub;
+					bspush 8;
+					sload_2;
+					smul;
+					sspush 255;
+					sand;
+					s2b;
+					bastore;
+					sconst_0;
+					sstore 11;
+				L13:	sload 11;
+					bspush 32;
+					if_scmpge L15;
+				L14:	getstatic_a 33;		// reference wallet/SHA512.h_short
+					sload 11;
+					getstatic_a 36;		// reference wallet/SHA512.hashState
+					sload 11;
+					saload;
+					sastore;
+					sinc 11 1;
+					goto L13;
+				L15:	getstatic_a 33;		// reference wallet/SHA512.h_short
+					sconst_0;
+					getstatic_a 51;		// reference wallet/SHA512.buffer
+					sconst_0;
+					invokestatic 17;		// wallet/SHA512.compressionFunction([SS[BS)V
+					sconst_0;
+					sstore 11;
+				L16:	sload 11;
+					bspush 32;
+					if_scmpge_w L23;
+				L17:	sconst_0;
+					sstore 5;
+				L18:	sload 11;
+					sconst_3;
+					sadd;
+					sstore 6;
+				L19:	sload 11;
+					sconst_3;
+					sadd;
+					sstore 7;
+				L20:	getstatic_a 36;		// reference wallet/SHA512.hashState
+					sload 7;
+					saload;
+					sstore 8;
+				L21:	getstatic_a 33;		// reference wallet/SHA512.h_short
+					sload 6;
+					saload;
+					sstore 9;
+				L22:	getstatic_a 36;		// reference wallet/SHA512.hashState
+					sload 7;
+					sload 8;
+					sload 9;
+					sadd;
+					sload 5;
+					sadd;
+					sastore;
+					sload 8;
+					sload 9;
+					sand;
+					sload 8;
+					sload 9;
+					sor;
+					getstatic_a 36;		// reference wallet/SHA512.hashState
+					sload 7;
+					saload;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 5;
+					sinc 6 -1;
+					sinc 7 -1;
+					getstatic_a 36;		// reference wallet/SHA512.hashState
+					sload 7;
+					saload;
+					sstore 8;
+					getstatic_a 33;		// reference wallet/SHA512.h_short
+					sload 6;
+					saload;
+					sstore 9;
+					getstatic_a 36;		// reference wallet/SHA512.hashState
+					sload 7;
+					sload 8;
+					sload 9;
+					sadd;
+					sload 5;
+					sadd;
+					sastore;
+					sload 8;
+					sload 9;
+					sand;
+					sload 8;
+					sload 9;
+					sor;
+					getstatic_a 36;		// reference wallet/SHA512.hashState
+					sload 7;
+					saload;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 5;
+					sinc 6 -1;
+					sinc 7 -1;
+					getstatic_a 36;		// reference wallet/SHA512.hashState
+					sload 7;
+					saload;
+					sstore 8;
+					getstatic_a 33;		// reference wallet/SHA512.h_short
+					sload 6;
+					saload;
+					sstore 9;
+					getstatic_a 36;		// reference wallet/SHA512.hashState
+					sload 7;
+					sload 8;
+					sload 9;
+					sadd;
+					sload 5;
+					sadd;
+					sastore;
+					sload 8;
+					sload 9;
+					sand;
+					sload 8;
+					sload 9;
+					sor;
+					getstatic_a 36;		// reference wallet/SHA512.hashState
+					sload 7;
+					saload;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 5;
+					sinc 6 -1;
+					sinc 7 -1;
+					getstatic_a 36;		// reference wallet/SHA512.hashState
+					sload 7;
+					saload;
+					sstore 8;
+					getstatic_a 33;		// reference wallet/SHA512.h_short
+					sload 6;
+					saload;
+					sstore 9;
+					getstatic_a 36;		// reference wallet/SHA512.hashState
+					sload 7;
+					sload 8;
+					sload 9;
+					sadd;
+					sload 5;
+					sadd;
+					sastore;
+					sinc 11 4;
+					goto_w L16;
+				L23:	sconst_0;
+					sstore 11;
+				L24:	sload 11;
+					bspush 32;
+					if_scmpge L26;
+				L25:	aload_3;
+					sload 4;
+					getstatic_a 36;		// reference wallet/SHA512.hashState
+					sload 11;
+					saload;
+					bspush 8;
+					sshr;
+					sspush 255;
+					sand;
+					s2b;
+					bastore;
+					sinc 4 1;
+					aload_3;
+					sload 4;
+					getstatic_a 36;		// reference wallet/SHA512.hashState
+					sload 11;
+					saload;
+					sspush 255;
+					sand;
+					s2b;
+					bastore;
+					sinc 4 1;
+					sinc 11 1;
+					goto L24;
+				L26:	bspush 64;
+					sreturn;
+		}
+
+		.method private static compressionFunction([SS[BS)V {
+			.stack 6;
+			.locals 18;
+
+				L0:	sconst_0;
+					sstore 19;
+				L1:	sload 19;
+					bspush 64;
+					if_scmpge L3;
+				L2:	getstatic_a 31;		// reference wallet/SHA512.w_short
+					sload 19;
+					aload_2;
+					sload_3;
+					sconst_2;
+					sload 19;
+					smul;
+					sadd;
+					invokestatic 19;		// javacard/framework/Util.getShort([BS)S
+					sastore;
+					sinc 19 1;
+					goto L1;
+				L3:	sconst_0;
+					sstore 19;
+				L4:	sconst_0;
+					sstore 20;
+				L5:	sconst_0;
+					sstore 21;
+				L6:	sload 21;
+					bspush 80;
+					if_scmpge_w L23;
+				L7:	sload 20;
+					bspush 56;
+					sadd;
+					bspush 64;
+					srem;
+					sstore 4;
+				L8:	sload 20;
+					bspush 36;
+					sadd;
+					bspush 64;
+					srem;
+					sstore 5;
+				L9:	sload 20;
+					sconst_4;
+					sadd;
+					bspush 64;
+					srem;
+					sstore 6;
+				L10:	getstatic_a 31;		// reference wallet/SHA512.w_short
+					sload 4;
+					saload;
+					sstore 15;
+				L11:	getstatic_a 31;		// reference wallet/SHA512.w_short
+					sload 4;
+					sconst_1;
+					sadd;
+					saload;
+					sstore 16;
+				L12:	getstatic_a 31;		// reference wallet/SHA512.w_short
+					sload 4;
+					sconst_2;
+					sadd;
+					saload;
+					sstore 17;
+				L13:	getstatic_a 31;		// reference wallet/SHA512.w_short
+					sload 4;
+					sconst_3;
+					sadd;
+					saload;
+					sstore 18;
+				L14:	sload 18;
+					sconst_3;
+					sushr;
+					sspush 8191;
+					sand;
+					sload 17;
+					bspush 13;
+					sshl;
+					sor;
+					sload 16;
+					bspush 13;
+					sushr;
+					bspush 7;
+					sand;
+					sload 15;
+					sconst_3;
+					sshl;
+					sor;
+					sxor;
+					sload 15;
+					bspush 6;
+					sushr;
+					sspush 1023;
+					sand;
+					sxor;
+					sstore 7;
+				L15:	sload 15;
+					sconst_3;
+					sushr;
+					sspush 8191;
+					sand;
+					sload 18;
+					bspush 13;
+					sshl;
+					sor;
+					sload 17;
+					bspush 13;
+					sushr;
+					bspush 7;
+					sand;
+					sload 16;
+					sconst_3;
+					sshl;
+					sor;
+					sxor;
+					sload 16;
+					bspush 6;
+					sushr;
+					sspush 1023;
+					sand;
+					sload 15;
+					bspush 10;
+					sshl;
+					sor;
+					sxor;
+					sstore 8;
+				L16:	sload 16;
+					sconst_3;
+					sushr;
+					sspush 8191;
+					sand;
+					sload 15;
+					bspush 13;
+					sshl;
+					sor;
+					sload 18;
+					bspush 13;
+					sushr;
+					bspush 7;
+					sand;
+					sload 17;
+					sconst_3;
+					sshl;
+					sor;
+					sxor;
+					sload 17;
+					bspush 6;
+					sushr;
+					sspush 1023;
+					sand;
+					sload 16;
+					bspush 10;
+					sshl;
+					sor;
+					sxor;
+					sstore 9;
+				L17:	sload 17;
+					sconst_3;
+					sushr;
+					sspush 8191;
+					sand;
+					sload 16;
+					bspush 13;
+					sshl;
+					sor;
+					sload 15;
+					bspush 13;
+					sushr;
+					bspush 7;
+					sand;
+					sload 18;
+					sconst_3;
+					sshl;
+					sor;
+					sxor;
+					sload 18;
+					bspush 6;
+					sushr;
+					sspush 1023;
+					sand;
+					sload 17;
+					bspush 10;
+					sshl;
+					sor;
+					sxor;
+					sstore 10;
+				L18:	getstatic_a 31;		// reference wallet/SHA512.w_short
+					sload 5;
+					saload;
+					sstore 11;
+				L19:	getstatic_a 31;		// reference wallet/SHA512.w_short
+					sload 5;
+					sconst_1;
+					sadd;
+					saload;
+					sstore 12;
+				L20:	getstatic_a 31;		// reference wallet/SHA512.w_short
+					sload 5;
+					sconst_2;
+					sadd;
+					saload;
+					sstore 13;
+				L21:	getstatic_a 31;		// reference wallet/SHA512.w_short
+					sload 5;
+					sconst_3;
+					sadd;
+					saload;
+					sstore 14;
+				L22:	sload 10;
+					sstore 15;
+					sload 10;
+					sload 14;
+					sadd;
+					sstore 10;
+					sload 15;
+					sload 14;
+					sand;
+					sload 15;
+					sload 14;
+					sor;
+					sload 10;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					sload 9;
+					sstore 15;
+					sload 9;
+					sload 13;
+					sadd;
+					sload 17;
+					sadd;
+					sstore 9;
+					sload 15;
+					sload 13;
+					sand;
+					sload 15;
+					sload 13;
+					sor;
+					sload 9;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					sload 8;
+					sstore 15;
+					sload 8;
+					sload 12;
+					sadd;
+					sload 17;
+					sadd;
+					sstore 8;
+					sload 15;
+					sload 12;
+					sand;
+					sload 15;
+					sload 12;
+					sor;
+					sload 8;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					sload 7;
+					sload 11;
+					sadd;
+					sload 17;
+					sadd;
+					sstore 7;
+					getstatic_a 31;		// reference wallet/SHA512.w_short
+					sload 6;
+					saload;
+					sstore 15;
+					getstatic_a 31;		// reference wallet/SHA512.w_short
+					sload 6;
+					sconst_1;
+					sadd;
+					saload;
+					sstore 16;
+					getstatic_a 31;		// reference wallet/SHA512.w_short
+					sload 6;
+					sconst_2;
+					sadd;
+					saload;
+					sstore 17;
+					getstatic_a 31;		// reference wallet/SHA512.w_short
+					sload 6;
+					sconst_3;
+					sadd;
+					saload;
+					sstore 18;
+					sload 15;
+					sconst_1;
+					sushr;
+					sspush 32767;
+					sand;
+					sload 18;
+					bspush 15;
+					sshl;
+					sor;
+					sload 15;
+					bspush 8;
+					sushr;
+					sspush 255;
+					sand;
+					sload 18;
+					bspush 8;
+					sshl;
+					sor;
+					sxor;
+					sload 15;
+					bspush 7;
+					sushr;
+					sspush 511;
+					sand;
+					sxor;
+					sstore 11;
+					sload 16;
+					sconst_1;
+					sushr;
+					sspush 32767;
+					sand;
+					sload 15;
+					bspush 15;
+					sshl;
+					sor;
+					sload 16;
+					bspush 8;
+					sushr;
+					sspush 255;
+					sand;
+					sload 15;
+					bspush 8;
+					sshl;
+					sor;
+					sxor;
+					sload 16;
+					bspush 7;
+					sushr;
+					sspush 511;
+					sand;
+					sload 15;
+					bspush 9;
+					sshl;
+					sor;
+					sxor;
+					sstore 12;
+					sload 17;
+					sconst_1;
+					sushr;
+					sspush 32767;
+					sand;
+					sload 16;
+					bspush 15;
+					sshl;
+					sor;
+					sload 17;
+					bspush 8;
+					sushr;
+					sspush 255;
+					sand;
+					sload 16;
+					bspush 8;
+					sshl;
+					sor;
+					sxor;
+					sload 17;
+					bspush 7;
+					sushr;
+					sspush 511;
+					sand;
+					sload 16;
+					bspush 9;
+					sshl;
+					sor;
+					sxor;
+					sstore 13;
+					sload 18;
+					sconst_1;
+					sushr;
+					sspush 32767;
+					sand;
+					sload 17;
+					bspush 15;
+					sshl;
+					sor;
+					sload 18;
+					bspush 8;
+					sushr;
+					sspush 255;
+					sand;
+					sload 17;
+					bspush 8;
+					sshl;
+					sor;
+					sxor;
+					sload 18;
+					bspush 7;
+					sushr;
+					sspush 511;
+					sand;
+					sload 17;
+					bspush 9;
+					sshl;
+					sor;
+					sxor;
+					sstore 14;
+					sload 10;
+					sstore 15;
+					sload 10;
+					sload 14;
+					sadd;
+					sstore 10;
+					sload 15;
+					sload 14;
+					sand;
+					sload 15;
+					sload 14;
+					sor;
+					sload 10;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					sload 9;
+					sstore 15;
+					sload 9;
+					sload 13;
+					sadd;
+					sload 17;
+					sadd;
+					sstore 9;
+					sload 15;
+					sload 13;
+					sand;
+					sload 15;
+					sload 13;
+					sor;
+					sload 9;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					sload 8;
+					sstore 15;
+					sload 8;
+					sload 12;
+					sadd;
+					sload 17;
+					sadd;
+					sstore 8;
+					sload 15;
+					sload 12;
+					sand;
+					sload 15;
+					sload 12;
+					sor;
+					sload 8;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					sload 7;
+					sload 11;
+					sadd;
+					sload 17;
+					sadd;
+					sstore 7;
+					getstatic_a 31;		// reference wallet/SHA512.w_short
+					sload 20;
+					saload;
+					sstore 11;
+					getstatic_a 31;		// reference wallet/SHA512.w_short
+					sload 20;
+					sconst_1;
+					sadd;
+					saload;
+					sstore 12;
+					getstatic_a 31;		// reference wallet/SHA512.w_short
+					sload 20;
+					sconst_2;
+					sadd;
+					saload;
+					sstore 13;
+					getstatic_a 31;		// reference wallet/SHA512.w_short
+					sload 20;
+					sconst_3;
+					sadd;
+					saload;
+					sstore 14;
+					sload 10;
+					sstore 15;
+					sload 10;
+					sload 14;
+					sadd;
+					sstore 10;
+					sload 15;
+					sload 14;
+					sand;
+					sload 15;
+					sload 14;
+					sor;
+					sload 10;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					sload 9;
+					sstore 15;
+					sload 9;
+					sload 13;
+					sadd;
+					sload 17;
+					sadd;
+					sstore 9;
+					sload 15;
+					sload 13;
+					sand;
+					sload 15;
+					sload 13;
+					sor;
+					sload 9;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					sload 8;
+					sstore 15;
+					sload 8;
+					sload 12;
+					sadd;
+					sload 17;
+					sadd;
+					sstore 8;
+					sload 15;
+					sload 12;
+					sand;
+					sload 15;
+					sload 12;
+					sor;
+					sload 8;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					sload 7;
+					sload 11;
+					sadd;
+					sload 17;
+					sadd;
+					sstore 7;
+					getstatic_a 31;		// reference wallet/SHA512.w_short
+					sload 20;
+					saload;
+					sstore 11;
+					getstatic_a 31;		// reference wallet/SHA512.w_short
+					sload 20;
+					sconst_1;
+					sadd;
+					saload;
+					sstore 12;
+					getstatic_a 31;		// reference wallet/SHA512.w_short
+					sload 20;
+					sconst_2;
+					sadd;
+					saload;
+					sstore 13;
+					getstatic_a 31;		// reference wallet/SHA512.w_short
+					sload 20;
+					sconst_3;
+					sadd;
+					saload;
+					sstore 14;
+					getstatic_a 31;		// reference wallet/SHA512.w_short
+					sload 20;
+					sload 7;
+					sastore;
+					getstatic_a 31;		// reference wallet/SHA512.w_short
+					sload 20;
+					sconst_1;
+					sadd;
+					sload 8;
+					sastore;
+					getstatic_a 31;		// reference wallet/SHA512.w_short
+					sload 20;
+					sconst_2;
+					sadd;
+					sload 9;
+					sastore;
+					getstatic_a 31;		// reference wallet/SHA512.w_short
+					sload 20;
+					sconst_3;
+					sadd;
+					sload 10;
+					sastore;
+					sload 20;
+					sconst_4;
+					sadd;
+					bspush 64;
+					srem;
+					sstore 20;
+					sload 19;
+					bspush 28;
+					sadd;
+					bspush 32;
+					srem;
+					sstore 4;
+					sconst_4;
+					sload 21;
+					smul;
+					sstore 5;
+					aload_0;
+					sload 4;
+					sconst_3;
+					sadd;
+					saload;
+					sstore 15;
+					getstatic_a 20;		// reference wallet/SHA512.K_SHORT
+					sload 5;
+					sconst_3;
+					sadd;
+					saload;
+					sstore 16;
+					sload 15;
+					sload 16;
+					sadd;
+					sstore 10;
+					sload 15;
+					sload 16;
+					sand;
+					sload 15;
+					sload 16;
+					sor;
+					sload 10;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					aload_0;
+					sload 4;
+					sconst_2;
+					sadd;
+					saload;
+					sstore 15;
+					getstatic_a 20;		// reference wallet/SHA512.K_SHORT
+					sload 5;
+					sconst_2;
+					sadd;
+					saload;
+					sstore 16;
+					sload 15;
+					sload 16;
+					sadd;
+					sload 17;
+					sadd;
+					sstore 9;
+					sload 15;
+					sload 16;
+					sand;
+					sload 15;
+					sload 16;
+					sor;
+					sload 9;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					aload_0;
+					sload 4;
+					sconst_1;
+					sadd;
+					saload;
+					sstore 15;
+					getstatic_a 20;		// reference wallet/SHA512.K_SHORT
+					sload 5;
+					sconst_1;
+					sadd;
+					saload;
+					sstore 16;
+					sload 15;
+					sload 16;
+					sadd;
+					sload 17;
+					sadd;
+					sstore 8;
+					sload 15;
+					sload 16;
+					sand;
+					sload 15;
+					sload 16;
+					sor;
+					sload 8;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					aload_0;
+					sload 4;
+					saload;
+					getstatic_a 20;		// reference wallet/SHA512.K_SHORT
+					sload 5;
+					saload;
+					sadd;
+					sload 17;
+					sadd;
+					sstore 7;
+					sload 10;
+					sstore 15;
+					sload 10;
+					sload 14;
+					sadd;
+					sstore 10;
+					sload 15;
+					sload 14;
+					sand;
+					sload 15;
+					sload 14;
+					sor;
+					sload 10;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					sload 9;
+					sstore 15;
+					sload 9;
+					sload 13;
+					sadd;
+					sload 17;
+					sadd;
+					sstore 9;
+					sload 15;
+					sload 13;
+					sand;
+					sload 15;
+					sload 13;
+					sor;
+					sload 9;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					sload 8;
+					sstore 15;
+					sload 8;
+					sload 12;
+					sadd;
+					sload 17;
+					sadd;
+					sstore 8;
+					sload 15;
+					sload 12;
+					sand;
+					sload 15;
+					sload 12;
+					sor;
+					sload 8;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					sload 7;
+					sload 11;
+					sadd;
+					sload 17;
+					sadd;
+					sstore 7;
+					sload 19;
+					bspush 16;
+					sadd;
+					bspush 32;
+					srem;
+					sstore 4;
+					sload 19;
+					bspush 20;
+					sadd;
+					bspush 32;
+					srem;
+					sstore 5;
+					sload 19;
+					bspush 24;
+					sadd;
+					bspush 32;
+					srem;
+					sstore 6;
+					aload_0;
+					sload 4;
+					saload;
+					sstore 15;
+					sload 15;
+					aload_0;
+					sload 5;
+					saload;
+					sand;
+					sload 15;
+					sconst_m1;
+					sxor;
+					aload_0;
+					sload 6;
+					saload;
+					sand;
+					sxor;
+					sstore 11;
+					aload_0;
+					sload 4;
+					sconst_1;
+					sadd;
+					saload;
+					sstore 15;
+					sload 15;
+					aload_0;
+					sload 5;
+					sconst_1;
+					sadd;
+					saload;
+					sand;
+					sload 15;
+					sconst_m1;
+					sxor;
+					aload_0;
+					sload 6;
+					sconst_1;
+					sadd;
+					saload;
+					sand;
+					sxor;
+					sstore 12;
+					aload_0;
+					sload 4;
+					sconst_2;
+					sadd;
+					saload;
+					sstore 15;
+					sload 15;
+					aload_0;
+					sload 5;
+					sconst_2;
+					sadd;
+					saload;
+					sand;
+					sload 15;
+					sconst_m1;
+					sxor;
+					aload_0;
+					sload 6;
+					sconst_2;
+					sadd;
+					saload;
+					sand;
+					sxor;
+					sstore 13;
+					aload_0;
+					sload 4;
+					sconst_3;
+					sadd;
+					saload;
+					sstore 15;
+					sload 15;
+					aload_0;
+					sload 5;
+					sconst_3;
+					sadd;
+					saload;
+					sand;
+					sload 15;
+					sconst_m1;
+					sxor;
+					aload_0;
+					sload 6;
+					sconst_3;
+					sadd;
+					saload;
+					sand;
+					sxor;
+					sstore 14;
+					sload 10;
+					sstore 15;
+					sload 10;
+					sload 14;
+					sadd;
+					sstore 10;
+					sload 15;
+					sload 14;
+					sand;
+					sload 15;
+					sload 14;
+					sor;
+					sload 10;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					sload 9;
+					sstore 15;
+					sload 9;
+					sload 13;
+					sadd;
+					sload 17;
+					sadd;
+					sstore 9;
+					sload 15;
+					sload 13;
+					sand;
+					sload 15;
+					sload 13;
+					sor;
+					sload 9;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					sload 8;
+					sstore 15;
+					sload 8;
+					sload 12;
+					sadd;
+					sload 17;
+					sadd;
+					sstore 8;
+					sload 15;
+					sload 12;
+					sand;
+					sload 15;
+					sload 12;
+					sor;
+					sload 8;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					sload 7;
+					sload 11;
+					sadd;
+					sload 17;
+					sadd;
+					sstore 7;
+					sload 19;
+					bspush 16;
+					sadd;
+					bspush 32;
+					srem;
+					sstore 4;
+					aload_0;
+					sload 4;
+					saload;
+					sstore 15;
+					aload_0;
+					sload 4;
+					sconst_1;
+					sadd;
+					saload;
+					sstore 16;
+					aload_0;
+					sload 4;
+					sconst_2;
+					sadd;
+					saload;
+					sstore 17;
+					aload_0;
+					sload 4;
+					sconst_3;
+					sadd;
+					saload;
+					sstore 18;
+					sload 15;
+					bspush 14;
+					sushr;
+					sconst_3;
+					sand;
+					sload 18;
+					sconst_2;
+					sshl;
+					sor;
+					sload 18;
+					sconst_2;
+					sushr;
+					sspush 16383;
+					sand;
+					sload 17;
+					bspush 14;
+					sshl;
+					sor;
+					sxor;
+					sload 17;
+					bspush 9;
+					sushr;
+					bspush 127;
+					sand;
+					sload 16;
+					bspush 7;
+					sshl;
+					sor;
+					sxor;
+					sstore 11;
+					sload 16;
+					bspush 14;
+					sushr;
+					sconst_3;
+					sand;
+					sload 15;
+					sconst_2;
+					sshl;
+					sor;
+					sload 15;
+					sconst_2;
+					sushr;
+					sspush 16383;
+					sand;
+					sload 18;
+					bspush 14;
+					sshl;
+					sor;
+					sxor;
+					sload 18;
+					bspush 9;
+					sushr;
+					bspush 127;
+					sand;
+					sload 17;
+					bspush 7;
+					sshl;
+					sor;
+					sxor;
+					sstore 12;
+					sload 17;
+					bspush 14;
+					sushr;
+					sconst_3;
+					sand;
+					sload 16;
+					sconst_2;
+					sshl;
+					sor;
+					sload 16;
+					sconst_2;
+					sushr;
+					sspush 16383;
+					sand;
+					sload 15;
+					bspush 14;
+					sshl;
+					sor;
+					sxor;
+					sload 15;
+					bspush 9;
+					sushr;
+					bspush 127;
+					sand;
+					sload 18;
+					bspush 7;
+					sshl;
+					sor;
+					sxor;
+					sstore 13;
+					sload 18;
+					bspush 14;
+					sushr;
+					sconst_3;
+					sand;
+					sload 17;
+					sconst_2;
+					sshl;
+					sor;
+					sload 17;
+					sconst_2;
+					sushr;
+					sspush 16383;
+					sand;
+					sload 16;
+					bspush 14;
+					sshl;
+					sor;
+					sxor;
+					sload 16;
+					bspush 9;
+					sushr;
+					bspush 127;
+					sand;
+					sload 15;
+					bspush 7;
+					sshl;
+					sor;
+					sxor;
+					sstore 14;
+					sload 10;
+					sstore 15;
+					sload 10;
+					sload 14;
+					sadd;
+					sstore 10;
+					sload 15;
+					sload 14;
+					sand;
+					sload 15;
+					sload 14;
+					sor;
+					sload 10;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					sload 9;
+					sstore 15;
+					sload 9;
+					sload 13;
+					sadd;
+					sload 17;
+					sadd;
+					sstore 9;
+					sload 15;
+					sload 13;
+					sand;
+					sload 15;
+					sload 13;
+					sor;
+					sload 9;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					sload 8;
+					sstore 15;
+					sload 8;
+					sload 12;
+					sadd;
+					sload 17;
+					sadd;
+					sstore 8;
+					sload 15;
+					sload 12;
+					sand;
+					sload 15;
+					sload 12;
+					sor;
+					sload 8;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					sload 7;
+					sload 11;
+					sadd;
+					sload 17;
+					sadd;
+					sstore 7;
+					sload 19;
+					bspush 12;
+					sadd;
+					bspush 32;
+					srem;
+					sstore 4;
+					sload 4;
+					sconst_3;
+					sadd;
+					sstore 15;
+					aload_0;
+					sload 15;
+					saload;
+					sstore 16;
+					aload_0;
+					sload 15;
+					sload 16;
+					sload 10;
+					sadd;
+					sastore;
+					sload 16;
+					sload 10;
+					sand;
+					sload 16;
+					sload 10;
+					sor;
+					aload_0;
+					sload 15;
+					saload;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					sload 4;
+					sconst_2;
+					sadd;
+					sstore 15;
+					aload_0;
+					sload 15;
+					saload;
+					sstore 16;
+					aload_0;
+					sload 15;
+					sload 16;
+					sload 9;
+					sadd;
+					sload 17;
+					sadd;
+					sastore;
+					sload 16;
+					sload 9;
+					sand;
+					sload 16;
+					sload 9;
+					sor;
+					aload_0;
+					sload 15;
+					saload;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					sload 4;
+					sconst_1;
+					sadd;
+					sstore 15;
+					aload_0;
+					sload 15;
+					saload;
+					sstore 16;
+					aload_0;
+					sload 15;
+					sload 16;
+					sload 8;
+					sadd;
+					sload 17;
+					sadd;
+					sastore;
+					sload 16;
+					sload 8;
+					sand;
+					sload 16;
+					sload 8;
+					sor;
+					aload_0;
+					sload 15;
+					saload;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					sload 4;
+					sstore 15;
+					aload_0;
+					sload 15;
+					saload;
+					sstore 16;
+					aload_0;
+					sload 15;
+					sload 16;
+					sload 7;
+					sadd;
+					sload 17;
+					sadd;
+					sastore;
+					sload 19;
+					sconst_4;
+					sadd;
+					bspush 32;
+					srem;
+					sstore 4;
+					sload 19;
+					bspush 8;
+					sadd;
+					bspush 32;
+					srem;
+					sstore 5;
+					aload_0;
+					sload 19;
+					saload;
+					sstore 15;
+					aload_0;
+					sload 4;
+					saload;
+					sstore 16;
+					aload_0;
+					sload 5;
+					saload;
+					sstore 17;
+					sload 15;
+					sload 16;
+					sand;
+					sload 15;
+					sload 17;
+					sand;
+					sxor;
+					sload 16;
+					sload 17;
+					sand;
+					sxor;
+					sstore 11;
+					aload_0;
+					sload 19;
+					sconst_1;
+					sadd;
+					saload;
+					sstore 15;
+					aload_0;
+					sload 4;
+					sconst_1;
+					sadd;
+					saload;
+					sstore 16;
+					aload_0;
+					sload 5;
+					sconst_1;
+					sadd;
+					saload;
+					sstore 17;
+					sload 15;
+					sload 16;
+					sand;
+					sload 15;
+					sload 17;
+					sand;
+					sxor;
+					sload 16;
+					sload 17;
+					sand;
+					sxor;
+					sstore 12;
+					aload_0;
+					sload 19;
+					sconst_2;
+					sadd;
+					saload;
+					sstore 15;
+					aload_0;
+					sload 4;
+					sconst_2;
+					sadd;
+					saload;
+					sstore 16;
+					aload_0;
+					sload 5;
+					sconst_2;
+					sadd;
+					saload;
+					sstore 17;
+					sload 15;
+					sload 16;
+					sand;
+					sload 15;
+					sload 17;
+					sand;
+					sxor;
+					sload 16;
+					sload 17;
+					sand;
+					sxor;
+					sstore 13;
+					aload_0;
+					sload 19;
+					sconst_3;
+					sadd;
+					saload;
+					sstore 15;
+					aload_0;
+					sload 4;
+					sconst_3;
+					sadd;
+					saload;
+					sstore 16;
+					aload_0;
+					sload 5;
+					sconst_3;
+					sadd;
+					saload;
+					sstore 17;
+					sload 15;
+					sload 16;
+					sand;
+					sload 15;
+					sload 17;
+					sand;
+					sxor;
+					sload 16;
+					sload 17;
+					sand;
+					sxor;
+					sstore 14;
+					sload 10;
+					sstore 15;
+					sload 10;
+					sload 14;
+					sadd;
+					sstore 10;
+					sload 15;
+					sload 14;
+					sand;
+					sload 15;
+					sload 14;
+					sor;
+					sload 10;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					sload 9;
+					sstore 15;
+					sload 9;
+					sload 13;
+					sadd;
+					sload 17;
+					sadd;
+					sstore 9;
+					sload 15;
+					sload 13;
+					sand;
+					sload 15;
+					sload 13;
+					sor;
+					sload 9;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					sload 8;
+					sstore 15;
+					sload 8;
+					sload 12;
+					sadd;
+					sload 17;
+					sadd;
+					sstore 8;
+					sload 15;
+					sload 12;
+					sand;
+					sload 15;
+					sload 12;
+					sor;
+					sload 8;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					sload 7;
+					sload 11;
+					sadd;
+					sload 17;
+					sadd;
+					sstore 7;
+					aload_0;
+					sload 19;
+					saload;
+					sstore 15;
+					aload_0;
+					sload 19;
+					sconst_1;
+					sadd;
+					saload;
+					sstore 16;
+					aload_0;
+					sload 19;
+					sconst_2;
+					sadd;
+					saload;
+					sstore 17;
+					aload_0;
+					sload 19;
+					sconst_3;
+					sadd;
+					saload;
+					sstore 18;
+					sload 18;
+					bspush 12;
+					sushr;
+					bspush 15;
+					sand;
+					sload 17;
+					sconst_4;
+					sshl;
+					sor;
+					sload 17;
+					sconst_2;
+					sushr;
+					sspush 16383;
+					sand;
+					sload 16;
+					bspush 14;
+					sshl;
+					sor;
+					sxor;
+					sload 17;
+					bspush 7;
+					sushr;
+					sspush 511;
+					sand;
+					sload 16;
+					bspush 9;
+					sshl;
+					sor;
+					sxor;
+					sstore 11;
+					sload 15;
+					bspush 12;
+					sushr;
+					bspush 15;
+					sand;
+					sload 18;
+					sconst_4;
+					sshl;
+					sor;
+					sload 18;
+					sconst_2;
+					sushr;
+					sspush 16383;
+					sand;
+					sload 17;
+					bspush 14;
+					sshl;
+					sor;
+					sxor;
+					sload 18;
+					bspush 7;
+					sushr;
+					sspush 511;
+					sand;
+					sload 17;
+					bspush 9;
+					sshl;
+					sor;
+					sxor;
+					sstore 12;
+					sload 16;
+					bspush 12;
+					sushr;
+					bspush 15;
+					sand;
+					sload 15;
+					sconst_4;
+					sshl;
+					sor;
+					sload 15;
+					sconst_2;
+					sushr;
+					sspush 16383;
+					sand;
+					sload 18;
+					bspush 14;
+					sshl;
+					sor;
+					sxor;
+					sload 15;
+					bspush 7;
+					sushr;
+					sspush 511;
+					sand;
+					sload 18;
+					bspush 9;
+					sshl;
+					sor;
+					sxor;
+					sstore 13;
+					sload 17;
+					bspush 12;
+					sushr;
+					bspush 15;
+					sand;
+					sload 16;
+					sconst_4;
+					sshl;
+					sor;
+					sload 16;
+					sconst_2;
+					sushr;
+					sspush 16383;
+					sand;
+					sload 15;
+					bspush 14;
+					sshl;
+					sor;
+					sxor;
+					sload 16;
+					bspush 7;
+					sushr;
+					sspush 511;
+					sand;
+					sload 15;
+					bspush 9;
+					sshl;
+					sor;
+					sxor;
+					sstore 14;
+					sload 10;
+					sstore 15;
+					sload 10;
+					sload 14;
+					sadd;
+					sstore 10;
+					sload 15;
+					sload 14;
+					sand;
+					sload 15;
+					sload 14;
+					sor;
+					sload 10;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					sload 9;
+					sstore 15;
+					sload 9;
+					sload 13;
+					sadd;
+					sload 17;
+					sadd;
+					sstore 9;
+					sload 15;
+					sload 13;
+					sand;
+					sload 15;
+					sload 13;
+					sor;
+					sload 9;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					sload 8;
+					sstore 15;
+					sload 8;
+					sload 12;
+					sadd;
+					sload 17;
+					sadd;
+					sstore 8;
+					sload 15;
+					sload 12;
+					sand;
+					sload 15;
+					sload 12;
+					sor;
+					sload 8;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					sload 7;
+					sload 11;
+					sadd;
+					sload 17;
+					sadd;
+					sstore 7;
+					aload_0;
+					sload 19;
+					bspush 28;
+					sadd;
+					bspush 32;
+					srem;
+					sload 7;
+					sastore;
+					aload_0;
+					sload 19;
+					bspush 29;
+					sadd;
+					bspush 32;
+					srem;
+					sload 8;
+					sastore;
+					aload_0;
+					sload 19;
+					bspush 30;
+					sadd;
+					bspush 32;
+					srem;
+					sload 9;
+					sastore;
+					aload_0;
+					sload 19;
+					bspush 31;
+					sadd;
+					bspush 32;
+					srem;
+					sload 10;
+					sastore;
+					bspush 32;
+					sload 19;
+					sadd;
+					sconst_4;
+					ssub;
+					bspush 32;
+					srem;
+					sstore 19;
+					sinc 21 1;
+					goto_w L6;
+				L23:	return;
+		}
+
+	}
+
+	.class public TonCryptoHandler 3 extends 0.0 {		// extends java/lang/Object
+
+		.fields {
+			private 3.3 publicKey 0;		// Lcom/ftsafe/security/XECPublicKey;
+			private 3.2 privateKey 1;		// Lcom/ftsafe/security/XECPrivateKey;
+			private 3.5 params 2;		// Lcom/ftsafe/security/NamedParameterSpec;
+			private 4.15 sig 3;		// Ljavacard/security/Signature;
+			private 4.22 keyAgreement 4;		// Ljavacard/security/KeyAgreement;
+			private byte[] dataForSigning 5;		// [B
+			private byte[] signatureBytes 6;		// [B
+			private byte[] privateExponent 7;		// [B
+			private byte[] privateSault 8;		// [B
+			private byte[] tmpBuffer 9;		// [B
+			private byte[] privateKeyBufForTest 10;		// [B
+			private byte[] publicKeyBufForTest 11;		// [B
+			private short sigLen 12;		// S
+			private short numberOfBytesReceived 13;		// S
+			private short dataForSigningTotalLen 14;		// S
+			public static final short KEY_SIZE = 32;		// S
+			public static final short DATA_FOR_SIGNING_MAX_SIZE_IN_BYTES = 1024;		// S
+			public static final short SIGNATURE_MAX_SIZE_IN_BYTES = 100;		// S
+			public static final short TMP_BUFFER_SIZE = 512;		// S
+			private static 4.16 kp;		// Ljavacard/security/KeyPair;
+		}
+
+		.publicMethodTable 1 {
+			equals(Ljava/lang/Object;)Z;
+			setupKey()V;
+			setupMasterKeyWithoutSeed()V;
+			importPrivateKey(Ljavacard/framework/APDU;)V;
+			importPublicKey(Ljavacard/framework/APDU;)V;
+			getPublicMasterKey(Ljavacard/framework/APDU;)V;
+			getPublicMasterKeyUsingKeyAgreement(Ljavacard/framework/APDU;)V;
+			setDataForSigning(Ljavacard/framework/APDU;)V;
+			signShortMessage(Ljavacard/framework/APDU;)V;
+			verifySignature(Ljavacard/framework/APDU;)V;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>()V 0 {
+			.stack 5;
+			.locals 1;
+
+				L0:	aload_0;
+					invokespecial 22;		// java/lang/Object.<init>()V
+					aload_0;
+					sconst_0;
+					putfield_s 0;		// short wallet/TonCryptoHandler.sigLen
+					aload_0;
+					sconst_0;
+					putfield_s 1;		// short wallet/TonCryptoHandler.numberOfBytesReceived
+					aload_0;
+					sconst_0;
+					putfield_s 2;		// short wallet/TonCryptoHandler.dataForSigningTotalLen
+					aload_0;
+					bspush 32;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 76;
+					bastore;
+					dup;
+					sconst_1;
+					bspush -51;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 8;
+					bastore;
+					dup;
+					sconst_3;
+					bspush -101;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 40;
+					bastore;
+					dup;
+					sconst_5;
+					sconst_m1;
+					bastore;
+					dup;
+					bspush 6;
+					bspush -106;
+					bastore;
+					dup;
+					bspush 7;
+					bspush -38;
+					bastore;
+					dup;
+					bspush 8;
+					bspush -99;
+					bastore;
+					dup;
+					bspush 9;
+					bspush -74;
+					bastore;
+					dup;
+					bspush 10;
+					bspush -61;
+					bastore;
+					dup;
+					bspush 11;
+					bspush 70;
+					bastore;
+					dup;
+					bspush 12;
+					bspush -20;
+					bastore;
+					dup;
+					bspush 13;
+					bspush 17;
+					bastore;
+					dup;
+					bspush 14;
+					bspush 78;
+					bastore;
+					dup;
+					bspush 15;
+					bspush 15;
+					bastore;
+					dup;
+					bspush 16;
+					bspush 91;
+					bastore;
+					dup;
+					bspush 17;
+					bspush -118;
+					bastore;
+					dup;
+					bspush 18;
+					bspush 49;
+					bastore;
+					dup;
+					bspush 19;
+					bspush -97;
+					bastore;
+					dup;
+					bspush 20;
+					bspush 53;
+					bastore;
+					dup;
+					bspush 21;
+					bspush -85;
+					bastore;
+					dup;
+					bspush 22;
+					bspush -90;
+					bastore;
+					dup;
+					bspush 23;
+					bspush 36;
+					bastore;
+					dup;
+					bspush 24;
+					bspush -38;
+					bastore;
+					dup;
+					bspush 25;
+					bspush -116;
+					bastore;
+					dup;
+					bspush 26;
+					bspush -10;
+					bastore;
+					dup;
+					bspush 27;
+					bspush -19;
+					bastore;
+					dup;
+					bspush 28;
+					bspush 79;
+					bastore;
+					dup;
+					bspush 29;
+					bspush -72;
+					bastore;
+					dup;
+					bspush 30;
+					bspush -90;
+					bastore;
+					dup;
+					bspush 31;
+					bspush -5;
+					bastore;
+					putfield_a 3;		// reference wallet/TonCryptoHandler.privateKeyBufForTest
+					aload_0;
+					bspush 32;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 61;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 64;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 23;
+					bastore;
+					dup;
+					sconst_3;
+					bspush -61;
+					bastore;
+					dup;
+					sconst_4;
+					bspush -24;
+					bastore;
+					dup;
+					sconst_5;
+					bspush 67;
+					bastore;
+					dup;
+					bspush 6;
+					bspush -119;
+					bastore;
+					dup;
+					bspush 7;
+					bspush 90;
+					bastore;
+					dup;
+					bspush 8;
+					bspush -110;
+					bastore;
+					dup;
+					bspush 9;
+					bspush -73;
+					bastore;
+					dup;
+					bspush 10;
+					bspush 10;
+					bastore;
+					dup;
+					bspush 11;
+					bspush -89;
+					bastore;
+					dup;
+					bspush 12;
+					bspush 77;
+					bastore;
+					dup;
+					bspush 13;
+					bspush 27;
+					bastore;
+					dup;
+					bspush 14;
+					bspush 126;
+					bastore;
+					dup;
+					bspush 15;
+					bspush -68;
+					bastore;
+					dup;
+					bspush 16;
+					bspush -100;
+					bastore;
+					dup;
+					bspush 17;
+					bspush -104;
+					bastore;
+					dup;
+					bspush 18;
+					bspush 44;
+					bastore;
+					dup;
+					bspush 19;
+					bspush -49;
+					bastore;
+					dup;
+					bspush 20;
+					bspush 46;
+					bastore;
+					dup;
+					bspush 21;
+					bspush -60;
+					bastore;
+					dup;
+					bspush 22;
+					bspush -106;
+					bastore;
+					dup;
+					bspush 23;
+					bspush -116;
+					bastore;
+					dup;
+					bspush 24;
+					bspush -64;
+					bastore;
+					dup;
+					bspush 25;
+					bspush -51;
+					bastore;
+					dup;
+					bspush 26;
+					bspush 85;
+					bastore;
+					dup;
+					bspush 27;
+					bspush -15;
+					bastore;
+					dup;
+					bspush 28;
+					bspush 42;
+					bastore;
+					dup;
+					bspush 29;
+					bspush -12;
+					bastore;
+					dup;
+					bspush 30;
+					bspush 102;
+					bastore;
+					dup;
+					bspush 31;
+					bspush 12;
+					bastore;
+					putfield_a 4;		// reference wallet/TonCryptoHandler.publicKeyBufForTest
+					aload_0;
+					sconst_0;
+					bspush 9;
+					sconst_0;
+					sconst_0;
+					invokestatic 27;		// javacard/security/Signature.getInstance(BBBZ)Ljavacard/security/Signature;
+					putfield_a 5;		// reference wallet/TonCryptoHandler.sig
+				L1:	aload_0;
+					bspush 100;
+					sconst_2;
+					invokestatic 38;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					putfield_a 6;		// reference wallet/TonCryptoHandler.signatureBytes
+				L2:	goto L5;
+				L3:	astore_1;
+				L4:	aload_0;
+					bspush 100;
+					newarray 11;
+					putfield_a 6;		// reference wallet/TonCryptoHandler.signatureBytes
+				L5:	aload_0;
+					sspush 1024;
+					sconst_2;
+					invokestatic 38;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					putfield_a 7;		// reference wallet/TonCryptoHandler.dataForSigning
+				L6:	goto L9;
+				L7:	astore_1;
+				L8:	aload_0;
+					sspush 1024;
+					newarray 11;
+					putfield_a 7;		// reference wallet/TonCryptoHandler.dataForSigning
+				L9:	aload_0;
+					sspush 512;
+					sconst_2;
+					invokestatic 38;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					putfield_a 8;		// reference wallet/TonCryptoHandler.tmpBuffer
+				L10:	goto L13;
+				L11:	astore_1;
+				L12:	aload_0;
+					sspush 512;
+					newarray 11;
+					putfield_a 8;		// reference wallet/TonCryptoHandler.tmpBuffer
+				L13:	aload_0;
+					sspush 257;
+					invokestatic 32;		// com/ftsafe/security/NamedParameterSpec.getInstance(S)Lcom/ftsafe/security/NamedParameterSpec;
+					putfield_a 9;		// reference wallet/TonCryptoHandler.params
+					sspush -32768;
+					sstore_1;
+				L14:	sload_1;
+					sconst_0;
+					sor;
+					sstore_1;
+					aload_0;
+					getfield_a_this 9;		// reference wallet/TonCryptoHandler.params
+					sload_1;
+					sconst_0;
+					invokestatic 34;		// com/ftsafe/security/KeyBuilderX.buildXECKey(Lcom/ftsafe/security/NamedParameterSpec;SZ)Ljavacard/security/Key;
+					checkcast 0 35;		// T_CLASSORINTERFACE com/ftsafe/security/XECPrivateKey
+					putfield_a 10;		// reference wallet/TonCryptoHandler.privateKey
+					sconst_0;
+					sstore_1;
+					sload_1;
+					sconst_0;
+					sor;
+					sstore_1;
+					aload_0;
+					getfield_a_this 9;		// reference wallet/TonCryptoHandler.params
+					sload_1;
+					sconst_0;
+					invokestatic 34;		// com/ftsafe/security/KeyBuilderX.buildXECKey(Lcom/ftsafe/security/NamedParameterSpec;SZ)Ljavacard/security/Key;
+					checkcast 0 37;		// T_CLASSORINTERFACE com/ftsafe/security/XECPublicKey
+					putfield_a 11;		// reference wallet/TonCryptoHandler.publicKey
+					invokestatic 39;		// wallet/SHA512.init()V
+					return;
+			.exceptionTable {
+				// start_block end_block handler_block catch_type_index
+				L1 L2 L3 21;
+				L5 L6 L7 21;
+				L9 L10 L11 21;
+			}
+		}
+
+		.method public setupKey()V 1 {
+			.stack 4;
+			.locals 0;
+
+				L0:	getfield_a_this 10;		// reference wallet/TonCryptoHandler.privateKey
+					getfield_a_this 3;		// reference wallet/TonCryptoHandler.privateKeyBufForTest
+					sconst_0;
+					bspush 32;
+					invokeinterface 4 35 3;		// com/ftsafe/security/XECPrivateKey
+					getfield_a_this 11;		// reference wallet/TonCryptoHandler.publicKey
+					getfield_a_this 4;		// reference wallet/TonCryptoHandler.publicKeyBufForTest
+					sconst_0;
+					bspush 32;
+					invokeinterface 4 37 3;		// com/ftsafe/security/XECPublicKey
+					return;
+		}
+
+		.method public setupMasterKeyWithoutSeed()V 2 {
+			.stack 0;
+			.locals 0;
+
+				L0:	return;
+		}
+
+		.method public importPrivateKey(Ljavacard/framework/APDU;)V 3 {
+			.stack 4;
+			.locals 3;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_1;
+					invokevirtual 24;		// getBuffer()[B
+					astore_2;
+				L1:	aload_2;
+					sconst_4;
+					baload;
+					sspush 255;
+					sand;
+					sstore_3;
+				L2:	aload_1;
+					invokevirtual 40;		// setIncomingAndReceive()S
+					sstore 4;
+				L3:	sload_3;
+					sload 4;
+					if_scmpeq L6;
+				L4:	sload_3;
+					bspush 32;
+					if_scmpeq L6;
+				L5:	sspush 26368;
+					invokestatic 41;		// javacard/framework/ISOException.throwIt(S)V
+				L6:	getfield_a_this 10;		// reference wallet/TonCryptoHandler.privateKey
+					aload_2;
+					sconst_5;
+					bspush 32;
+					invokeinterface 4 35 3;		// com/ftsafe/security/XECPrivateKey
+					return;
+		}
+
+		.method public importPublicKey(Ljavacard/framework/APDU;)V 4 {
+			.stack 4;
+			.locals 3;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_1;
+					invokevirtual 24;		// getBuffer()[B
+					astore_2;
+				L1:	aload_2;
+					sconst_4;
+					baload;
+					sspush 255;
+					sand;
+					sstore_3;
+				L2:	aload_1;
+					invokevirtual 40;		// setIncomingAndReceive()S
+					sstore 4;
+				L3:	sload_3;
+					sload 4;
+					if_scmpeq L6;
+				L4:	sload_3;
+					bspush 32;
+					if_scmpeq L6;
+				L5:	sspush 26368;
+					invokestatic 41;		// javacard/framework/ISOException.throwIt(S)V
+				L6:	getfield_a_this 11;		// reference wallet/TonCryptoHandler.publicKey
+					aload_2;
+					sconst_5;
+					bspush 32;
+					invokeinterface 4 37 3;		// com/ftsafe/security/XECPublicKey
+					return;
+		}
+
+		.method public getPublicMasterKey(Ljavacard/framework/APDU;)V 5 {
+			.stack 4;
+			.locals 2;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_1;
+					invokevirtual 24;		// getBuffer()[B
+					astore_2;
+				L1:	getfield_a_this 11;		// reference wallet/TonCryptoHandler.publicKey
+					aload_2;
+					sconst_2;
+					invokeinterface 3 37 2;		// com/ftsafe/security/XECPublicKey
+					sstore_3;
+				L2:	aload_2;
+					sconst_0;
+					sload_3;
+					invokestatic 43;		// javacard/framework/Util.setShort([BSS)S
+					pop;
+					aload_1;
+					sconst_0;
+					sload_3;
+					sconst_2;
+					sadd;
+					invokevirtual 44;		// setOutgoingAndSend(SS)V
+				L3:	goto L6;
+				L4:	astore_2;
+				L5:	aload_2;
+					invokevirtual 45;		// getReason()S
+					invokestatic 41;		// javacard/framework/ISOException.throwIt(S)V
+				L6:	return;
+			.exceptionTable {
+				// start_block end_block handler_block catch_type_index
+				L0 L3 L4 42;
+			}
+		}
+
+		.method public getPublicMasterKeyUsingKeyAgreement(Ljavacard/framework/APDU;)V 6 {
+			.stack 0;
+			.locals 0;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	return;
+		}
+
+		.method public setDataForSigning(Ljavacard/framework/APDU;)V 7 {
+			.stack 5;
+			.locals 4;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_1;
+					invokevirtual 24;		// getBuffer()[B
+					astore_2;
+				L1:	aload_2;
+					sconst_4;
+					baload;
+					sspush 255;
+					sand;
+					sstore_3;
+				L2:	aload_1;
+					invokevirtual 40;		// setIncomingAndReceive()S
+					sstore 4;
+				L3:	sload_3;
+					sload 4;
+					if_scmpeq L5;
+				L4:	sspush 26368;
+					invokestatic 41;		// javacard/framework/ISOException.throwIt(S)V
+				L5:	aload_2;
+					sconst_5;
+					getfield_a_this 7;		// reference wallet/TonCryptoHandler.dataForSigning
+					getfield_s_this 1;		// short wallet/TonCryptoHandler.numberOfBytesReceived
+					sload_3;
+					invokestatic 15;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					aload_2;
+					sconst_2;
+					baload;
+					sstore 5;
+				L6:	aload_0;
+					dup;
+					getfield_s 1;		// short wallet/TonCryptoHandler.numberOfBytesReceived
+					sload_3;
+					sadd;
+					putfield_s 1;		// short wallet/TonCryptoHandler.numberOfBytesReceived
+					sload 5;
+					sconst_1;
+					if_scmpne L10;
+				L7:	aload_0;
+					getfield_s_this 1;		// short wallet/TonCryptoHandler.numberOfBytesReceived
+					putfield_s 2;		// short wallet/TonCryptoHandler.dataForSigningTotalLen
+					getfield_s_this 2;		// short wallet/TonCryptoHandler.dataForSigningTotalLen
+					sspush 1024;
+					if_scmple L9;
+				L8:	sspush -25590;
+					invokestatic 41;		// javacard/framework/ISOException.throwIt(S)V
+				L9:	aload_0;
+					sconst_0;
+					putfield_s 1;		// short wallet/TonCryptoHandler.numberOfBytesReceived
+				L10:	return;
+		}
+
+		.method public signShortMessage(Ljavacard/framework/APDU;)V 8 {
+			.stack 7;
+			.locals 2;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_1;
+					invokevirtual 24;		// getBuffer()[B
+					astore_2;
+				L1:	getfield_a_this 5;		// reference wallet/TonCryptoHandler.sig
+					getfield_a_this 10;		// reference wallet/TonCryptoHandler.privateKey
+					sconst_1;
+					invokevirtual 46;		// init(Ljavacard/security/Key;B)V
+					aload_0;
+					getfield_a_this 5;		// reference wallet/TonCryptoHandler.sig
+					getfield_a_this 7;		// reference wallet/TonCryptoHandler.dataForSigning
+					sconst_0;
+					getfield_s_this 2;		// short wallet/TonCryptoHandler.dataForSigningTotalLen
+					getfield_a_this 6;		// reference wallet/TonCryptoHandler.signatureBytes
+					sconst_0;
+					invokevirtual 47;		// sign([BSS[BS)S
+					putfield_s 0;		// short wallet/TonCryptoHandler.sigLen
+					aload_2;
+					sconst_0;
+					getfield_s_this 0;		// short wallet/TonCryptoHandler.sigLen
+					invokestatic 43;		// javacard/framework/Util.setShort([BSS)S
+					pop;
+					getfield_a_this 6;		// reference wallet/TonCryptoHandler.signatureBytes
+					sconst_0;
+					aload_2;
+					sconst_2;
+					getfield_s_this 0;		// short wallet/TonCryptoHandler.sigLen
+					invokestatic 48;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					aload_1;
+					sconst_0;
+					getfield_s_this 0;		// short wallet/TonCryptoHandler.sigLen
+					sconst_2;
+					sadd;
+					invokevirtual 44;		// setOutgoingAndSend(SS)V
+				L2:	goto L5;
+				L3:	astore_3;
+				L4:	aload_3;
+					invokevirtual 45;		// getReason()S
+					invokestatic 41;		// javacard/framework/ISOException.throwIt(S)V
+				L5:	return;
+			.exceptionTable {
+				// start_block end_block handler_block catch_type_index
+				L1 L2 L3 42;
+			}
+		}
+
+		.method public verifySignature(Ljavacard/framework/APDU;)V 9 {
+			.stack 7;
+			.locals 2;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_1;
+					invokevirtual 24;		// getBuffer()[B
+					astore_2;
+				L1:	getfield_a_this 5;		// reference wallet/TonCryptoHandler.sig
+					getfield_a_this 11;		// reference wallet/TonCryptoHandler.publicKey
+					sconst_2;
+					invokevirtual 46;		// init(Ljavacard/security/Key;B)V
+					getfield_a_this 5;		// reference wallet/TonCryptoHandler.sig
+					getfield_a_this 7;		// reference wallet/TonCryptoHandler.dataForSigning
+					sconst_0;
+					getfield_s_this 2;		// short wallet/TonCryptoHandler.dataForSigningTotalLen
+					getfield_a_this 6;		// reference wallet/TonCryptoHandler.signatureBytes
+					sconst_0;
+					getfield_s_this 0;		// short wallet/TonCryptoHandler.sigLen
+					invokevirtual 49;		// verify([BSS[BSS)Z
+					sstore_3;
+				L2:	aload_2;
+					sconst_0;
+					sload_3;
+					sconst_1;
+					if_scmpne L4;
+				L3:	sconst_1;
+					goto L5;
+				L4:	sconst_0;
+				L5:	bastore;
+					aload_1;
+					sconst_0;
+					sconst_1;
+					invokevirtual 44;		// setOutgoingAndSend(SS)V
+				L6:	goto L9;
+				L7:	astore_3;
+				L8:	aload_3;
+					invokevirtual 45;		// getReason()S
+					invokestatic 41;		// javacard/framework/ISOException.throwIt(S)V
+				L9:	return;
+			.exceptionTable {
+				// start_block end_block handler_block catch_type_index
+				L1 L6 L7 42;
+			}
+		}
+
+		.method private getPrivateExponentAndSaultFromPrivateKeyBytes([B)V {
+			.stack 5;
+			.locals 0;
+
+				L0:	aload_1;
+					sconst_0;
+					bspush 32;
+					getfield_a_this 8;		// reference wallet/TonCryptoHandler.tmpBuffer
+					sconst_0;
+					invokestatic 50;		// wallet/SHA512.resetUpdateDoFinal([BSS[BS)S
+					pop;
+					getfield_a_this 8;		// reference wallet/TonCryptoHandler.tmpBuffer
+					sconst_0;
+					getfield_a_this 12;		// reference wallet/TonCryptoHandler.privateExponent
+					sconst_0;
+					bspush 32;
+					invokestatic 48;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					getfield_a_this 8;		// reference wallet/TonCryptoHandler.tmpBuffer
+					bspush 32;
+					getfield_a_this 13;		// reference wallet/TonCryptoHandler.privateSault
+					sconst_0;
+					bspush 32;
+					invokestatic 48;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					return;
+		}
+
+	}
+
+	.class public WalletApplet 4 extends 1.3 {		// extends javacard/framework/Applet
+
+		.fields {
+			private TonCryptoHandler cryptoHandler 0;		// Lwallet/TonCryptoHandler;
+			private static final byte WALLET_APPLET_CLA = -80;		// B
+			private static final byte INS_SETUP_KEY = 16;		// B
+			private static final byte INS_FINISH_PERS = -128;		// B
+			private static final byte INS_IMPORT_PRIVATE_KEY = 32;		// B
+			private static final byte INS_IMPORT_PUBLIC_KEY = 33;		// B
+			private static final byte INS_GET_PUBLIC_KEY = 48;		// B
+			private static final byte INS_SIGN_MESSAGE = 42;		// B
+			private static final byte INS_VERIFY_SIGNATURE = 43;		// B
+			private static final byte INS_SET_DATA_FOR_SIGNING = -8;		// B
+			private static final byte INS_GET_APP_INFO = -6;		// B
+		}
+
+		.publicMethodTable 7 {
+			equals(Ljava/lang/Object;)Z;
+			register()V;
+			register([BSB)V;
+			selectingApplet()Z;
+			deselect()V;
+			getShareableInterfaceObject(Ljavacard/framework/AID;B)Ljavacard/framework/Shareable;;
+			select()Z;
+			process(Ljavacard/framework/APDU;)V;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>()V 0 {
+			.stack 3;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 53;		// javacard/framework/Applet.<init>()V
+					aload_0;
+					new 54;		// wallet/TonCryptoHandler
+					dup;
+					invokespecial 55;		// wallet/TonCryptoHandler.<init>()V
+					putfield_a 14;		// reference wallet/WalletApplet.cryptoHandler
+					return;
+		}
+
+		.method public static install([BSB)V 1 {
+			.stack 5;
+			.locals 0;
+
+				L0:	new 57;		// wallet/WalletApplet
+					dup;
+					invokespecial 58;		// wallet/WalletApplet.<init>()V
+					aload_0;
+					sload_1;
+					sconst_1;
+					sadd;
+					aload_0;
+					sload_1;
+					baload;
+					invokevirtual 59;		// register([BSB)V
+					return;
+		}
+
+		.method public process(Ljavacard/framework/APDU;)V 7 {
+			.stack 2;
+			.locals 3;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_0;
+					invokevirtual 60;		// selectingApplet()Z
+					ifeq L2;
+				L1:	return;
+				L2:	aload_1;
+					invokevirtual 24;		// getBuffer()[B
+					astore_2;
+				L3:	aload_2;
+					sconst_0;
+					baload;
+					sspush 255;
+					sand;
+					s2b;
+					sstore_3;
+				L4:	aload_2;
+					sconst_1;
+					baload;
+					sspush 255;
+					sand;
+					s2b;
+					sstore 4;
+				L5:	sload_3;
+					ifne L8;
+				L6:	sload 4;
+					bspush -92;
+					if_scmpne L8;
+				L7:	return;
+				L8:	sload_3;
+					bspush -80;
+					if_scmpeq L10;
+				L9:	sspush 28160;
+					invokestatic 41;		// javacard/framework/ISOException.throwIt(S)V
+				L10:	invokestatic 28;		// org/globalplatform/GPSystem.getCardContentState()B
+					slookupswitch L25 2 7 L11 23 L16;
+				L11:	sload 4;
+					slookupswitch L15 3 -128 L13 -6 L14 16 L12;
+				L12:	getfield_a_this 14;		// reference wallet/WalletApplet.cryptoHandler
+					invokevirtual 61;		// setupKey()V
+					goto_w L26;
+				L13:	aload_1;
+					invokestatic 62;		// wallet/CommonHandler.finishPersonalization(Ljavacard/framework/APDU;)V
+					goto L26;
+				L14:	aload_1;
+					invokestatic 63;		// wallet/CommonHandler.getAppInfo(Ljavacard/framework/APDU;)V
+					goto L26;
+				L15:	sspush 27904;
+					invokestatic 41;		// javacard/framework/ISOException.throwIt(S)V
+					goto L26;
+				L16:	sload 4;
+					slookupswitch L24 7 -8 L20 -6 L23 32 L19 33 L18 42 L21 43 L22 48 L17;
+				L17:	getfield_a_this 14;		// reference wallet/WalletApplet.cryptoHandler
+					aload_1;
+					invokevirtual 64;		// getPublicMasterKey(Ljavacard/framework/APDU;)V
+					goto L26;
+				L18:	getfield_a_this 14;		// reference wallet/WalletApplet.cryptoHandler
+					aload_1;
+					invokevirtual 65;		// importPublicKey(Ljavacard/framework/APDU;)V
+					goto L26;
+				L19:	getfield_a_this 14;		// reference wallet/WalletApplet.cryptoHandler
+					aload_1;
+					invokevirtual 66;		// importPrivateKey(Ljavacard/framework/APDU;)V
+					goto L26;
+				L20:	getfield_a_this 14;		// reference wallet/WalletApplet.cryptoHandler
+					aload_1;
+					invokevirtual 67;		// setDataForSigning(Ljavacard/framework/APDU;)V
+					goto L26;
+				L21:	getfield_a_this 14;		// reference wallet/WalletApplet.cryptoHandler
+					aload_1;
+					invokevirtual 68;		// signShortMessage(Ljavacard/framework/APDU;)V
+					goto L26;
+				L22:	getfield_a_this 14;		// reference wallet/WalletApplet.cryptoHandler
+					aload_1;
+					invokevirtual 69;		// verifySignature(Ljavacard/framework/APDU;)V
+					goto L26;
+				L23:	aload_1;
+					invokestatic 63;		// wallet/CommonHandler.getAppInfo(Ljavacard/framework/APDU;)V
+					goto L26;
+				L24:	sspush 27904;
+					invokestatic 41;		// javacard/framework/ISOException.throwIt(S)V
+					goto L26;
+				L25:	sspush 28160;
+					invokestatic 41;		// javacard/framework/ISOException.throwIt(S)V
+				L26:	return;
+		}
+
+	}
+
+}

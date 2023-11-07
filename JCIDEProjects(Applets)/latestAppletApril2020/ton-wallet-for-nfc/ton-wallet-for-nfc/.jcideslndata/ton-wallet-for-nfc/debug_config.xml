@@ -1,0 +1,12 @@
+<JavaCardConfiguration name="ton-wallet-for-nfc">
+    <Config activeconfig="ton-wallet-for-nfc">
+        <ConfigItem name="ton-wallet-for-nfc">
+            <InstallConfig>
+                <PKG project_name="ton-wallet-for-nfc" pkg_name="tonwallet" aid="31 31 32 32 33 33 34 34 35 35 36 36" major="1" minor="0">
+                    <APPLET aid="31 31 32 32 33 33 34 34 35 35 36 36 00" authority="" instanceaid="" parameter="" privileges="" index="15952" name="TonWalletApplet" />
+                </PKG>
+            </InstallConfig>
+            <ScriptConfig before_build="" after_build="" />
+        </ConfigItem>
+    </Config>
+</JavaCardConfiguration>

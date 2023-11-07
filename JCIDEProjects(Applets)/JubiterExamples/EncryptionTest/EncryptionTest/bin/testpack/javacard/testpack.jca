@@ -1,0 +1,344 @@
+// converted by version 1.3
+// on Wed Nov 20 11:43:29 MSK 2019
+
+.package testpack {
+	.aid 0x22:0x33:0x44:0x55:0x66:0x77;
+	.version 1.0;
+
+	.imports {
+		0xA0:0x0:0x0:0x0:0x62:0x1:0x1 1.5;		//javacard/framework
+		0xA0:0x0:0x0:0x0:0x62:0x1:0x2 1.5;		//javacard/security
+		0xD1:0x56:0x0:0x1:0x32:0x0:0xB 1.0;		//com/ftsafe/security
+		0xA0:0x0:0x0:0x0:0x62:0x2:0x1 1.5;		//javacardx/crypto
+		0xA0:0x0:0x0:0x0:0x62:0x0:0x1 1.0;		//java/lang
+	}
+
+	.applet {
+		0x22:0x33:0x44:0x55:0x66:0x77:0x0 EncryptionTest;
+	}
+
+	.constantPool {
+		// 0
+		instanceFieldRef 2.6 EncryptionTest/params;
+		// 1
+		instanceFieldRef 2.4 EncryptionTest/pubkey;
+		// 2
+		instanceFieldRef byte[] EncryptionTest/pubkey_data;
+		// 3
+		instanceFieldRef short EncryptionTest/pubkey_len;
+		// 4
+		instanceFieldRef 2.3 EncryptionTest/prikey;
+		// 5
+		instanceFieldRef 1.16 EncryptionTest/Xkeypair;
+		// 6
+		instanceFieldRef 1.22 EncryptionTest/XDH_keyagress;
+		// 7
+		instanceFieldRef 3.1 EncryptionTest/cipher;
+		// 8
+		classRef 2.3;		// com/ftsafe/security/XECPrivateKey
+		// 9
+		classRef 2.4;		// com/ftsafe/security/XECPublicKey
+		// 10
+		classRef 1.16;		// javacard/security/KeyPair
+		// 11
+		staticMethodRef 1.16.1(Ljavacard/security/PublicKey;Ljavacard/security/PrivateKey;)V;		// javacard/security/KeyPair.<init>(Ljavacard/security/PublicKey;Ljavacard/security/PrivateKey;)V
+			.descriptor	Ljavacard/security/PublicKey;	1.3;
+			.descriptor	Ljavacard/security/PrivateKey;	1.2;
+
+		// 12
+		staticMethodRef 2.6.0(S)Lcom/ftsafe/security/NamedParameterSpec;;		// com/ftsafe/security/NamedParameterSpec.getInstance(S)Lcom/ftsafe/security/NamedParameterSpec;
+			.descriptor	Lcom/ftsafe/security/NamedParameterSpec;	2.6;
+
+		// 13
+		staticMethodRef 1.22.0(BZ)Ljavacard/security/KeyAgreement;;		// javacard/security/KeyAgreement.getInstance(BZ)Ljavacard/security/KeyAgreement;
+			.descriptor	Ljavacard/security/KeyAgreement;	1.22;
+
+		// 14
+		staticMethodRef 0.3.0()V;		// javacard/framework/Applet.<init>()V
+		// 15
+		staticMethodRef 3.1.0(BZ)Ljavacardx/crypto/Cipher;;		// javacardx/crypto/Cipher.getInstance(BZ)Ljavacardx/crypto/Cipher;
+			.descriptor	Ljavacardx/crypto/Cipher;	3.1;
+
+		// 16
+		staticMethodRef 2.10.1(Lcom/ftsafe/security/NamedParameterSpec;SZ)Ljavacard/security/Key;;		// com/ftsafe/security/KeyBuilderX.buildXECKey(Lcom/ftsafe/security/NamedParameterSpec;SZ)Ljavacard/security/Key;
+			.descriptor	Lcom/ftsafe/security/NamedParameterSpec;	2.6;
+			.descriptor	Ljavacard/security/Key;	1.0;
+
+		// 17
+		classRef EncryptionTest;
+		// 18
+		staticMethodRef EncryptionTest/<init>()V;
+		// 19
+		virtualMethodRef 0.3.2([BSB)V;		// register([BSB)V
+		// 20
+		virtualMethodRef 0.3.3()Z;		// selectingApplet()Z
+		// 21
+		virtualMethodRef 0.10.1()[B;		// getBuffer()[B
+		// 22
+		virtualMethodRef 1.16.1()V;		// genKeyPair()V
+		// 23
+		virtualMethodRef 0.10.8(SS)V;		// setOutgoingAndSend(SS)V
+		// 24
+		virtualMethodRef 0.10.6()S;		// setIncomingAndReceive()S
+		// 25
+		staticMethodRef 0.16.2([BS[BSS)S;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+		// 26
+		virtualMethodRef 1.22.1(Ljavacard/security/PrivateKey;)V;		// init(Ljavacard/security/PrivateKey;)V
+			.descriptor	Ljavacard/security/PrivateKey;	1.2;
+
+		// 27
+		virtualMethodRef 1.22.3([BSS[BS)S;		// generateSecret([BSS[BS)S
+		// 28
+		staticMethodRef 0.7.1(S)V;		// javacard/framework/ISOException.throwIt(S)V
+	}
+
+	.class public EncryptionTest 0 extends 0.3 {		// extends javacard/framework/Applet
+
+		.fields {
+			 1.16 Xkeypair 0;		// Ljavacard/security/KeyPair;
+			 2.4 pubkey 1;		// Lcom/ftsafe/security/XECPublicKey;
+			 2.3 prikey 2;		// Lcom/ftsafe/security/XECPrivateKey;
+			 byte[] pubkey_data 3;		// [B
+			 2.6 params 4;		// Lcom/ftsafe/security/NamedParameterSpec;
+			 1.22 XDH_keyagress 5;		// Ljavacard/security/KeyAgreement;
+			 3.1 cipher 6;		// Ljavacardx/crypto/Cipher;
+			 short pubkey_len 7;		// S
+			static final byte INS_GEN_KEY_PAIR = 1;		// B
+			static final byte INS_GET_PUB_KEY = 2;		// B
+			static final byte INS_SET_OTHER_PUB_KEY = 3;		// B
+			static final byte INS_INIT_KEYAGRESSMENT = 4;		// B
+			static final byte INS_GET_SECERET_DATA = 5;		// B
+			static final byte INS_SET_PRI_KEY = 6;		// B
+			static final byte INS_GET_PRI_KEY = 7;		// B
+			static final byte INS_SET_PUB_KEY = 8;		// B
+			static final byte[] k1 = {-60,-102,68,-70,68,34,106,80,24,90,-4,-63,10,76,20,98,-35,94,70,-126,75,21,22,59,-99,124,82,-16,107,-29,70,-91};		// [B
+			static final byte[] InU1 = {76,28,-85,-48,-90,3,-87,16,59,53,-77,38,-20,36,102,114,124,95,-79,36,-92,-63,-108,53,-37,48,48,88,103,104,-37,-26};		// [B
+			static final byte[] OutU1 = {82,-123,-94,119,85,7,-76,84,-9,113,28,73,3,-49,-20,50,79,8,-115,-14,77,-22,-108,-114,-112,-58,-23,-99,55,85,-38,-61};		// [B
+		}
+
+		.publicMethodTable 7 {
+			equals(Ljava/lang/Object;)Z;
+			register()V;
+			register([BSB)V;
+			selectingApplet()Z;
+			deselect()V;
+			getShareableInterfaceObject(Ljavacard/framework/AID;B)Ljavacard/framework/Shareable;;
+			select()Z;
+			process(Ljavacard/framework/APDU;)V;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>()V 0 {
+			.stack 5;
+			.locals 1;
+
+				L0:	aload_0;
+					invokespecial 14;		// javacard/framework/Applet.<init>()V
+					aload_0;
+					sspush 259;
+					invokestatic 12;		// com/ftsafe/security/NamedParameterSpec.getInstance(S)Lcom/ftsafe/security/NamedParameterSpec;
+					putfield_a 0;		// reference testpack/EncryptionTest.params
+					sconst_0;
+					sstore_1;
+				L1:	sload_1;
+					sconst_0;
+					sor;
+					sstore_1;
+					aload_0;
+					getfield_a_this 0;		// reference testpack/EncryptionTest.params
+					sload_1;
+					sconst_0;
+					invokestatic 16;		// com/ftsafe/security/KeyBuilderX.buildXECKey(Lcom/ftsafe/security/NamedParameterSpec;SZ)Ljavacard/security/Key;
+					checkcast 0 9;		// T_CLASSORINTERFACE com/ftsafe/security/XECPublicKey
+					putfield_a 1;		// reference testpack/EncryptionTest.pubkey
+					aload_0;
+					sspush 256;
+					newarray 11;
+					putfield_a 2;		// reference testpack/EncryptionTest.pubkey_data
+					aload_0;
+					bspush 32;
+					putfield_s 3;		// short testpack/EncryptionTest.pubkey_len
+					sspush -32768;
+					sstore_1;
+					sload_1;
+					sconst_0;
+					sor;
+					sstore_1;
+					aload_0;
+					getfield_a_this 0;		// reference testpack/EncryptionTest.params
+					sload_1;
+					sconst_0;
+					invokestatic 16;		// com/ftsafe/security/KeyBuilderX.buildXECKey(Lcom/ftsafe/security/NamedParameterSpec;SZ)Ljavacard/security/Key;
+					checkcast 0 8;		// T_CLASSORINTERFACE com/ftsafe/security/XECPrivateKey
+					putfield_a 4;		// reference testpack/EncryptionTest.prikey
+					aload_0;
+					new 10;		// javacard/security/KeyPair
+					dup;
+					getfield_a_this 1;		// reference testpack/EncryptionTest.pubkey
+					getfield_a_this 4;		// reference testpack/EncryptionTest.prikey
+					invokespecial 11;		// javacard/security/KeyPair.<init>(Ljavacard/security/PublicKey;Ljavacard/security/PrivateKey;)V
+					putfield_a 5;		// reference testpack/EncryptionTest.Xkeypair
+					aload_0;
+					bspush 8;
+					sconst_0;
+					invokestatic 13;		// javacard/security/KeyAgreement.getInstance(BZ)Ljavacard/security/KeyAgreement;
+					putfield_a 6;		// reference testpack/EncryptionTest.XDH_keyagress
+					aload_0;
+					bspush 9;
+					sconst_0;
+					invokestatic 15;		// javacardx/crypto/Cipher.getInstance(BZ)Ljavacardx/crypto/Cipher;
+					putfield_a 7;		// reference testpack/EncryptionTest.cipher
+					return;
+		}
+
+		.method public static install([BSB)V 1 {
+			.stack 5;
+			.locals 0;
+
+				L0:	new 17;		// testpack/EncryptionTest
+					dup;
+					invokespecial 18;		// testpack/EncryptionTest.<init>()V
+					aload_0;
+					sload_1;
+					sconst_1;
+					sadd;
+					aload_0;
+					sload_1;
+					baload;
+					invokevirtual 19;		// register([BSB)V
+					return;
+		}
+
+		.method public process(Ljavacard/framework/APDU;)V 7 {
+			.stack 6;
+			.locals 3;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	aload_0;
+					invokevirtual 20;		// selectingApplet()Z
+					ifeq L2;
+				L1:	return;
+				L2:	aload_1;
+					invokevirtual 21;		// getBuffer()[B
+					astore 4;
+				L3:	aload 4;
+					sconst_1;
+					baload;
+					stableswitch L27 1 8 L4 L7 L11 L12 L13 L15 L19 L23;
+				L4:	getfield_a_this 5;		// reference testpack/EncryptionTest.Xkeypair
+					invokevirtual 22;		// genKeyPair()V
+					getfield_a_this 1;		// reference testpack/EncryptionTest.pubkey
+					aload 4;
+					sconst_0;
+					invokeinterface 3 9 2;		// com/ftsafe/security/XECPublicKey
+					sstore_2;
+				L5:	getfield_a_this 4;		// reference testpack/EncryptionTest.prikey
+					aload 4;
+					sload_2;
+					invokeinterface 3 8 2;		// com/ftsafe/security/XECPrivateKey
+					sstore_3;
+				L6:	aload_1;
+					sconst_0;
+					sload_2;
+					sload_3;
+					sadd;
+					invokevirtual 23;		// setOutgoingAndSend(SS)V
+					goto_w L28;
+				L7:	getfield_a_this 1;		// reference testpack/EncryptionTest.pubkey
+					invokeinterface 1 9 7;		// com/ftsafe/security/XECPublicKey
+					ifne L9;
+				L8:	getfield_a_this 5;		// reference testpack/EncryptionTest.Xkeypair
+					invokevirtual 22;		// genKeyPair()V
+				L9:	getfield_a_this 1;		// reference testpack/EncryptionTest.pubkey
+					aload 4;
+					sconst_0;
+					invokeinterface 3 9 2;		// com/ftsafe/security/XECPublicKey
+					sstore_2;
+				L10:	aload_1;
+					sconst_0;
+					sload_2;
+					invokevirtual 23;		// setOutgoingAndSend(SS)V
+					goto_w L28;
+				L11:	aload_0;
+					aload_1;
+					invokevirtual 24;		// setIncomingAndReceive()S
+					putfield_s 3;		// short testpack/EncryptionTest.pubkey_len
+					aload 4;
+					sconst_5;
+					getfield_a_this 2;		// reference testpack/EncryptionTest.pubkey_data
+					sconst_0;
+					getfield_s_this 3;		// short testpack/EncryptionTest.pubkey_len
+					invokestatic 25;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					goto_w L28;
+				L12:	getfield_a_this 6;		// reference testpack/EncryptionTest.XDH_keyagress
+					getfield_a_this 4;		// reference testpack/EncryptionTest.prikey
+					invokevirtual 26;		// init(Ljavacard/security/PrivateKey;)V
+					goto_w L28;
+				L13:	getfield_a_this 6;		// reference testpack/EncryptionTest.XDH_keyagress
+					getfield_a_this 2;		// reference testpack/EncryptionTest.pubkey_data
+					sconst_0;
+					getfield_s_this 3;		// short testpack/EncryptionTest.pubkey_len
+					aload 4;
+					sconst_0;
+					invokevirtual 27;		// generateSecret([BSS[BS)S
+					sstore_2;
+				L14:	aload_1;
+					sconst_0;
+					sload_2;
+					invokevirtual 23;		// setOutgoingAndSend(SS)V
+					goto L28;
+				L15:	aload_1;
+					invokevirtual 24;		// setIncomingAndReceive()S
+					sstore_2;
+				L16:	getfield_a_this 4;		// reference testpack/EncryptionTest.prikey
+					invokeinterface 1 8 7;		// com/ftsafe/security/XECPrivateKey
+					ifne L18;
+				L17:	getfield_a_this 5;		// reference testpack/EncryptionTest.Xkeypair
+					invokevirtual 22;		// genKeyPair()V
+				L18:	getfield_a_this 4;		// reference testpack/EncryptionTest.prikey
+					aload 4;
+					sconst_5;
+					sload_2;
+					invokeinterface 4 8 3;		// com/ftsafe/security/XECPrivateKey
+					goto L28;
+				L19:	getfield_a_this 4;		// reference testpack/EncryptionTest.prikey
+					invokeinterface 1 8 7;		// com/ftsafe/security/XECPrivateKey
+					ifne L21;
+				L20:	getfield_a_this 5;		// reference testpack/EncryptionTest.Xkeypair
+					invokevirtual 22;		// genKeyPair()V
+				L21:	getfield_a_this 4;		// reference testpack/EncryptionTest.prikey
+					aload 4;
+					sconst_0;
+					invokeinterface 3 8 2;		// com/ftsafe/security/XECPrivateKey
+					sstore_2;
+				L22:	aload_1;
+					sconst_0;
+					sload_2;
+					invokevirtual 23;		// setOutgoingAndSend(SS)V
+					goto L28;
+				L23:	aload_1;
+					invokevirtual 24;		// setIncomingAndReceive()S
+					sstore_2;
+				L24:	getfield_a_this 1;		// reference testpack/EncryptionTest.pubkey
+					invokeinterface 1 9 7;		// com/ftsafe/security/XECPublicKey
+					ifne L26;
+				L25:	getfield_a_this 5;		// reference testpack/EncryptionTest.Xkeypair
+					invokevirtual 22;		// genKeyPair()V
+				L26:	getfield_a_this 1;		// reference testpack/EncryptionTest.pubkey
+					aload 4;
+					sconst_5;
+					sload_2;
+					invokeinterface 4 9 3;		// com/ftsafe/security/XECPublicKey
+					goto L28;
+				L27:	sspush 27904;
+					invokestatic 28;		// javacard/framework/ISOException.throwIt(S)V
+				L28:	return;
+		}
+
+	}
+
+}

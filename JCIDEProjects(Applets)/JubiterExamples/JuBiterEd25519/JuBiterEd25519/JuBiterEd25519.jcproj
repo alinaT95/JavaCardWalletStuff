@@ -1,0 +1,40 @@
+<JavaCardProject name="JuBiterEd25519" version="2">
+<USER>
+<PKG name="JuBiterPackage" aid="D1 56 45 44 32 35 35 31 39 30 20" major="1" minor="0">
+<APPLET aid="D1 56 45 44 32 35 35 31 39 30 20 00" instanceaid="" parameter="" authority="" privileges="" index="17112" name="JuBiterPackage"/>
+</PKG>
+</USER>
+<BuildPropertyConfig>
+<JCKit_Option>
+<OutType>EXP JCA CAP</OutType>
+<_SupportInt>1</_SupportInt>
+<_verbos>0</_verbos>
+<_nowarn>0</_nowarn>
+<_debug>1</_debug>
+<_nobanner>0</_nobanner>
+<_noverify>0</_noverify>
+<_mask>0</_mask>
+<_Adddition/>
+</JCKit_Option>
+<JavaCompilerOption>
+<_Source>1.5</_Source>
+<_Target>1.5</_Target>
+<_Encoding>GBK</_Encoding>
+<_GenAllDegugInfo>1</_GenAllDegugInfo>
+<_GenNoWarnings>0</_GenNoWarnings>
+<_OutputAboutCompilerDoing>0</_OutputAboutCompilerDoing>
+<_OutputWhereDeprecatedApisAre>1</_OutputWhereDeprecatedApisAre>
+<_Adddition/>
+</JavaCompilerOption>
+<Buildpaths>
+<ClasspathEntry>
+<CPE_CONTAINER name="Jubiter SE" kind="K_FOLDER"/>
+<CPE_CONTAINER name="Global Platform 2.1.1" kind="K_DEFAULT_GP"/>
+<CPE_CONTAINER name="java_card_kit-3_0_4" kind="K_DEFAULT_SYSTEM_JCRE"/>
+</ClasspathEntry>
+<ConvertorBinDirPath/>
+</Buildpaths>
+<LocalJavaHome JavaHome="C:\JavaCardKit\JDK"/>
+</BuildPropertyConfig>
+<solution_relate_to_project/>
+</JavaCardProject>

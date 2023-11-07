@@ -1,0 +1,2056 @@
+// converted by version 1.3
+// on Fri Oct 04 08:54:36 MSK 2019
+
+.package wallet {
+	.aid 0x31:0x31:0x32:0x32:0x33:0x33:0x34:0x34:0x35:0x35:0x36:0x36;
+	.version 1.0;
+
+	.imports {
+		0xA0:0x0:0x0:0x0:0x62:0x0:0x1 1.0;		//java/lang
+		0xA0:0x0:0x0:0x0:0x62:0x1:0x1 1.5;		//javacard/framework
+		0xA0:0x0:0x0:0x1:0x51:0x0 1.0;		//org/globalplatform
+		0xD1:0x56:0x0:0x1:0x32:0x0:0xA 1.0;		//com/ftsafe/javacardx/btcmgr
+		0xD1:0x56:0x0:0x1:0x32:0x0:0xB 1.0;		//com/ftsafe/security
+		0xA0:0x0:0x0:0x0:0x62:0x1:0x2 1.5;		//javacard/security
+		0xD1:0x56:0x0:0x1:0x32:0x0:0x9 1.0;		//com/ftsafe/javacardx/IOUtil
+	}
+
+	.applet {
+		0x31:0x31:0x32:0x32:0x33:0x33:0x34:0x34:0x35:0x35:0x36:0x36:0x0 WalletApplet;
+	}
+
+	.constantPool {
+		// 0
+		instanceFieldRef short CryptoHandler/sigLen;
+		// 1
+		instanceFieldRef short CryptoHandler/numberOfBytesReceived;
+		// 2
+		instanceFieldRef short CryptoHandler/dataForSigningTotalLen;
+		// 3
+		instanceFieldRef byte[] CryptoHandler/signatureBytes;
+		// 4
+		instanceFieldRef byte[] CryptoHandler/dataForSigning;
+		// 5
+		instanceFieldRef byte[] CryptoHandler/tmpBuffer;
+		// 6
+		instanceFieldRef byte[] TonCryptoHandler/keyBuf;
+		// 7
+		instanceFieldRef byte[] TonCryptoHandler/rootPath;
+		// 8
+		instanceFieldRef byte[] TonCryptoHandler/rootPathInLV;
+		// 9
+		instanceFieldRef 4.6 TonCryptoHandler/params;
+		// 10
+		instanceFieldRef 4.4 TonCryptoHandler/publicKey;
+		// 11
+		instanceFieldRef 5.15 TonCryptoHandler/sig;
+		// 12
+		instanceFieldRef short UserInterface/max_X;
+		// 13
+		instanceFieldRef CryptoHandler WalletApplet/cryptoHandler;
+		// 14
+		virtualMethodRef 1.10.7()S;		// setOutgoing()S
+		// 15
+		staticFieldRef byte CommonHandler/APP_INFO_OUTPUT_SIZE;
+		// 16
+		staticMethodRef 1.7.1(S)V;		// javacard/framework/ISOException.throwIt(S)V
+		// 17
+		virtualMethodRef 1.10.6()S;		// setIncomingAndReceive()S
+		// 18
+		staticMethodRef 1.16.2([BS[BSS)S;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+		// 19
+		staticMethodRef UserInterface/showDataTransmit()V;
+		// 20
+		staticMethodRef UserInterface/showMainUI(Z)V;
+		// 21
+		staticMethodRef UserInterface/showWriteUnblockingPin()V;
+		// 22
+		classRef 1.9;		// javacard/framework/OwnerPIN
+		// 23
+		staticMethodRef 1.9.0(BB)V;		// javacard/framework/OwnerPIN.<init>(BB)V
+		// 24
+		staticFieldRef 1.9 PinHandler/unblockingPin;
+		// 25
+		virtualMethodRef 1.9.8([BSB)V;		// update([BSB)V
+		// 26
+		staticMethodRef UserInterface/showWriteMaxPinTries()V;
+		// 27
+		staticFieldRef short PinHandler/maxPinTries;
+		// 28
+		staticMethodRef 3.0.6()V;		// com/ftsafe/javacardx/btcmgr/CoinManager.showNineGrids()V
+		// 29
+		staticMethodRef UserInterface/showCheckPin()V;
+		// 30
+		staticMethodRef 3.0.7(B[BSS)S;		// com/ftsafe/javacardx/btcmgr/CoinManager.verifyPIN(B[BSS)S
+		// 31
+		staticFieldRef short PinHandler/numPinFails;
+		// 32
+		virtualMethodRef 1.9.1([BSB)Z;		// check([BSB)Z
+		// 33
+		staticMethodRef CryptoHandler/<init>()V;
+		// 34
+		virtualMethodRef 1.10.9(S)V;		// setOutgoingLength(S)V
+		// 35
+		staticMethodRef 2.3.1()B;		// org/globalplatform/GPSystem.getCardContentState()B
+		// 36
+		virtualMethodRef 1.10.4(SS)V;		// sendBytes(SS)V
+		// 37
+		staticMethodRef 4.6.0(S)Lcom/ftsafe/security/NamedParameterSpec;;		// com/ftsafe/security/NamedParameterSpec.getInstance(S)Lcom/ftsafe/security/NamedParameterSpec;
+			.descriptor	Lcom/ftsafe/security/NamedParameterSpec;	4.6;
+
+		// 38
+		classRef 1.13;		// javacard/framework/SystemException
+		// 39
+		staticMethodRef 4.10.1(Lcom/ftsafe/security/NamedParameterSpec;SZ)Ljavacard/security/Key;;		// com/ftsafe/security/KeyBuilderX.buildXECKey(Lcom/ftsafe/security/NamedParameterSpec;SZ)Ljavacard/security/Key;
+			.descriptor	Lcom/ftsafe/security/NamedParameterSpec;	4.6;
+			.descriptor	Ljavacard/security/Key;	5.0;
+
+		// 40
+		classRef 4.4;		// com/ftsafe/security/XECPublicKey
+		// 41
+		staticMethodRef 0.0.0()V;		// java/lang/Object.<init>()V
+		// 42
+		staticMethodRef 5.15.2(BBBZ)Ljavacard/security/Signature;;		// javacard/security/Signature.getInstance(BBBZ)Ljavacard/security/Signature;
+			.descriptor	Ljavacard/security/Signature;	5.15;
+
+		// 43
+		virtualMethodRef 1.10.1()[B;		// getBuffer()[B
+		// 44
+		staticMethodRef 3.0.5([BSS[BS[BS)S;		// com/ftsafe/javacardx/btcmgr/CoinManager.getCoinPubData([BSS[BS[BS)S
+		// 45
+		virtualMethodRef 1.10.8(SS)V;		// setOutgoingAndSend(SS)V
+		// 46
+		staticMethodRef UserInterface/showWorking()V;
+		// 47
+		staticMethodRef 3.0.4(S[BSS[BS[BSS)S;		// com/ftsafe/javacardx/btcmgr/CoinManager.signCoinData(S[BSS[BS[BSS)S
+		// 48
+		virtualMethodRef 1.10.5([BSS)V;		// sendBytesLong([BSS)V
+		// 49
+		classRef 5.12;		// javacard/security/CryptoException
+		// 50
+		staticMethodRef UserInterface/showVerifying()V;
+		// 51
+		virtualMethodRef 5.15.3(Ljavacard/security/Key;B)V;		// init(Ljavacard/security/Key;B)V
+			.descriptor	Ljavacard/security/Key;	5.0;
+
+		// 52
+		virtualMethodRef 5.15.7([BSS[BSS)Z;		// verify([BSS[BSS)Z
+		// 53
+		virtualMethodRef 5.12.1()S;		// getReason()S
+		// 54
+		staticMethodRef 2.3.8(B)Z;		// org/globalplatform/GPSystem.setCardContentState(B)Z
+		// 55
+		staticFieldRef byte[] UserInterface/APPROVED;
+		// 56
+		staticMethodRef UserInterface/showText([B)V;
+		// 57
+		staticMethodRef 6.1.1(S)V;		// com/ftsafe/javacardx/IOUtil/Timer.wait(S)V
+		// 58
+		staticFieldRef byte[] UserInterface/DATA_TRANSMIT;
+		// 59
+		staticFieldRef byte[] UserInterface/SIGN_DATA;
+		// 60
+		staticFieldRef byte[] UserInterface/VERIFYING_SIGNATURE;
+		// 61
+		staticFieldRef byte[] UserInterface/WRITE_MAX_PIN_TRIES;
+		// 62
+		staticFieldRef byte[] UserInterface/WRITE_UNBLOCKING_PIN;
+		// 63
+		staticFieldRef byte[] UserInterface/CHECK_PIN;
+		// 64
+		staticMethodRef 6.2.4(Z)V;		// com/ftsafe/javacardx/IOUtil/View.clearScreen(Z)V
+		// 65
+		staticFieldRef short UserInterface/max_Y;
+		// 66
+		staticMethodRef 6.2.7(SS[BSSZB)V;		// com/ftsafe/javacardx/IOUtil/View.drawString(SS[BSSZB)V
+		// 67
+		staticMethodRef 6.2.5()V;		// com/ftsafe/javacardx/IOUtil/View.refreshScreen()V
+		// 68
+		staticFieldRef byte[] UserInterface/TIMER_OUT;
+		// 69
+		staticFieldRef byte[] UserInterface/Rejected;
+		// 70
+		staticMethodRef 6.2.12(Z[BSSSS)V;		// com/ftsafe/javacardx/IOUtil/View.showMain(Z[BSSSS)V
+		// 71
+		staticMethodRef 1.3.0()V;		// javacard/framework/Applet.<init>()V
+		// 72
+		classRef TonCryptoHandler;
+		// 73
+		staticMethodRef TonCryptoHandler/<init>()V;
+		// 74
+		staticMethodRef 1.8.13(SB)[B;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+		// 75
+		classRef WalletApplet;
+		// 76
+		staticMethodRef WalletApplet/<init>()V;
+		// 77
+		virtualMethodRef 1.3.2([BSB)V;		// register([BSB)V
+		// 78
+		virtualMethodRef 1.3.3()Z;		// selectingApplet()Z
+		// 79
+		staticMethodRef 3.0.10(B)S;		// com/ftsafe/javacardx/btcmgr/CoinManager.setCurve(B)S
+		// 80
+		staticMethodRef PinHandler/writeMaxPinTries(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		// 81
+		staticMethodRef PinHandler/writeUnblockingPin(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		// 82
+		staticMethodRef CommonHandler/finishPersonalization(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		// 83
+		staticMethodRef CommonHandler/getAppInfo(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		// 84
+		virtualMethodRef CryptoHandler/getPublicKey(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		// 85
+		virtualMethodRef CryptoHandler/getPublicKeyWithDefaultHDPath(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		// 86
+		staticMethodRef PinHandler/showPinTable()V;
+		// 87
+		virtualMethodRef CryptoHandler/setDataForSigning(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		// 88
+		virtualMethodRef CryptoHandler/signShortMessage(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		// 89
+		virtualMethodRef CryptoHandler/signStoredMessage(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		// 90
+		virtualMethodRef CryptoHandler/signShortMessageWithDefaultPath(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		// 91
+		virtualMethodRef CryptoHandler/signStoredMessageWithDefaultPath(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		// 92
+		virtualMethodRef CryptoHandler/verifySignature(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		// 93
+		virtualMethodRef CryptoHandler/verifySignatureWithDefaultPath(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		// 94
+		staticMethodRef PinHandler/checkPin(Ljavacard/framework/APDU;)Z;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		// 95
+		staticMethodRef PinHandler/unblockPin(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+	}
+
+	.class public CommonHandler 0 extends 0.0 {		// extends java/lang/Object
+
+		.fields {
+			private static byte APP_INFO_OUTPUT_SIZE = 1;		// B
+		}
+
+		.publicMethodTable 1 {
+			equals(Ljava/lang/Object;)Z;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>()V 0 {
+			.stack 1;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 41;		// java/lang/Object.<init>()V
+					return;
+		}
+
+		.method public static finishPersonalization(Ljavacard/framework/APDU;)V 1 {
+			.stack 2;
+			.locals 2;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_0;
+					invokevirtual 43;		// getBuffer()[B
+					astore_1;
+				L1:	aload_1;
+					sconst_2;
+					baload;
+					sstore_2;
+				L2:	sload_2;
+					ifne L4;
+				L3:	bspush 55;
+					invokestatic 54;		// org/globalplatform/GPSystem.setCardContentState(B)Z
+					pop;
+					goto L5;
+				L4:	bspush 23;
+					invokestatic 54;		// org/globalplatform/GPSystem.setCardContentState(B)Z
+					pop;
+				L5:	return;
+		}
+
+		.method public static getAppInfo(Ljavacard/framework/APDU;)V 2 {
+			.stack 3;
+			.locals 2;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_0;
+					invokevirtual 43;		// getBuffer()[B
+					astore_1;
+				L1:	aload_0;
+					invokevirtual 14;		// setOutgoing()S
+					sstore_2;
+				L2:	sload_2;
+					getstatic_b 15;		// byte wallet/CommonHandler.APP_INFO_OUTPUT_SIZE
+					if_scmpeq L4;
+				L3:	sspush 26368;
+					invokestatic 16;		// javacard/framework/ISOException.throwIt(S)V
+				L4:	aload_0;
+					getstatic_b 15;		// byte wallet/CommonHandler.APP_INFO_OUTPUT_SIZE
+					invokevirtual 34;		// setOutgoingLength(S)V
+					aload_1;
+					sconst_0;
+					invokestatic 35;		// org/globalplatform/GPSystem.getCardContentState()B
+					bastore;
+					aload_0;
+					sconst_0;
+					getstatic_b 15;		// byte wallet/CommonHandler.APP_INFO_OUTPUT_SIZE
+					invokevirtual 36;		// sendBytes(SS)V
+					return;
+		}
+
+	}
+
+	.class public Constants 1 extends 0.0 {		// extends java/lang/Object
+
+		.fields {
+			public static final short SW_AUTH_FAILED = -25598;		// S
+			public static final short SW_INVALID_PARAMETER = -25585;		// S
+			public static final short SW_IDENTITY_BLOCKED = -25588;		// S
+			public static final short SW_INCORRECT_P1 = -25584;		// S
+			public static final short SW_INCORRECT_P2 = -25583;		// S
+			public static final short SW_UNAUTHORIZED = -25594;		// S
+			public static final short SW_UNSUPPORTED_FEATURE = -25595;		// S
+			public static final short SW_INCORRECT_ALG = -25591;		// S
+			public static final short SW_DATA_FOR_SIGNING_IS_TOO_LONG = -25590;		// S
+			public static final short SW_OPERATION_NOT_ALLOWED = -25597;		// S
+			public static final short SW_INTERNAL_ERROR = -25345;		// S
+			public static final short SW_INCORRECT_PIN = 28417;		// S
+			public static final short SW_PIN_TRIES_EXPIRED = 28418;		// S
+			public static final short SW_SET_CURVE_FAILED = 28419;		// S
+			public static final short SW_GET_COIN_PUB_DATA_FAILED = 28420;		// S
+			public static final short SW_SIGN_DATA_FAILED = 28421;		// S
+			public static final byte APP_INSTALLED = 7;		// B
+			public static final byte APP_PERSONALIZED = 23;		// B
+			public static final byte APP_BLOCKED = 39;		// B
+			public static final byte APP_DEVELOPER_MODE = 55;		// B
+			public static final byte PIN_LENGTH = 4;		// B
+		}
+
+		.publicMethodTable 1 {
+			equals(Ljava/lang/Object;)Z;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>()V 0 {
+			.stack 1;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 41;		// java/lang/Object.<init>()V
+					return;
+		}
+
+	}
+
+	.class public abstract CryptoHandler 2 extends 0.0 {		// extends java/lang/Object
+
+		.fields {
+			protected short sigLen 0;		// S
+			protected short numberOfBytesReceived 1;		// S
+			protected short dataForSigningTotalLen 2;		// S
+			protected byte[] dataForSigning 3;		// [B
+			protected byte[] signatureBytes 4;		// [B
+			protected byte[] tmpBuffer 5;		// [B
+			public static final short DATA_FOR_SIGNING_MAX_SIZE_IN_BYTES = 2048;		// S
+			public static final short SIGNATURE_MAX_SIZE_IN_BYTES = 100;		// S
+			public static final short TMP_BUFFER_SIZE = 512;		// S
+		}
+
+		.publicMethodTable 1 {
+			equals(Ljava/lang/Object;)Z;
+			setDataForSigning(Ljavacard/framework/APDU;)V;
+			getPublicKey(Ljavacard/framework/APDU;)V;
+			getPublicKeyWithDefaultHDPath(Ljavacard/framework/APDU;)V;
+			signShortMessage(Ljavacard/framework/APDU;)V;
+			signStoredMessage(Ljavacard/framework/APDU;)V;
+			signShortMessageWithDefaultPath(Ljavacard/framework/APDU;)V;
+			signStoredMessageWithDefaultPath(Ljavacard/framework/APDU;)V;
+			verifySignature(Ljavacard/framework/APDU;)V;
+			verifySignatureWithDefaultPath(Ljavacard/framework/APDU;)V;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>()V 0 {
+			.stack 3;
+			.locals 1;
+
+				L0:	aload_0;
+					invokespecial 41;		// java/lang/Object.<init>()V
+					aload_0;
+					sconst_0;
+					putfield_s 0;		// short wallet/CryptoHandler.sigLen
+					aload_0;
+					sconst_0;
+					putfield_s 1;		// short wallet/CryptoHandler.numberOfBytesReceived
+					aload_0;
+					sconst_0;
+					putfield_s 2;		// short wallet/CryptoHandler.dataForSigningTotalLen
+				L1:	aload_0;
+					bspush 100;
+					sconst_2;
+					invokestatic 74;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					putfield_a 3;		// reference wallet/CryptoHandler.signatureBytes
+				L2:	goto L5;
+				L3:	astore_1;
+				L4:	aload_0;
+					bspush 100;
+					newarray 11;
+					putfield_a 3;		// reference wallet/CryptoHandler.signatureBytes
+				L5:	aload_0;
+					sspush 2048;
+					sconst_2;
+					invokestatic 74;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					putfield_a 4;		// reference wallet/CryptoHandler.dataForSigning
+				L6:	goto L9;
+				L7:	astore_1;
+				L8:	aload_0;
+					sspush 2048;
+					newarray 11;
+					putfield_a 4;		// reference wallet/CryptoHandler.dataForSigning
+				L9:	aload_0;
+					sspush 512;
+					sconst_2;
+					invokestatic 74;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					putfield_a 5;		// reference wallet/CryptoHandler.tmpBuffer
+				L10:	goto L13;
+				L11:	astore_1;
+				L12:	aload_0;
+					sspush 512;
+					newarray 11;
+					putfield_a 5;		// reference wallet/CryptoHandler.tmpBuffer
+				L13:	return;
+			.exceptionTable {
+				// start_block end_block handler_block catch_type_index
+				L1 L2 L3 38;
+				L5 L6 L7 38;
+				L9 L10 L11 38;
+			}
+		}
+
+		.method public setDataForSigning(Ljavacard/framework/APDU;)V 1 {
+			.stack 5;
+			.locals 4;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_1;
+					invokevirtual 43;		// getBuffer()[B
+					astore_2;
+				L1:	aload_2;
+					sconst_4;
+					baload;
+					sspush 255;
+					sand;
+					sstore_3;
+				L2:	aload_1;
+					invokevirtual 17;		// setIncomingAndReceive()S
+					sstore 4;
+				L3:	sload_3;
+					sload 4;
+					if_scmpne L5;
+				L4:	getfield_s_this 1;		// short wallet/CryptoHandler.numberOfBytesReceived
+					sspush 2048;
+					if_scmple L6;
+				L5:	sspush 26368;
+					invokestatic 16;		// javacard/framework/ISOException.throwIt(S)V
+				L6:	aload_2;
+					sconst_5;
+					getfield_a_this 4;		// reference wallet/CryptoHandler.dataForSigning
+					getfield_s_this 1;		// short wallet/CryptoHandler.numberOfBytesReceived
+					sload_3;
+					invokestatic 18;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					aload_2;
+					sconst_2;
+					baload;
+					sstore 5;
+				L7:	aload_0;
+					dup;
+					getfield_s 1;		// short wallet/CryptoHandler.numberOfBytesReceived
+					sload_3;
+					sadd;
+					putfield_s 1;		// short wallet/CryptoHandler.numberOfBytesReceived
+					invokestatic 19;		// wallet/UserInterface.showDataTransmit()V
+					sload 5;
+					sconst_1;
+					if_scmpne L11;
+				L8:	aload_0;
+					getfield_s_this 1;		// short wallet/CryptoHandler.numberOfBytesReceived
+					putfield_s 2;		// short wallet/CryptoHandler.dataForSigningTotalLen
+					getfield_s_this 2;		// short wallet/CryptoHandler.dataForSigningTotalLen
+					sspush 2048;
+					if_scmple L10;
+				L9:	sspush -25590;
+					invokestatic 16;		// javacard/framework/ISOException.throwIt(S)V
+				L10:	aload_0;
+					sconst_0;
+					putfield_s 1;		// short wallet/CryptoHandler.numberOfBytesReceived
+				L11:	sconst_1;
+					invokestatic 20;		// wallet/UserInterface.showMainUI(Z)V
+					return;
+		}
+
+		.method public abstract getPublicKey(Ljavacard/framework/APDU;)V 2 {
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		}
+
+		.method public abstract getPublicKeyWithDefaultHDPath(Ljavacard/framework/APDU;)V 3 {
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		}
+
+		.method public abstract signShortMessage(Ljavacard/framework/APDU;)V 4 {
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		}
+
+		.method public abstract signStoredMessage(Ljavacard/framework/APDU;)V 5 {
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		}
+
+		.method public abstract signShortMessageWithDefaultPath(Ljavacard/framework/APDU;)V 6 {
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		}
+
+		.method public abstract signStoredMessageWithDefaultPath(Ljavacard/framework/APDU;)V 7 {
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		}
+
+		.method public abstract verifySignature(Ljavacard/framework/APDU;)V 8 {
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		}
+
+		.method public abstract verifySignatureWithDefaultPath(Ljavacard/framework/APDU;)V 9 {
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		}
+
+	}
+
+	.class public PinHandler 3 extends 0.0 {		// extends java/lang/Object
+
+		.fields {
+			private static final byte MIN_PIN_TRIES_NUM = 3;		// B
+			private static final byte MAX_PIN_TRIES_NUM = 10;		// B
+			private static final byte PIN_MIN_SIZE = 4;		// B
+			private static final byte PIN_MAX_SIZE = 16;		// B
+			private static 1.9 unblockingPin;		// Ljavacard/framework/OwnerPIN;
+			private static short maxPinTries = 10;		// S
+			private static short numPinFails;		// S
+		}
+
+		.publicMethodTable 1 {
+			equals(Ljava/lang/Object;)Z;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>()V 0 {
+			.stack 1;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 41;		// java/lang/Object.<init>()V
+					return;
+		}
+
+		.method public static writeUnblockingPin(Ljavacard/framework/APDU;)V 1 {
+			.stack 4;
+			.locals 3;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_0;
+					invokevirtual 43;		// getBuffer()[B
+					astore_1;
+				L1:	invokestatic 21;		// wallet/UserInterface.showWriteUnblockingPin()V
+					aload_1;
+					sconst_4;
+					baload;
+					sspush 255;
+					sand;
+					sstore_2;
+				L2:	aload_0;
+					invokevirtual 17;		// setIncomingAndReceive()S
+					sstore_3;
+				L3:	sload_2;
+					sload_3;
+					if_scmpne L6;
+				L4:	sload_2;
+					bspush 16;
+					if_scmpgt L6;
+				L5:	sload_2;
+					sconst_4;
+					if_scmpge L7;
+				L6:	sspush 26368;
+					invokestatic 16;		// javacard/framework/ISOException.throwIt(S)V
+				L7:	new 22;		// javacard/framework/OwnerPIN
+					dup;
+					sconst_3;
+					bspush 16;
+					invokespecial 23;		// javacard/framework/OwnerPIN.<init>(BB)V
+					putstatic_a 24;		// reference wallet/PinHandler.unblockingPin
+					getstatic_a 24;		// reference wallet/PinHandler.unblockingPin
+					aload_1;
+					sconst_5;
+					sload_2;
+					s2b;
+					invokevirtual 25;		// update([BSB)V
+					return;
+		}
+
+		.method public static writeMaxPinTries(Ljavacard/framework/APDU;)V 2 {
+			.stack 2;
+			.locals 2;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_0;
+					invokevirtual 43;		// getBuffer()[B
+					astore_1;
+				L1:	invokestatic 26;		// wallet/UserInterface.showWriteMaxPinTries()V
+					aload_1;
+					sconst_2;
+					baload;
+					sstore_2;
+				L2:	sload_2;
+					sconst_3;
+					if_scmplt L4;
+				L3:	sload_2;
+					bspush 10;
+					if_scmple L5;
+				L4:	sspush -25585;
+					invokestatic 16;		// javacard/framework/ISOException.throwIt(S)V
+				L5:	sload_2;
+					putstatic_s 27;		// short wallet/PinHandler.maxPinTries
+					return;
+		}
+
+		.method public static showPinTable()V 3 {
+			.stack 0;
+			.locals 0;
+
+				L0:	invokestatic 28;		// com/ftsafe/javacardx/btcmgr/CoinManager.showNineGrids()V
+					return;
+		}
+
+		.method public static checkPin(Ljavacard/framework/APDU;)Z 4 {
+			.stack 4;
+			.locals 4;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_0;
+					invokevirtual 43;		// getBuffer()[B
+					astore_1;
+				L1:	aload_1;
+					sconst_4;
+					baload;
+					sspush 255;
+					sand;
+					sstore_2;
+				L2:	aload_0;
+					invokevirtual 17;		// setIncomingAndReceive()S
+					sstore_3;
+				L3:	sload_2;
+					sload_3;
+					if_scmpne L5;
+				L4:	sload_2;
+					sconst_4;
+					if_scmpeq L6;
+				L5:	sspush 26368;
+					invokestatic 16;		// javacard/framework/ISOException.throwIt(S)V
+				L6:	invokestatic 29;		// wallet/UserInterface.showCheckPin()V
+					sconst_2;
+					aload_1;
+					sconst_5;
+					sconst_4;
+					invokestatic 30;		// com/ftsafe/javacardx/btcmgr/CoinManager.verifyPIN(B[BSS)S
+					sstore 4;
+				L7:	sload 4;
+					ifeq L11;
+				L8:	getstatic_s 31;		// short wallet/PinHandler.numPinFails
+					sconst_1;
+					sadd;
+					putstatic_s 31;		// short wallet/PinHandler.numPinFails
+					getstatic_s 31;		// short wallet/PinHandler.numPinFails
+					getstatic_s 27;		// short wallet/PinHandler.maxPinTries
+					if_scmple L10;
+				L9:	sconst_0;
+					sreturn;
+				L10:	sspush 28417;
+					invokestatic 16;		// javacard/framework/ISOException.throwIt(S)V
+					goto L12;
+				L11:	sconst_0;
+					putstatic_s 31;		// short wallet/PinHandler.numPinFails
+				L12:	sconst_1;
+					invokestatic 20;		// wallet/UserInterface.showMainUI(Z)V
+					sconst_1;
+					sreturn;
+		}
+
+		.method public static unblockPin(Ljavacard/framework/APDU;)V 5 {
+			.stack 4;
+			.locals 3;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_0;
+					invokevirtual 43;		// getBuffer()[B
+					astore_1;
+				L1:	getstatic_s 31;		// short wallet/PinHandler.numPinFails
+					getstatic_s 27;		// short wallet/PinHandler.maxPinTries
+					if_scmpgt L3;
+				L2:	sspush -25597;
+					invokestatic 16;		// javacard/framework/ISOException.throwIt(S)V
+				L3:	aload_1;
+					sconst_4;
+					baload;
+					sspush 255;
+					sand;
+					sstore_2;
+				L4:	aload_0;
+					invokevirtual 17;		// setIncomingAndReceive()S
+					sstore_3;
+				L5:	sload_2;
+					sload_3;
+					if_scmpne L8;
+				L6:	sload_2;
+					bspush 16;
+					if_scmpgt L8;
+				L7:	sload_2;
+					sconst_4;
+					if_scmpge L9;
+				L8:	sspush 26368;
+					invokestatic 16;		// javacard/framework/ISOException.throwIt(S)V
+				L9:	getstatic_a 24;		// reference wallet/PinHandler.unblockingPin
+					aload_1;
+					sconst_5;
+					sload_2;
+					s2b;
+					invokevirtual 32;		// check([BSB)Z
+					ifne L11;
+				L10:	sspush -25598;
+					invokestatic 16;		// javacard/framework/ISOException.throwIt(S)V
+				L11:	sconst_0;
+					putstatic_s 31;		// short wallet/PinHandler.numPinFails
+					bspush 23;
+					invokestatic 54;		// org/globalplatform/GPSystem.setCardContentState(B)Z
+					pop;
+					return;
+		}
+
+	}
+
+	.class public TonCryptoHandler 4 extends CryptoHandler {
+
+		.fields {
+			private byte[] keyBuf 0;		// [B
+			private 4.4 publicKey 1;		// Lcom/ftsafe/security/XECPublicKey;
+			private 4.6 params 2;		// Lcom/ftsafe/security/NamedParameterSpec;
+			private byte[] rootPath 3;		// [B
+			private byte[] rootPathInLV 4;		// [B
+			private 5.15 sig 5;		// Ljavacard/security/Signature;
+			public static final short TON_PUBLIC_KEY_SIZE = 32;		// S
+			public static final short CHAIN_CODE_KEY_SIZE = 32;		// S
+			public static final short TON_CHAIN_CODE_CONSTANT = 65;		// S
+			public static final short KEY_BUF_SIZE = 100;		// S
+			public static final short KEY_SIZE = 32;		// S
+			public static final short SIGNATURE_SIZE = 64;		// S
+			public static final byte VERIFY_RESPONSE_LEN = 1;		// B
+		}
+
+		.publicMethodTable 2 {
+			equals(Ljava/lang/Object;)Z;
+			setDataForSigning(Ljavacard/framework/APDU;)V;
+			getPublicKey(Ljavacard/framework/APDU;)V;
+			getPublicKeyWithDefaultHDPath(Ljavacard/framework/APDU;)V;
+			signShortMessage(Ljavacard/framework/APDU;)V;
+			signStoredMessage(Ljavacard/framework/APDU;)V;
+			signShortMessageWithDefaultPath(Ljavacard/framework/APDU;)V;
+			signStoredMessageWithDefaultPath(Ljavacard/framework/APDU;)V;
+			verifySignature(Ljavacard/framework/APDU;)V;
+			verifySignatureWithDefaultPath(Ljavacard/framework/APDU;)V;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>()V 0 {
+			.stack 5;
+			.locals 1;
+
+				L0:	aload_0;
+					invokespecial 33;		// wallet/CryptoHandler.<init>()V
+					aload_0;
+					bspush 100;
+					newarray 11;
+					putfield_a 6;		// reference wallet/TonCryptoHandler.keyBuf
+					aload_0;
+					bspush 19;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 109;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 47;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 52;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 52;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 39;
+					bastore;
+					dup;
+					sconst_5;
+					bspush 47;
+					bastore;
+					dup;
+					bspush 6;
+					bspush 49;
+					bastore;
+					dup;
+					bspush 7;
+					bspush 55;
+					bastore;
+					dup;
+					bspush 8;
+					bspush 49;
+					bastore;
+					dup;
+					bspush 9;
+					bspush 39;
+					bastore;
+					dup;
+					bspush 10;
+					bspush 47;
+					bastore;
+					dup;
+					bspush 11;
+					bspush 48;
+					bastore;
+					dup;
+					bspush 12;
+					bspush 39;
+					bastore;
+					dup;
+					bspush 13;
+					bspush 47;
+					bastore;
+					dup;
+					bspush 14;
+					bspush 48;
+					bastore;
+					dup;
+					bspush 15;
+					bspush 39;
+					bastore;
+					dup;
+					bspush 16;
+					bspush 47;
+					bastore;
+					dup;
+					bspush 17;
+					bspush 48;
+					bastore;
+					dup;
+					bspush 18;
+					bspush 39;
+					bastore;
+					putfield_a 7;		// reference wallet/TonCryptoHandler.rootPath
+					aload_0;
+					bspush 20;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 19;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 109;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 47;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 52;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 52;
+					bastore;
+					dup;
+					sconst_5;
+					bspush 39;
+					bastore;
+					dup;
+					bspush 6;
+					bspush 47;
+					bastore;
+					dup;
+					bspush 7;
+					bspush 49;
+					bastore;
+					dup;
+					bspush 8;
+					bspush 55;
+					bastore;
+					dup;
+					bspush 9;
+					bspush 49;
+					bastore;
+					dup;
+					bspush 10;
+					bspush 39;
+					bastore;
+					dup;
+					bspush 11;
+					bspush 47;
+					bastore;
+					dup;
+					bspush 12;
+					bspush 48;
+					bastore;
+					dup;
+					bspush 13;
+					bspush 39;
+					bastore;
+					dup;
+					bspush 14;
+					bspush 47;
+					bastore;
+					dup;
+					bspush 15;
+					bspush 48;
+					bastore;
+					dup;
+					bspush 16;
+					bspush 39;
+					bastore;
+					dup;
+					bspush 17;
+					bspush 47;
+					bastore;
+					dup;
+					bspush 18;
+					bspush 48;
+					bastore;
+					dup;
+					bspush 19;
+					bspush 39;
+					bastore;
+					putfield_a 8;		// reference wallet/TonCryptoHandler.rootPathInLV
+					aload_0;
+					sspush 257;
+					invokestatic 37;		// com/ftsafe/security/NamedParameterSpec.getInstance(S)Lcom/ftsafe/security/NamedParameterSpec;
+					putfield_a 9;		// reference wallet/TonCryptoHandler.params
+					sconst_0;
+					sstore_1;
+				L1:	sload_1;
+					sconst_0;
+					sor;
+					sstore_1;
+					aload_0;
+					getfield_a_this 9;		// reference wallet/TonCryptoHandler.params
+					sload_1;
+					sconst_0;
+					invokestatic 39;		// com/ftsafe/security/KeyBuilderX.buildXECKey(Lcom/ftsafe/security/NamedParameterSpec;SZ)Ljavacard/security/Key;
+					checkcast 0 40;		// T_CLASSORINTERFACE com/ftsafe/security/XECPublicKey
+					putfield_a 10;		// reference wallet/TonCryptoHandler.publicKey
+					aload_0;
+					sconst_0;
+					bspush 9;
+					sconst_0;
+					sconst_0;
+					invokestatic 42;		// javacard/security/Signature.getInstance(BBBZ)Ljavacard/security/Signature;
+					putfield_a 11;		// reference wallet/TonCryptoHandler.sig
+					return;
+		}
+
+		.method public getPublicKey(Ljavacard/framework/APDU;)V 2 {
+			.stack 7;
+			.locals 5;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_1;
+					invokevirtual 43;		// getBuffer()[B
+					astore_2;
+				L1:	aload_2;
+					sconst_4;
+					baload;
+					sspush 255;
+					sand;
+					sstore_3;
+				L2:	aload_1;
+					invokevirtual 17;		// setIncomingAndReceive()S
+					sstore 4;
+				L3:	sload_3;
+					sload 4;
+					if_scmpeq L5;
+				L4:	sspush 26368;
+					invokestatic 16;		// javacard/framework/ISOException.throwIt(S)V
+				L5:	aload_2;
+					bspush 6;
+					sload_3;
+					sconst_1;
+					ssub;
+					aload_2;
+					sconst_0;
+					aload_2;
+					bspush 65;
+					invokestatic 44;		// com/ftsafe/javacardx/btcmgr/CoinManager.getCoinPubData([BSS[BS[BS)S
+					sstore 5;
+				L6:	sload 5;
+					ifeq L8;
+				L7:	sspush 28420;
+					invokestatic 16;		// javacard/framework/ISOException.throwIt(S)V
+				L8:	aload_1;
+					invokevirtual 14;		// setOutgoing()S
+					sstore 6;
+				L9:	sload 6;
+					bspush 32;
+					if_scmpeq L11;
+				L10:	sspush 26368;
+					invokestatic 16;		// javacard/framework/ISOException.throwIt(S)V
+				L11:	aload_1;
+					sconst_0;
+					bspush 32;
+					invokevirtual 45;		// setOutgoingAndSend(SS)V
+					return;
+		}
+
+		.method public getPublicKeyWithDefaultHDPath(Ljavacard/framework/APDU;)V 3 {
+			.stack 7;
+			.locals 3;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_1;
+					invokevirtual 43;		// getBuffer()[B
+					astore_2;
+				L1:	aload_1;
+					invokevirtual 14;		// setOutgoing()S
+					sstore_3;
+				L2:	sload_3;
+					bspush 32;
+					if_scmpeq L4;
+				L3:	sspush 26368;
+					invokestatic 16;		// javacard/framework/ISOException.throwIt(S)V
+				L4:	getfield_a_this 7;		// reference wallet/TonCryptoHandler.rootPath
+					sconst_0;
+					getfield_a_this 7;		// reference wallet/TonCryptoHandler.rootPath
+					arraylength;
+					aload_2;
+					sconst_0;
+					aload_2;
+					bspush 65;
+					invokestatic 44;		// com/ftsafe/javacardx/btcmgr/CoinManager.getCoinPubData([BSS[BS[BS)S
+					sstore 4;
+				L5:	sload 4;
+					ifeq L7;
+				L6:	sspush 28420;
+					invokestatic 16;		// javacard/framework/ISOException.throwIt(S)V
+				L7:	aload_1;
+					sconst_0;
+					bspush 32;
+					invokevirtual 45;		// setOutgoingAndSend(SS)V
+					return;
+		}
+
+		.method public signShortMessage(Ljavacard/framework/APDU;)V 4 {
+			.stack 9;
+			.locals 9;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_1;
+					invokevirtual 43;		// getBuffer()[B
+					astore_2;
+				L1:	aload_2;
+					sconst_4;
+					baload;
+					sspush 255;
+					sand;
+					sstore_3;
+				L2:	aload_1;
+					invokevirtual 17;		// setIncomingAndReceive()S
+					sstore 4;
+				L3:	sload_3;
+					sload 4;
+					if_scmpeq L5;
+				L4:	sspush 26368;
+					invokestatic 16;		// javacard/framework/ISOException.throwIt(S)V
+				L5:	invokestatic 46;		// wallet/UserInterface.showWorking()V
+					sconst_5;
+					sstore 5;
+				L6:	aload_2;
+					sconst_5;
+					baload;
+					sconst_1;
+					sadd;
+					sstore 6;
+				L7:	sload 5;
+					sload 6;
+					sadd;
+					sstore 7;
+				L8:	aload_2;
+					sload 7;
+					baload;
+					sconst_1;
+					sadd;
+					sstore 8;
+				L9:	sconst_1;
+					aload_2;
+					sload 5;
+					sload 6;
+					getfield_a_this 5;		// reference wallet/CryptoHandler.tmpBuffer
+					sconst_0;
+					aload_2;
+					sload 7;
+					sload 8;
+					invokestatic 47;		// com/ftsafe/javacardx/btcmgr/CoinManager.signCoinData(S[BSS[BS[BSS)S
+					sstore 9;
+				L10:	sload 9;
+					ifeq L12;
+				L11:	sspush 28421;
+					invokestatic 16;		// javacard/framework/ISOException.throwIt(S)V
+				L12:	sconst_1;
+					invokestatic 20;		// wallet/UserInterface.showMainUI(Z)V
+					aload_1;
+					invokevirtual 14;		// setOutgoing()S
+					sstore 10;
+				L13:	sload 10;
+					bspush 66;
+					if_scmpeq L15;
+				L14:	sspush 26368;
+					invokestatic 16;		// javacard/framework/ISOException.throwIt(S)V
+				L15:	aload_1;
+					bspush 66;
+					invokevirtual 34;		// setOutgoingLength(S)V
+					aload_1;
+					getfield_a_this 5;		// reference wallet/CryptoHandler.tmpBuffer
+					sconst_0;
+					bspush 66;
+					invokevirtual 48;		// sendBytesLong([BSS)V
+					sconst_1;
+					invokestatic 20;		// wallet/UserInterface.showMainUI(Z)V
+					return;
+		}
+
+		.method public signStoredMessage(Ljavacard/framework/APDU;)V 5 {
+			.stack 9;
+			.locals 7;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_1;
+					invokevirtual 43;		// getBuffer()[B
+					astore_2;
+				L1:	aload_2;
+					sconst_4;
+					baload;
+					sspush 255;
+					sand;
+					sstore_3;
+				L2:	aload_1;
+					invokevirtual 17;		// setIncomingAndReceive()S
+					sstore 4;
+				L3:	sload_3;
+					sload 4;
+					if_scmpeq L5;
+				L4:	sspush 26368;
+					invokestatic 16;		// javacard/framework/ISOException.throwIt(S)V
+				L5:	invokestatic 46;		// wallet/UserInterface.showWorking()V
+					aload_2;
+					bspush 9;
+					baload;
+					sspush 255;
+					sand;
+					s2b;
+					sstore 5;
+				L6:	bspush 10;
+					sstore 6;
+				L7:	sconst_0;
+					getfield_a_this 4;		// reference wallet/CryptoHandler.dataForSigning
+					sconst_0;
+					getfield_s_this 2;		// short wallet/CryptoHandler.dataForSigningTotalLen
+					getfield_a_this 5;		// reference wallet/CryptoHandler.tmpBuffer
+					sconst_0;
+					aload_2;
+					sload 6;
+					sload 5;
+					invokestatic 47;		// com/ftsafe/javacardx/btcmgr/CoinManager.signCoinData(S[BSS[BS[BSS)S
+					sstore 7;
+				L8:	sload 7;
+					ifeq L10;
+				L9:	sspush 28421;
+					invokestatic 16;		// javacard/framework/ISOException.throwIt(S)V
+				L10:	aload_1;
+					invokevirtual 14;		// setOutgoing()S
+					sstore 8;
+				L11:	sload 8;
+					bspush 66;
+					if_scmpeq L13;
+				L12:	sspush 26368;
+					invokestatic 16;		// javacard/framework/ISOException.throwIt(S)V
+				L13:	aload_1;
+					bspush 66;
+					invokevirtual 34;		// setOutgoingLength(S)V
+					aload_1;
+					getfield_a_this 5;		// reference wallet/CryptoHandler.tmpBuffer
+					sconst_0;
+					bspush 66;
+					invokevirtual 48;		// sendBytesLong([BSS)V
+					sconst_1;
+					invokestatic 20;		// wallet/UserInterface.showMainUI(Z)V
+					return;
+		}
+
+		.method public signShortMessageWithDefaultPath(Ljavacard/framework/APDU;)V 6 {
+			.stack 9;
+			.locals 7;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_1;
+					invokevirtual 43;		// getBuffer()[B
+					astore_2;
+				L1:	aload_2;
+					sconst_4;
+					baload;
+					sspush 255;
+					sand;
+					sstore_3;
+				L2:	aload_1;
+					invokevirtual 17;		// setIncomingAndReceive()S
+					sstore 4;
+				L3:	sload_3;
+					sload 4;
+					if_scmpeq L5;
+				L4:	sspush 26368;
+					invokestatic 16;		// javacard/framework/ISOException.throwIt(S)V
+				L5:	invokestatic 46;		// wallet/UserInterface.showWorking()V
+					aload_2;
+					sconst_5;
+					baload;
+					sconst_1;
+					sadd;
+					sstore 5;
+				L6:	sconst_5;
+					sstore 6;
+				L7:	sconst_1;
+					aload_2;
+					sload 6;
+					sload 5;
+					getfield_a_this 5;		// reference wallet/CryptoHandler.tmpBuffer
+					sconst_0;
+					getfield_a_this 8;		// reference wallet/TonCryptoHandler.rootPathInLV
+					sconst_0;
+					getfield_a_this 8;		// reference wallet/TonCryptoHandler.rootPathInLV
+					arraylength;
+					invokestatic 47;		// com/ftsafe/javacardx/btcmgr/CoinManager.signCoinData(S[BSS[BS[BSS)S
+					sstore 7;
+				L8:	sload 7;
+					ifeq L10;
+				L9:	sspush 28421;
+					invokestatic 16;		// javacard/framework/ISOException.throwIt(S)V
+				L10:	aload_1;
+					invokevirtual 14;		// setOutgoing()S
+					sstore 8;
+				L11:	sload 8;
+					bspush 66;
+					if_scmpeq L13;
+				L12:	sspush 26368;
+					invokestatic 16;		// javacard/framework/ISOException.throwIt(S)V
+				L13:	aload_1;
+					bspush 66;
+					invokevirtual 34;		// setOutgoingLength(S)V
+					aload_1;
+					getfield_a_this 5;		// reference wallet/CryptoHandler.tmpBuffer
+					sconst_0;
+					bspush 66;
+					invokevirtual 48;		// sendBytesLong([BSS)V
+					sconst_1;
+					invokestatic 20;		// wallet/UserInterface.showMainUI(Z)V
+					return;
+		}
+
+		.method public signStoredMessageWithDefaultPath(Ljavacard/framework/APDU;)V 7 {
+			.stack 9;
+			.locals 3;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_1;
+					invokevirtual 43;		// getBuffer()[B
+					astore_2;
+				L1:	invokestatic 46;		// wallet/UserInterface.showWorking()V
+					sconst_0;
+					getfield_a_this 4;		// reference wallet/CryptoHandler.dataForSigning
+					sconst_0;
+					getfield_s_this 2;		// short wallet/CryptoHandler.dataForSigningTotalLen
+					getfield_a_this 3;		// reference wallet/CryptoHandler.signatureBytes
+					sconst_0;
+					getfield_a_this 7;		// reference wallet/TonCryptoHandler.rootPath
+					sconst_0;
+					getfield_a_this 7;		// reference wallet/TonCryptoHandler.rootPath
+					arraylength;
+					invokestatic 47;		// com/ftsafe/javacardx/btcmgr/CoinManager.signCoinData(S[BSS[BS[BSS)S
+					sstore_3;
+				L2:	sload_3;
+					ifeq L4;
+				L3:	sspush 28421;
+					invokestatic 16;		// javacard/framework/ISOException.throwIt(S)V
+				L4:	aload_1;
+					invokevirtual 14;		// setOutgoing()S
+					sstore 4;
+				L5:	sload 4;
+					bspush 66;
+					if_scmpeq L7;
+				L6:	sspush 26368;
+					invokestatic 16;		// javacard/framework/ISOException.throwIt(S)V
+				L7:	aload_1;
+					bspush 66;
+					invokevirtual 34;		// setOutgoingLength(S)V
+					aload_1;
+					getfield_a_this 3;		// reference wallet/CryptoHandler.signatureBytes
+					sconst_0;
+					bspush 66;
+					invokevirtual 48;		// sendBytesLong([BSS)V
+					sconst_1;
+					invokestatic 20;		// wallet/UserInterface.showMainUI(Z)V
+					return;
+		}
+
+		.method public verifySignature(Ljavacard/framework/APDU;)V 8 {
+			.stack 7;
+			.locals 11;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_1;
+					invokevirtual 43;		// getBuffer()[B
+					astore_2;
+				L1:	aload_2;
+					sconst_4;
+					baload;
+					sspush 255;
+					sand;
+					sstore_3;
+				L2:	aload_1;
+					invokevirtual 17;		// setIncomingAndReceive()S
+					sstore 4;
+				L3:	sload_3;
+					sload 4;
+					if_scmpeq L6;
+				L4:	sload_3;
+					bspush 67;
+					if_scmpge L6;
+				L5:	sspush 26368;
+					invokestatic 16;		// javacard/framework/ISOException.throwIt(S)V
+				L6:	invokestatic 50;		// wallet/UserInterface.showVerifying()V
+					aload_2;
+					sconst_5;
+					baload;
+					sstore 5;
+				L7:	bspush 6;
+					sstore 6;
+				L8:	sload 6;
+					sload 5;
+					sadd;
+					sconst_1;
+					sadd;
+					sstore 7;
+				L9:	sload 7;
+					bspush 64;
+					sadd;
+					sconst_2;
+					sadd;
+					sstore 8;
+				L10:	aload_2;
+					sload 7;
+					bspush 64;
+					sadd;
+					sconst_1;
+					sadd;
+					baload;
+					sstore 9;
+				L11:	aload_2;
+					sload 8;
+					sload 9;
+					getfield_a_this 6;		// reference wallet/TonCryptoHandler.keyBuf
+					sconst_0;
+					aconst_null;
+					bspush 65;
+					invokestatic 44;		// com/ftsafe/javacardx/btcmgr/CoinManager.getCoinPubData([BSS[BS[BS)S
+					sstore 10;
+				L12:	sload 10;
+					ifeq L14;
+				L13:	sspush 28420;
+					invokestatic 16;		// javacard/framework/ISOException.throwIt(S)V
+				L14:	getfield_a_this 10;		// reference wallet/TonCryptoHandler.publicKey
+					getfield_a_this 6;		// reference wallet/TonCryptoHandler.keyBuf
+					sconst_1;
+					bspush 32;
+					invokeinterface 4 40 3;		// com/ftsafe/security/XECPublicKey
+					getfield_a_this 11;		// reference wallet/TonCryptoHandler.sig
+					getfield_a_this 10;		// reference wallet/TonCryptoHandler.publicKey
+					sconst_2;
+					invokevirtual 51;		// init(Ljavacard/security/Key;B)V
+					getfield_a_this 11;		// reference wallet/TonCryptoHandler.sig
+					aload_2;
+					sload 6;
+					sload 5;
+					aload_2;
+					sload 7;
+					bspush 64;
+					invokevirtual 52;		// verify([BSS[BSS)Z
+					sstore 11;
+				L15:	aload_1;
+					invokevirtual 14;		// setOutgoing()S
+					sstore 12;
+				L16:	sload 12;
+					sconst_1;
+					if_scmpeq L18;
+				L17:	sspush 26368;
+					invokestatic 16;		// javacard/framework/ISOException.throwIt(S)V
+				L18:	aload_2;
+					sconst_0;
+					sload 11;
+					sconst_1;
+					if_scmpne L20;
+				L19:	sconst_1;
+					goto L21;
+				L20:	sconst_0;
+				L21:	bastore;
+					aload_1;
+					sconst_0;
+					sconst_1;
+					invokevirtual 45;		// setOutgoingAndSend(SS)V
+				L22:	goto L25;
+				L23:	astore 11;
+				L24:	aload 11;
+					invokevirtual 53;		// getReason()S
+					invokestatic 16;		// javacard/framework/ISOException.throwIt(S)V
+				L25:	sconst_1;
+					invokestatic 20;		// wallet/UserInterface.showMainUI(Z)V
+					return;
+			.exceptionTable {
+				// start_block end_block handler_block catch_type_index
+				L14 L22 L23 49;
+			}
+		}
+
+		.method public verifySignatureWithDefaultPath(Ljavacard/framework/APDU;)V 9 {
+			.stack 7;
+			.locals 9;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_1;
+					invokevirtual 43;		// getBuffer()[B
+					astore_2;
+				L1:	aload_2;
+					sconst_4;
+					baload;
+					sspush 255;
+					sand;
+					sstore_3;
+				L2:	aload_1;
+					invokevirtual 17;		// setIncomingAndReceive()S
+					sstore 4;
+				L3:	sload_3;
+					sload 4;
+					if_scmpeq L6;
+				L4:	sload_3;
+					bspush 67;
+					if_scmpge L6;
+				L5:	sspush 26368;
+					invokestatic 16;		// javacard/framework/ISOException.throwIt(S)V
+				L6:	invokestatic 50;		// wallet/UserInterface.showVerifying()V
+					getfield_a_this 7;		// reference wallet/TonCryptoHandler.rootPath
+					sconst_0;
+					getfield_a_this 7;		// reference wallet/TonCryptoHandler.rootPath
+					arraylength;
+					getfield_a_this 6;		// reference wallet/TonCryptoHandler.keyBuf
+					sconst_0;
+					aconst_null;
+					bspush 65;
+					invokestatic 44;		// com/ftsafe/javacardx/btcmgr/CoinManager.getCoinPubData([BSS[BS[BS)S
+					sstore 5;
+				L7:	sload 5;
+					ifeq L9;
+				L8:	sspush 28420;
+					invokestatic 16;		// javacard/framework/ISOException.throwIt(S)V
+				L9:	getfield_a_this 10;		// reference wallet/TonCryptoHandler.publicKey
+					getfield_a_this 6;		// reference wallet/TonCryptoHandler.keyBuf
+					sconst_1;
+					bspush 32;
+					invokeinterface 4 40 3;		// com/ftsafe/security/XECPublicKey
+					getfield_a_this 11;		// reference wallet/TonCryptoHandler.sig
+					getfield_a_this 10;		// reference wallet/TonCryptoHandler.publicKey
+					sconst_2;
+					invokevirtual 51;		// init(Ljavacard/security/Key;B)V
+					aload_2;
+					sconst_5;
+					baload;
+					sstore 6;
+				L10:	bspush 6;
+					sstore 7;
+				L11:	sload 7;
+					sload 6;
+					sadd;
+					sconst_1;
+					sadd;
+					sstore 8;
+				L12:	getfield_a_this 11;		// reference wallet/TonCryptoHandler.sig
+					aload_2;
+					sload 7;
+					sload 6;
+					aload_2;
+					sload 8;
+					bspush 64;
+					invokevirtual 52;		// verify([BSS[BSS)Z
+					sstore 9;
+				L13:	aload_1;
+					invokevirtual 14;		// setOutgoing()S
+					sstore 10;
+				L14:	sload 10;
+					sconst_1;
+					if_scmpeq L16;
+				L15:	sspush 26368;
+					invokestatic 16;		// javacard/framework/ISOException.throwIt(S)V
+				L16:	aload_2;
+					sconst_0;
+					sload 9;
+					sconst_1;
+					if_scmpne L18;
+				L17:	sconst_1;
+					goto L19;
+				L18:	sconst_0;
+				L19:	bastore;
+					aload_1;
+					sconst_0;
+					sconst_1;
+					invokevirtual 45;		// setOutgoingAndSend(SS)V
+				L20:	goto L23;
+				L21:	astore 6;
+				L22:	aload 6;
+					invokevirtual 53;		// getReason()S
+					invokestatic 16;		// javacard/framework/ISOException.throwIt(S)V
+				L23:	sconst_1;
+					invokestatic 20;		// wallet/UserInterface.showMainUI(Z)V
+					return;
+			.exceptionTable {
+				// start_block end_block handler_block catch_type_index
+				L9 L20 L21 49;
+			}
+		}
+
+	}
+
+	.class public UserInterface 5 extends 0.0 {		// extends java/lang/Object
+
+		.fields {
+			 short max_X 0;		// S
+			public static byte[] TON 0 = {84,79,78};		// [B
+			public static byte[] satoshi 1 = {115,97,116,111,115,104,105};		// [B
+			public static byte[] My_address 2 = {77,121,32,97,100,100,114,101,115,115,58,0};		// [B
+			public static byte[] confirmSending 3 = {67,111,110,102,105,114,109,32,115,101,110,100,105,110,103};		// [B
+			public static byte[] SEND 4 = {83,101,110,100};		// [B
+			public static byte[] to 5 = {116,111,0};		// [B
+			public static byte[] reConfirmSending 6 = {82,101,45,99,111,110,102,105,114,109,32,115,101,110,100,105,110,103};		// [B
+			public static byte[] includingFee 7 = {105,110,99,108,117,100,105,110,103,32,102,101,101,58,0};		// [B
+			public static byte[] fromYourWallet 8 = {102,114,111,109,32,121,111,117,114,32,119,97,108,108,101,116,0};		// [B
+			public static byte[] CONFIRM 9 = {67,111,110,102,105,114,109,0};		// [B
+			public static byte[] Im_Sure 10 = {73,39,109,32,83,117,114,101,0};		// [B
+			public static final byte[] APPROVED 11 = {65,112,112,114,111,118,101,100,0};		// [B
+			public static byte[] Rejected 12 = {82,101,106,101,99,116,101,100,0};		// [B
+			public static byte[] DATA_TRANSMIT 13 = {82,101,99,101,105,118,105,110,103,32,100,97,116,97,0};		// [B
+			public static final byte[] SIGN_DATA 14 = {80,114,111,99,101,115,115,105,110,103,0};		// [B
+			public static final byte[] TIMER_OUT 15 = {84,105,109,101,32,111,117,116,0};		// [B
+			public static final byte[] WRITE_UNBLOCKING_PIN 16 = {87,114,105,116,101,85,110,98,108,111,99,107,105,110,103,80,105,110,0};		// [B
+			public static final byte[] WRITE_MAX_PIN_TRIES 17 = {87,114,105,116,101,32,109,97,120,32,80,73,78,32,116,114,105,101,115,0};		// [B
+			public static final byte[] CHECK_PIN 18 = {67,104,101,99,107,105,110,103,32,80,73,78,0};		// [B
+			public static final byte[] VERIFYING_SIGNATURE 19 = {86,101,114,105,102,121,105,110,103,32,115,105,103,110,0};		// [B
+			static short max_Y;		// S
+		}
+
+		.publicMethodTable 1 {
+			equals(Ljava/lang/Object;)Z;
+			getCoinIco()[B;
+		}
+
+		.packageMethodTable 0 {
+			timeOut()V;
+			showTransationRejected()V;
+			showAddr([BSS)S;
+		}
+
+		.method public <init>()V 0 {
+			.stack 2;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 41;		// java/lang/Object.<init>()V
+					aload_0;
+					sconst_0;
+					putfield_s 12;		// short wallet/UserInterface.max_X
+					return;
+		}
+
+		.method static showTransationApproved()V {
+			.stack 1;
+			.locals 0;
+
+				L0:	getstatic_a 55;		// reference wallet/UserInterface.APPROVED
+					invokestatic 56;		// wallet/UserInterface.showText([B)V
+					sspush 2000;
+					invokestatic 57;		// com/ftsafe/javacardx/IOUtil/Timer.wait(S)V
+					sconst_1;
+					invokestatic 20;		// wallet/UserInterface.showMainUI(Z)V
+					return;
+		}
+
+		.method static showDataTransmit()V {
+			.stack 1;
+			.locals 0;
+
+				L0:	getstatic_a 58;		// reference wallet/UserInterface.DATA_TRANSMIT
+					invokestatic 56;		// wallet/UserInterface.showText([B)V
+					return;
+		}
+
+		.method static showWorking()V {
+			.stack 1;
+			.locals 0;
+
+				L0:	getstatic_a 59;		// reference wallet/UserInterface.SIGN_DATA
+					invokestatic 56;		// wallet/UserInterface.showText([B)V
+					return;
+		}
+
+		.method static showVerifying()V {
+			.stack 1;
+			.locals 0;
+
+				L0:	getstatic_a 60;		// reference wallet/UserInterface.VERIFYING_SIGNATURE
+					invokestatic 56;		// wallet/UserInterface.showText([B)V
+					return;
+		}
+
+		.method static showWriteMaxPinTries()V {
+			.stack 1;
+			.locals 0;
+
+				L0:	getstatic_a 61;		// reference wallet/UserInterface.WRITE_MAX_PIN_TRIES
+					invokestatic 56;		// wallet/UserInterface.showText([B)V
+					return;
+		}
+
+		.method static showWriteUnblockingPin()V {
+			.stack 1;
+			.locals 0;
+
+				L0:	getstatic_a 62;		// reference wallet/UserInterface.WRITE_UNBLOCKING_PIN
+					invokestatic 56;		// wallet/UserInterface.showText([B)V
+					return;
+		}
+
+		.method static showCheckPin()V {
+			.stack 1;
+			.locals 0;
+
+				L0:	getstatic_a 63;		// reference wallet/UserInterface.CHECK_PIN
+					invokestatic 56;		// wallet/UserInterface.showText([B)V
+					return;
+		}
+
+		.method static showText([B)V {
+			.stack 7;
+			.locals 0;
+
+				L0:	sconst_0;
+					invokestatic 64;		// com/ftsafe/javacardx/IOUtil/View.clearScreen(Z)V
+					sconst_0;
+					getstatic_s 65;		// short wallet/UserInterface.max_Y
+					sconst_2;
+					sdiv;
+					aload_0;
+					sconst_0;
+					aload_0;
+					arraylength;
+					sconst_1;
+					sconst_2;
+					invokestatic 66;		// com/ftsafe/javacardx/IOUtil/View.drawString(SS[BSSZB)V
+					invokestatic 67;		// com/ftsafe/javacardx/IOUtil/View.refreshScreen()V
+					return;
+		}
+
+		.method static showShort(S)V {
+			.stack 0;
+			.locals 0;
+
+				L0:	return;
+		}
+
+		.method  timeOut()V 128 {
+			.stack 1;
+			.locals 0;
+
+				L0:	getstatic_a 68;		// reference wallet/UserInterface.TIMER_OUT
+					invokestatic 56;		// wallet/UserInterface.showText([B)V
+					sspush 2000;
+					invokestatic 57;		// com/ftsafe/javacardx/IOUtil/Timer.wait(S)V
+					sconst_1;
+					invokestatic 20;		// wallet/UserInterface.showMainUI(Z)V
+					return;
+		}
+
+		.method  showTransationRejected()V 129 {
+			.stack 1;
+			.locals 0;
+
+				L0:	getstatic_a 69;		// reference wallet/UserInterface.Rejected
+					invokestatic 56;		// wallet/UserInterface.showText([B)V
+					sspush 2000;
+					invokestatic 57;		// com/ftsafe/javacardx/IOUtil/Timer.wait(S)V
+					sconst_1;
+					invokestatic 20;		// wallet/UserInterface.showMainUI(Z)V
+					return;
+		}
+
+		.method static showMainUI(Z)V {
+			.stack 6;
+			.locals 0;
+
+				L0:	sload_0;
+					aconst_null;
+					sconst_0;
+					sconst_0;
+					sconst_0;
+					sconst_0;
+					invokestatic 70;		// com/ftsafe/javacardx/IOUtil/View.showMain(Z[BSSSS)V
+					return;
+		}
+
+		.method  showAddr([BSS)S 130 {
+			.stack 1;
+			.locals 0;
+
+				L0:	sconst_0;
+					sreturn;
+		}
+
+		.method public getCoinIco()[B 1 {
+			.stack 1;
+			.locals 0;
+
+				L0:	aconst_null;
+					areturn;
+		}
+
+	}
+
+	.class public WalletApplet 6 extends 1.3 {		// extends javacard/framework/Applet
+
+		.fields {
+			private CryptoHandler cryptoHandler 0;		// Lwallet/CryptoHandler;
+			private static final byte WALLET_APPLET_CLA = -80;		// B
+			private static final byte INS_WRITE_UNBLOCKING_PIN = 16;		// B
+			private static final byte INS_WRITE_MAX_PIN_TRIES = 32;		// B
+			private static final byte INS_FINISH_PERS = -112;		// B
+			private static final byte INS_GET_PUBLIC_KEY = -96;		// B
+			private static final byte INS_GET_PUBLIC_KEY_WITH_DEFAULT_HD_PATH = -89;		// B
+			private static final byte INS_SHOW_PIN_TABLE = -95;		// B
+			private static final byte INS_VERIFY_PIN = -94;		// B
+			private static final byte INS_SIGN_SHORT_MESSAGE = -93;		// B
+			private static final byte INS_SIGN_STORED_MESSAGE = -92;		// B
+			private static final byte INS_SIGN_SHORT_MESSAGE_WITH_DEFAULT_PATH = -91;		// B
+			private static final byte INS_SIGN_STORED_MESSAGE_WITH_DEFAULT_PATH = -90;		// B
+			private static final byte INS_SET_DATA_FOR_SIGNING = -64;		// B
+			private static final byte INS_GET_APP_INFO = -63;		// B
+			private static final byte INS_VERIFY_SIGNATURE = -48;		// B
+			private static final byte INS_VERIFY_SIGNATURE_WITH_DEFAULT_PATH = -47;		// B
+			private static final byte INS_UNBLOCK_PIN = -16;		// B
+		}
+
+		.publicMethodTable 7 {
+			equals(Ljava/lang/Object;)Z;
+			register()V;
+			register([BSB)V;
+			selectingApplet()Z;
+			deselect()V;
+			getShareableInterfaceObject(Ljavacard/framework/AID;B)Ljavacard/framework/Shareable;;
+			select()Z;
+			process(Ljavacard/framework/APDU;)V;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>()V 0 {
+			.stack 3;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 71;		// javacard/framework/Applet.<init>()V
+					aload_0;
+					new 72;		// wallet/TonCryptoHandler
+					dup;
+					invokespecial 73;		// wallet/TonCryptoHandler.<init>()V
+					putfield_a 13;		// reference wallet/WalletApplet.cryptoHandler
+					return;
+		}
+
+		.method public static install([BSB)V 1 {
+			.stack 5;
+			.locals 0;
+
+				L0:	new 75;		// wallet/WalletApplet
+					dup;
+					invokespecial 76;		// wallet/WalletApplet.<init>()V
+					aload_0;
+					sload_1;
+					sconst_1;
+					sadd;
+					aload_0;
+					sload_1;
+					baload;
+					invokevirtual 77;		// register([BSB)V
+					return;
+		}
+
+		.method public process(Ljavacard/framework/APDU;)V 7 {
+			.stack 2;
+			.locals 3;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_0;
+					invokevirtual 78;		// selectingApplet()Z
+					ifeq L5;
+				L1:	sconst_2;
+					invokestatic 79;		// com/ftsafe/javacardx/btcmgr/CoinManager.setCurve(B)S
+					sstore_2;
+				L2:	sload_2;
+					sspush -21931;
+					if_scmpeq L4;
+				L3:	sspush 28419;
+					invokestatic 16;		// javacard/framework/ISOException.throwIt(S)V
+				L4:	return;
+				L5:	aload_1;
+					invokevirtual 43;		// getBuffer()[B
+					astore_2;
+				L6:	aload_2;
+					sconst_0;
+					baload;
+					sspush 255;
+					sand;
+					s2b;
+					sstore_3;
+				L7:	aload_2;
+					sconst_1;
+					baload;
+					sspush 255;
+					sand;
+					s2b;
+					sstore 4;
+				L8:	sload_3;
+					ifne L11;
+				L9:	sload 4;
+					bspush -92;
+					if_scmpne L11;
+				L10:	return;
+				L11:	sload_3;
+					bspush -80;
+					if_scmpeq L13;
+				L12:	sspush 28160;
+					invokestatic 16;		// javacard/framework/ISOException.throwIt(S)V
+				L13:	invokestatic 35;		// org/globalplatform/GPSystem.getCardContentState()B
+					slookupswitch L50 4 7 L14 23 L35 39 L47 55 L20;
+				L14:	sload 4;
+					slookupswitch L19 4 -112 L17 -63 L18 16 L16 32 L15;
+				L15:	aload_1;
+					invokestatic 80;		// wallet/PinHandler.writeMaxPinTries(Ljavacard/framework/APDU;)V
+					goto_w L51;
+				L16:	aload_1;
+					invokestatic 81;		// wallet/PinHandler.writeUnblockingPin(Ljavacard/framework/APDU;)V
+					goto_w L51;
+				L17:	aload_1;
+					invokestatic 82;		// wallet/CommonHandler.finishPersonalization(Ljavacard/framework/APDU;)V
+					goto_w L51;
+				L18:	aload_1;
+					invokestatic 83;		// wallet/CommonHandler.getAppInfo(Ljavacard/framework/APDU;)V
+					goto_w L51;
+				L19:	sspush 27904;
+					invokestatic 16;		// javacard/framework/ISOException.throwIt(S)V
+					goto_w L51;
+				L20:	sload 4;
+					stableswitch L34 -96 -47 L21 L23 L31 L25 L26 L27 L28 L22 L34 L34 L34 L34 L34 L34 L34 L34 L34 L34 L34 L34 L34 L34 L34 L34 L34 L34 L34 L34 L34 L34 L34 L34 L24 L33 L34 L34 L34 L34 L34 L34 L34 L34 L34 L34 L34 L34 L34 L34 L29 L30;
+				L21:	getfield_a_this 13;		// reference wallet/WalletApplet.cryptoHandler
+					aload_1;
+					invokevirtual 84;		// getPublicKey(Ljavacard/framework/APDU;)V
+					goto_w L51;
+				L22:	getfield_a_this 13;		// reference wallet/WalletApplet.cryptoHandler
+					aload_1;
+					invokevirtual 85;		// getPublicKeyWithDefaultHDPath(Ljavacard/framework/APDU;)V
+					goto_w L51;
+				L23:	invokestatic 86;		// wallet/PinHandler.showPinTable()V
+					goto_w L51;
+				L24:	getfield_a_this 13;		// reference wallet/WalletApplet.cryptoHandler
+					aload_1;
+					invokevirtual 87;		// setDataForSigning(Ljavacard/framework/APDU;)V
+					goto_w L51;
+				L25:	getfield_a_this 13;		// reference wallet/WalletApplet.cryptoHandler
+					aload_1;
+					invokevirtual 88;		// signShortMessage(Ljavacard/framework/APDU;)V
+					goto_w L51;
+				L26:	getfield_a_this 13;		// reference wallet/WalletApplet.cryptoHandler
+					aload_1;
+					invokevirtual 89;		// signStoredMessage(Ljavacard/framework/APDU;)V
+					goto_w L51;
+				L27:	getfield_a_this 13;		// reference wallet/WalletApplet.cryptoHandler
+					aload_1;
+					invokevirtual 90;		// signShortMessageWithDefaultPath(Ljavacard/framework/APDU;)V
+					goto_w L51;
+				L28:	getfield_a_this 13;		// reference wallet/WalletApplet.cryptoHandler
+					aload_1;
+					invokevirtual 91;		// signStoredMessageWithDefaultPath(Ljavacard/framework/APDU;)V
+					goto_w L51;
+				L29:	getfield_a_this 13;		// reference wallet/WalletApplet.cryptoHandler
+					aload_1;
+					invokevirtual 92;		// verifySignature(Ljavacard/framework/APDU;)V
+					goto_w L51;
+				L30:	getfield_a_this 13;		// reference wallet/WalletApplet.cryptoHandler
+					aload_1;
+					invokevirtual 93;		// verifySignatureWithDefaultPath(Ljavacard/framework/APDU;)V
+					goto_w L51;
+				L31:	aload_1;
+					invokestatic 94;		// wallet/PinHandler.checkPin(Ljavacard/framework/APDU;)Z
+					ifne_w L51;
+				L32:	bspush 39;
+					invokestatic 54;		// org/globalplatform/GPSystem.setCardContentState(B)Z
+					pop;
+					sspush 28418;
+					invokestatic 16;		// javacard/framework/ISOException.throwIt(S)V
+					goto_w L51;
+				L33:	aload_1;
+					invokestatic 83;		// wallet/CommonHandler.getAppInfo(Ljavacard/framework/APDU;)V
+					goto_w L51;
+				L34:	sspush 27904;
+					invokestatic 16;		// javacard/framework/ISOException.throwIt(S)V
+					goto_w L51;
+				L35:	sload 4;
+					stableswitch L46 -96 -63 L36 L37 L43 L39 L40 L41 L42 L46 L46 L46 L46 L46 L46 L46 L46 L46 L46 L46 L46 L46 L46 L46 L46 L46 L46 L46 L46 L46 L46 L46 L46 L46 L38 L45;
+				L36:	getfield_a_this 13;		// reference wallet/WalletApplet.cryptoHandler
+					aload_1;
+					invokevirtual 84;		// getPublicKey(Ljavacard/framework/APDU;)V
+					goto L51;
+				L37:	invokestatic 86;		// wallet/PinHandler.showPinTable()V
+					goto L51;
+				L38:	getfield_a_this 13;		// reference wallet/WalletApplet.cryptoHandler
+					aload_1;
+					invokevirtual 87;		// setDataForSigning(Ljavacard/framework/APDU;)V
+					goto L51;
+				L39:	getfield_a_this 13;		// reference wallet/WalletApplet.cryptoHandler
+					aload_1;
+					invokevirtual 88;		// signShortMessage(Ljavacard/framework/APDU;)V
+					goto L51;
+				L40:	getfield_a_this 13;		// reference wallet/WalletApplet.cryptoHandler
+					aload_1;
+					invokevirtual 89;		// signStoredMessage(Ljavacard/framework/APDU;)V
+					goto L51;
+				L41:	getfield_a_this 13;		// reference wallet/WalletApplet.cryptoHandler
+					aload_1;
+					invokevirtual 90;		// signShortMessageWithDefaultPath(Ljavacard/framework/APDU;)V
+					goto L51;
+				L42:	getfield_a_this 13;		// reference wallet/WalletApplet.cryptoHandler
+					aload_1;
+					invokevirtual 91;		// signStoredMessageWithDefaultPath(Ljavacard/framework/APDU;)V
+					goto L51;
+				L43:	aload_1;
+					invokestatic 94;		// wallet/PinHandler.checkPin(Ljavacard/framework/APDU;)Z
+					ifne L51;
+				L44:	bspush 39;
+					invokestatic 54;		// org/globalplatform/GPSystem.setCardContentState(B)Z
+					pop;
+					sspush 28418;
+					invokestatic 16;		// javacard/framework/ISOException.throwIt(S)V
+					goto L51;
+				L45:	aload_1;
+					invokestatic 83;		// wallet/CommonHandler.getAppInfo(Ljavacard/framework/APDU;)V
+					goto L51;
+				L46:	sspush 27904;
+					invokestatic 16;		// javacard/framework/ISOException.throwIt(S)V
+					goto L51;
+				L47:	sload 4;
+					slookupswitch L49 1 -16 L48;
+				L48:	aload_1;
+					invokestatic 95;		// wallet/PinHandler.unblockPin(Ljavacard/framework/APDU;)V
+					goto L51;
+				L49:	sspush 27904;
+					invokestatic 16;		// javacard/framework/ISOException.throwIt(S)V
+					goto L51;
+				L50:	sspush 28160;
+					invokestatic 16;		// javacard/framework/ISOException.throwIt(S)V
+				L51:	return;
+		}
+
+	}
+
+}

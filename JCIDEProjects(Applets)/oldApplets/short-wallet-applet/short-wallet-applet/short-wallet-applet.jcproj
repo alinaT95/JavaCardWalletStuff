@@ -1,0 +1,43 @@
+<JavaCardProject name="short-wallet-applet" version="2">
+<USER>
+<PKG name="wallet" aid="31 31 32 32 33 33 34 34 35 35 36 36" major="1" minor="0">
+<APPLET aid="31 31 32 32 33 33 34 34 35 35 36 36 00" instanceaid="" parameter="" authority="" privileges="" index="3528" name="wallet"/>
+<CLASS name="BtcCryptoHandler"/>
+<CLASS name="Constants"/>
+<CLASS name="Secp256k1"/>
+<CLASS name="CommonHandler"/>
+</PKG>
+</USER>
+<BuildPropertyConfig>
+<JCKit_Option>
+<OutType>EXP JCA CAP</OutType>
+<_SupportInt>1</_SupportInt>
+<_verbos>0</_verbos>
+<_nowarn>0</_nowarn>
+<_debug>1</_debug>
+<_nobanner>0</_nobanner>
+<_noverify>0</_noverify>
+<_mask>0</_mask>
+<_Adddition/>
+</JCKit_Option>
+<JavaCompilerOption>
+<_Source>1.5</_Source>
+<_Target>1.5</_Target>
+<_Encoding>windows-1251</_Encoding>
+<_GenAllDegugInfo>1</_GenAllDegugInfo>
+<_GenNoWarnings>0</_GenNoWarnings>
+<_OutputAboutCompilerDoing>0</_OutputAboutCompilerDoing>
+<_OutputWhereDeprecatedApisAre>1</_OutputWhereDeprecatedApisAre>
+<_Adddition/>
+</JavaCompilerOption>
+<Buildpaths>
+<ClasspathEntry>
+<CPE_CONTAINER name="Global Platform 2.1.1" kind="K_DEFAULT_GP"/>
+<CPE_CONTAINER name="java_card_kit-3_0_4" kind="K_DEFAULT_SYSTEM_JCRE"/>
+</ClasspathEntry>
+<ConvertorBinDirPath/>
+</Buildpaths>
+<LocalJavaHome JavaHome="C:\JavaCardKit\JDK"/>
+</BuildPropertyConfig>
+<solution_relate_to_project/>
+</JavaCardProject>

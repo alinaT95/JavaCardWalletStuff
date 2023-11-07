@@ -1,0 +1,24 @@
+<JavaCardSolution name="ton-wallet-applet-with-coin-manager">
+    <JavaCardProjects>
+        <JavaCardProject path="ton-wallet-applet-with-coin-manager/ton-wallet-applet-with-coin-manager.jcproj" />
+    </JavaCardProjects>
+    <Build>
+        <BuildDependon />
+    </Build>
+    <Config activeconfig="ton-wallet-applet-with-coin-manager">
+        <ConfigItem name="ton-wallet-applet-with-coin-manager">
+            <InstallConfig>
+                <PKG project_name="ton-wallet-applet-with-coin-manager" pkg_name="wallet" aid="31 31 32 32 33 33 34 34 35 35 36 36" major="1" minor="0">
+                    <APPLET aid="31 31 32 32 33 33 34 34 35 35 36 36 00" authority="" instanceaid="" parameter="" privileges="" index="8896" name="WalletApplet" />
+                </PKG>
+            </InstallConfig>
+            <DebugInfo>
+                <Protocol name="T0|T1" />
+            </DebugInfo>
+        </ConfigItem>
+    </Config>
+    <Platform>
+        <ATR Value="3B 90 95 80 81 1F 03 18" />
+        <ChipPack Name="Telegram" />
+    </Platform>
+</JavaCardSolution>

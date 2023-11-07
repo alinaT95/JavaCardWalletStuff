@@ -1,0 +1,20 @@
+<JavaCardSolution name="CoinPassBIO">
+    <JavaCardProjects>
+        <JavaCardProject path="CoinPassBIO.jcproj" />
+    </JavaCardProjects>
+    <Build>
+        <BuildDependon />
+    </Build>
+    <Config activeconfig="CoinPassBIO" ATR="3B 90 95 80 81 1F 03 18">
+        <ConfigItem name="CoinPassBIO">
+            <InstallConfig>
+                <PKG project_name="CoinPassBIO" pkg_name="com.ftsafe.CoinPassBIO" aid="D1 56 00 01 32 83 00 42 4C 44 00 00 42 54 43" major="0" minor="0">
+                    <APPLET aid="D1 56 00 01 32 83 00 42 4C 44 00 00 42 54 43 01" authority="" instanceaid="" parameter="" privileges="" index="-31904" name="CoinPassBIO" />
+                </PKG>
+            </InstallConfig>
+            <DebugInfo>
+                <Protocol name="T0|T1" />
+            </DebugInfo>
+        </ConfigItem>
+    </Config>
+</JavaCardSolution>

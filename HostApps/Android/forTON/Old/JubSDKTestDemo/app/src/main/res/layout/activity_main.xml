@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    android:padding="12dp">
+
+    <Button
+        android:id="@+id/scan"
+        style="@style/button"
+        android:onClick="onClick"
+        android:text="@string/connect" />
+
+    <TextView
+        android:id="@+id/text_state"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="11dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:onClick="onClick"
+        android:textColor="@color/colorPrimaryDark" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.5"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/label_data"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="13dp"
+                android:text="Data for signing (in HEX):" />
+
+            <EditText
+                android:id="@+id/edit_data"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="13dp"
+                android:layout_marginRight="13dp"
+                android:text="0101010101" />
+
+            <TextView
+                android:id="@+id/label_path"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="13dp"
+                android:text="Bip44 HDPath:" />
+
+            <EditText
+                android:id="@+id/edit_path"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="13dp"
+                android:layout_marginRight="13dp"
+                android:text="m/44'/171'/0'/0'/0'"/>
+
+            <Button
+                android:id="@+id/create_ton_context"
+                style="@style/button"
+                android:onClick="onClick"
+                android:text="create_ton_context" />
+
+            <Button
+                android:id="@+id/verify_pin"
+                style="@style/button"
+                android:onClick="onClick"
+                android:text="verify_pin" />
+
+            <Button
+                android:id="@+id/ton_get_public_key_with_default_path"
+                style="@style/button"
+                android:onClick="onClick"
+                android:text="ton_get_public_key_with_default_path" />
+
+            <Button
+                android:id="@+id/ton_get_public_key_with_specified_path"
+                style="@style/button"
+                android:onClick="onClick"
+                android:text="ton_get_public_key_with_specified_path" />
+
+
+            <Button
+                android:id="@+id/ton_sign_with_default_path"
+                style="@style/button"
+                android:onClick="onClick"
+                android:text="ton_sign_with_default_path" />
+
+            <Button
+                android:id="@+id/ton_sign_with_specified_path"
+                style="@style/button"
+                android:onClick="onClick"
+                android:text="ton_sign_with_specified_path" />
+
+            <!--<Button
+                android:id="@+id/btn_send_apdu"
+                style="@style/button"
+                android:onClick="onClick"
+                android:text="send apdu" />
+
+            <Button
+                android:id="@+id/btn_get_device_info"
+                style="@style/button"
+                android:onClick="onClick"
+                android:text="get_device_info" />
+
+            <Button
+                android:id="@+id/btn_applet"
+                style="@style/button"
+                android:onClick="onClick"
+                android:text="enum_applets" />
+
+            <Button
+                android:id="@+id/btn_set_time_out"
+                style="@style/button"
+                android:onClick="onClick"
+                android:text="set_time_out" />
+
+            <Button
+                android:id="@+id/btn_btc_getAddress"
+                style="@style/button"
+                android:onClick="onClick"
+                android:text="btc_get_address" />
+
+            <Button
+                android:id="@+id/btn_btc_show_address"
+                style="@style/button"
+                android:onClick="onClick"
+                android:text="btc_show_address" />
+
+            <Button
+                android:id="@+id/btn_btc_trans"
+                style="@style/button"
+                android:onClick="onClick"
+                android:text="btc_transaction" />
+
+            <Button
+                android:id="@+id/btn_btc_set_my_address"
+                style="@style/button"
+                android:onClick="onClick"
+                android:text="btc_set_my_address" />-->
+
+        </LinearLayout>
+    </ScrollView>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="vertical">
+
+        <TextView
+            android:id="@+id/info_tv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="13dp" />
+    </ScrollView>
+
+</LinearLayout>

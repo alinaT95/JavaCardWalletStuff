@@ -1,0 +1,24 @@
+<JavaCardSolution name="JuBiterEd25519">
+    <JavaCardProjects>
+        <JavaCardProject path="JuBiterEd25519/JuBiterEd25519.jcproj" />
+        <JavaCardProject path="../../ton-wallet-applet/ton-wallet-applet.jcproj" />
+    </JavaCardProjects>
+    <Build>
+        <BuildDependon />
+    </Build>
+    <Config activeconfig="JuBiterEd25519" ATR="3B 90 95 80 81 1F 03 18">
+        <ConfigItem name="JuBiterEd25519">
+            <InstallConfig>
+                <PKG project_name="JuBiterEd25519" pkg_name="JuBiterPackage" aid="D1 56 45 44 32 35 35 31 39 30 20" major="1" minor="0">
+                    <APPLET aid="D1 56 45 44 32 35 35 31 39 30 20 00" authority="" instanceaid="" parameter="" privileges="" index="-29736" name="JuBiterPackage" />
+                </PKG>
+                <PKG project_name="ton-wallet-applet" pkg_name="wallet" aid="31 31 32 32 33 33 34 34 35 35 36 36" major="1" minor="0">
+                    <APPLET aid="31 31 32 32 33 33 34 34 35 35 36 36 00" authority="" instanceaid="" parameter="" privileges="" index="1384" name="WalletApplet" />
+                </PKG>
+            </InstallConfig>
+            <DebugInfo>
+                <Protocol name="T0|T1" />
+            </DebugInfo>
+        </ConfigItem>
+    </Config>
+</JavaCardSolution>

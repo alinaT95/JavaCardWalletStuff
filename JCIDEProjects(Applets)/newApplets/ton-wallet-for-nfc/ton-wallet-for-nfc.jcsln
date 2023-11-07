@@ -1,0 +1,28 @@
+<JavaCardSolution name="ton-wallet-for-nfc">
+    <JavaCardProjects>
+        <JavaCardProject path="ton-wallet-for-nfc/ton-wallet-for-nfc.jcproj" />
+        <JavaCardProject path="../../../../workspace/testCrypto/testCrypto.jcproj" />
+    </JavaCardProjects>
+    <Build>
+        <BuildDependon />
+    </Build>
+    <Config activeconfig="ton-wallet-for-nfc">
+        <ConfigItem name="ton-wallet-for-nfc">
+            <InstallConfig>
+                <PKG project_name="ton-wallet-for-nfc" pkg_name="tonwallet" aid="31 31 32 32 33 33 34 34 35 35 36 36" major="1" minor="1">
+                    <APPLET aid="31 31 32 32 33 33 34 34 35 35 36 36 00" authority="" instanceaid="" parameter="" privileges="" index="-14376" name="TonWalletApplet" />
+                </PKG>
+                <PKG project_name="testCrypto" pkg_name="test" aid="31 31 32 32 33 33 34 34 35 35 36 36" major="1" minor="1">
+                    <APPLET aid="31 31 32 32 33 33 34 34 35 35 36 36 00" authority="" instanceaid="" parameter="" privileges="" index="32056" name="TestCrypto" />
+                </PKG>
+            </InstallConfig>
+            <DebugInfo>
+                <Protocol name="T0|T1" />
+            </DebugInfo>
+        </ConfigItem>
+    </Config>
+    <Platform>
+        <ATR Value="3B 90 95 80 81 1F 03 18" />
+        <ChipPack Name="Telegram" />
+    </Platform>
+</JavaCardSolution>

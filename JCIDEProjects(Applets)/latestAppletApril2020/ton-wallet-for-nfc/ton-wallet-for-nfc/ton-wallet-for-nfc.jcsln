@@ -1,0 +1,11 @@
+<JavaCardSolution name="ton-wallet-for-nfc">
+    <JavaCardProjects>
+        <JavaCardProject path="ton-wallet-for-nfc/ton-wallet-for-nfc.jcproj" />
+    </JavaCardProjects>
+    <Build>
+        <BuildDependon />
+    </Build>
+    <Platform>
+        <ChipPack Name="JuBiterNFC" />
+    </Platform>
+</JavaCardSolution>

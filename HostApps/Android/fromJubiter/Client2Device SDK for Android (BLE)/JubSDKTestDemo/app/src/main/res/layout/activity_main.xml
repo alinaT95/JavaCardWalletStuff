@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    android:padding="12dp">
+
+    <Button
+        android:id="@+id/btn_scan"
+        style="@style/button"
+        android:onClick="onClick"
+        android:text="@string/connect" />
+
+    <TextView
+        android:id="@+id/text_state"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="11dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:onClick="onClick"
+        android:textColor="@color/colorPrimaryDark" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.5"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/edit_apdu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="13dp"
+                android:layout_marginRight="13dp"
+                android:text="00D6FEED01" />
+
+            <Button
+                android:id="@+id/btn_send_apdu"
+                style="@style/button"
+                android:onClick="onClick"
+                android:text="send apdu" />
+
+            <Button
+                android:id="@+id/btn_get_device_info"
+                style="@style/button"
+                android:onClick="onClick"
+                android:text="get_device_info" />
+
+            <Button
+                android:id="@+id/btn_applet"
+                style="@style/button"
+                android:onClick="onClick"
+                android:text="enum_applets" />
+
+            <Button
+                android:id="@+id/btn_set_time_out"
+                style="@style/button"
+                android:onClick="onClick"
+                android:text="set_time_out" />
+
+            <Button
+                android:id="@+id/btn_btc_getAddress"
+                style="@style/button"
+                android:onClick="onClick"
+                android:text="btc_get_address" />
+
+            <Button
+                android:id="@+id/btn_btc_show_address"
+                style="@style/button"
+                android:onClick="onClick"
+                android:text="btc_show_address" />
+
+            <Button
+                android:id="@+id/btn_btc_trans"
+                style="@style/button"
+                android:onClick="onClick"
+                android:text="btc_transaction" />
+
+            <Button
+                android:id="@+id/btn_btc_set_my_address"
+                style="@style/button"
+                android:onClick="onClick"
+                android:text="btc_set_my_address" />
+        </LinearLayout>
+    </ScrollView>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="vertical">
+
+        <TextView
+            android:id="@+id/info_tv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="13dp" />
+    </ScrollView>
+
+</LinearLayout>

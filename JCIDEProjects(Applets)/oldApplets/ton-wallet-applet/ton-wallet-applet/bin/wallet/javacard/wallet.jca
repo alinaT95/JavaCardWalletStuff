@@ -1,0 +1,4327 @@
+// converted by version 1.3
+// on Mon Jul 29 10:54:21 MSK 2019
+
+.package wallet {
+	.aid 0x31:0x31:0x32:0x32:0x33:0x33:0x34:0x34:0x35:0x35:0x36:0x36;
+	.version 1.0;
+
+	.imports {
+		0xA0:0x0:0x0:0x0:0x62:0x0:0x1 1.0;		//java/lang
+		0xA0:0x0:0x0:0x0:0x62:0x1:0x1 1.5;		//javacard/framework
+		0xA0:0x0:0x0:0x1:0x51:0x0 1.0;		//org/globalplatform
+		0xA0:0x0:0x0:0x0:0x62:0x1:0x2 1.5;		//javacard/security
+		0xD1:0x56:0x0:0x1:0x32:0x0:0xB 1.0;		//com/ftsafe/security
+	}
+
+	.applet {
+		0x31:0x31:0x32:0x32:0x33:0x33:0x34:0x34:0x35:0x35:0x36:0x36:0x0 WalletApplet;
+	}
+
+	.constantPool {
+		// 0
+		instanceFieldRef short CryptoHandler/sigLen;
+		// 1
+		instanceFieldRef short CryptoHandler/numberOfBytesReceived;
+		// 2
+		instanceFieldRef short CryptoHandler/dataForSigningTotalLen;
+		// 3
+		instanceFieldRef byte[] CryptoHandler/signatureBytes;
+		// 4
+		instanceFieldRef byte[] CryptoHandler/dataForSigning;
+		// 5
+		instanceFieldRef byte[] CryptoHandler/tmpBuffer;
+		// 6
+		instanceFieldRef byte[] TonCryptoHandler/priKeyBufForTest;
+		// 7
+		instanceFieldRef byte[] TonCryptoHandler/pubKeyBufForTest;
+		// 8
+		instanceFieldRef byte[] TonCryptoHandler/seedBuf;
+		// 9
+		instanceFieldRef 3.14 TonCryptoHandler/randomData;
+		// 10
+		instanceFieldRef 3.15 TonCryptoHandler/sig;
+		// 11
+		instanceFieldRef 4.6 TonCryptoHandler/params;
+		// 12
+		instanceFieldRef 4.3 TonCryptoHandler/privateKey;
+		// 13
+		instanceFieldRef 4.4 TonCryptoHandler/publicKey;
+		// 14
+		instanceFieldRef byte[] TonCryptoHandler/privateExponent;
+		// 15
+		instanceFieldRef byte[] TonCryptoHandler/privateSault;
+		// 16
+		instanceFieldRef CryptoHandler WalletApplet/cryptoHandler;
+		// 17
+		staticMethodRef 1.7.1(S)V;		// javacard/framework/ISOException.throwIt(S)V
+		// 18
+		staticMethodRef 1.16.2([BS[BSS)S;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+		// 19
+		staticMethodRef PinHandler/resetPin()V;
+		// 20
+		staticMethodRef PinHandler/checkPin()V;
+		// 21
+		virtualMethodRef CryptoHandler/importSeed([B)V;
+		// 22
+		staticFieldRef byte[] HmacSha512/data;
+		// 23
+		staticMethodRef 1.16.3([BSSB)S;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+		// 24
+		staticMethodRef SHA512/resetUpdateDoFinal([BSS[BS)S;
+		// 25
+		staticMethodRef PinHandler/checkPinPolicy(S)Z;
+		// 26
+		classRef 1.9;		// javacard/framework/OwnerPIN
+		// 27
+		staticMethodRef 1.9.0(BB)V;		// javacard/framework/OwnerPIN.<init>(BB)V
+		// 28
+		staticFieldRef 1.9 PinHandler/pin;
+		// 29
+		virtualMethodRef 1.9.8([BSB)V;		// update([BSB)V
+		// 30
+		staticFieldRef 1.9 PinHandler/unblockingPin;
+		// 31
+		staticMethodRef PinHandler/validateApduParamsAndPins([B)V;
+		// 32
+		virtualMethodRef 1.9.2()B;		// getTriesRemaining()B
+		// 33
+		virtualMethodRef 1.9.1([BSB)Z;		// check([BSB)Z
+		// 34
+		virtualMethodRef 1.9.6()V;		// resetAndUnblock()V
+		// 35
+		virtualMethodRef 1.9.4()Z;		// isValidated()Z
+		// 36
+		virtualMethodRef 1.9.5()V;		// reset()V
+		// 37
+		staticMethodRef 1.8.15(SB)[S;		// javacard/framework/JCSystem.makeTransientShortArray(SB)[S
+		// 38
+		staticFieldRef short[] SHA512/w_short;
+		// 39
+		staticFieldRef short[] SHA512/h_short;
+		// 40
+		staticFieldRef short[] SHA512/hashState;
+		// 41
+		staticFieldRef byte[] SHA512/buffer;
+		// 42
+		staticFieldRef short SHA512/bufferOff;
+		// 43
+		staticFieldRef short SHA512/bufferLeft;
+		// 44
+		staticFieldRef short[] SHA512/H_INIT_SHORT;
+		// 45
+		staticMethodRef SHA512/compressionFunction([SS[BS)V;
+		// 46
+		staticMethodRef 1.16.4([BS)S;		// javacard/framework/Util.getShort([BS)S
+		// 47
+		staticFieldRef short[] SHA512/K_SHORT;
+		// 48
+		staticMethodRef CryptoHandler/<init>()V;
+		// 49
+		virtualMethodRef 1.10.4(SS)V;		// sendBytes(SS)V
+		// 50
+		classRef 1.13;		// javacard/framework/SystemException
+		// 51
+		staticMethodRef 0.0.0()V;		// java/lang/Object.<init>()V
+		// 52
+		staticMethodRef 3.14.0(B)Ljavacard/security/RandomData;;		// javacard/security/RandomData.getInstance(B)Ljavacard/security/RandomData;
+			.descriptor	Ljavacard/security/RandomData;	3.14;
+
+		// 53
+		virtualMethodRef 1.10.1()[B;		// getBuffer()[B
+		// 54
+		staticMethodRef 3.15.2(BBBZ)Ljavacard/security/Signature;;		// javacard/security/Signature.getInstance(BBBZ)Ljavacard/security/Signature;
+			.descriptor	Ljavacard/security/Signature;	3.15;
+
+		// 55
+		staticMethodRef 2.3.8(B)Z;		// org/globalplatform/GPSystem.setCardContentState(B)Z
+		// 56
+		staticMethodRef 4.6.0(S)Lcom/ftsafe/security/NamedParameterSpec;;		// com/ftsafe/security/NamedParameterSpec.getInstance(S)Lcom/ftsafe/security/NamedParameterSpec;
+			.descriptor	Lcom/ftsafe/security/NamedParameterSpec;	4.6;
+
+		// 57
+		staticMethodRef 1.8.13(SB)[B;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+		// 58
+		staticMethodRef 4.10.1(Lcom/ftsafe/security/NamedParameterSpec;SZ)Ljavacard/security/Key;;		// com/ftsafe/security/KeyBuilderX.buildXECKey(Lcom/ftsafe/security/NamedParameterSpec;SZ)Ljavacard/security/Key;
+			.descriptor	Lcom/ftsafe/security/NamedParameterSpec;	4.6;
+			.descriptor	Ljavacard/security/Key;	3.0;
+
+		// 59
+		classRef 4.3;		// com/ftsafe/security/XECPrivateKey
+		// 60
+		virtualMethodRef 1.10.7()S;		// setOutgoing()S
+		// 61
+		classRef 4.4;		// com/ftsafe/security/XECPublicKey
+		// 62
+		virtualMethodRef 1.10.9(S)V;		// setOutgoingLength(S)V
+		// 63
+		staticMethodRef SHA512/init()V;
+		// 64
+		virtualMethodRef 3.14.1([BSS)V;		// generateData([BSS)V
+		// 65
+		staticFieldRef byte[] TonCryptoHandler/BITCOIN_SEED;
+		// 66
+		staticMethodRef HmacSha512/computeHmacSha512([BSS[BSS[BS)S;
+		// 67
+		classRef 3.12;		// javacard/security/CryptoException
+		// 68
+		virtualMethodRef 3.12.1()S;		// getReason()S
+		// 69
+		staticMethodRef 1.16.6([BSS)S;		// javacard/framework/Util.setShort([BSS)S
+		// 70
+		virtualMethodRef 1.10.8(SS)V;		// setOutgoingAndSend(SS)V
+		// 71
+		virtualMethodRef 3.15.3(Ljavacard/security/Key;B)V;		// init(Ljavacard/security/Key;B)V
+			.descriptor	Ljavacard/security/Key;	3.0;
+
+		// 72
+		virtualMethodRef 3.15.5([BSS[BS)S;		// sign([BSS[BS)S
+		// 73
+		staticMethodRef 1.16.1([BS[BSS)S;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+		// 74
+		virtualMethodRef 3.15.7([BSS[BSS)Z;		// verify([BSS[BSS)Z
+		// 75
+		staticMethodRef 2.3.1()B;		// org/globalplatform/GPSystem.getCardContentState()B
+		// 76
+		staticMethodRef PinHandler/checkPinWithoutReset()V;
+		// 77
+		staticMethodRef 1.3.0()V;		// javacard/framework/Applet.<init>()V
+		// 78
+		classRef TonCryptoHandler;
+		// 79
+		staticMethodRef TonCryptoHandler/<init>()V;
+		// 80
+		virtualMethodRef 1.10.6()S;		// setIncomingAndReceive()S
+		// 81
+		classRef WalletApplet;
+		// 82
+		staticMethodRef WalletApplet/<init>()V;
+		// 83
+		virtualMethodRef 1.3.2([BSB)V;		// register([BSB)V
+		// 84
+		virtualMethodRef 1.3.3()Z;		// selectingApplet()Z
+		// 85
+		virtualMethodRef CryptoHandler/setupKeys(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		// 86
+		staticMethodRef PinHandler/writePin(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		// 87
+		staticMethodRef CommonHandler/finishPersonalization(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		// 88
+		staticMethodRef CommonHandler/getAppInfo(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		// 89
+		virtualMethodRef CryptoHandler/importPublicKey(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		// 90
+		virtualMethodRef CryptoHandler/importPrivateKey(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		// 91
+		virtualMethodRef CryptoHandler/getPublicMasterKey(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		// 92
+		virtualMethodRef CryptoHandler/setDataForSigning(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		// 93
+		virtualMethodRef CryptoHandler/signMessage(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		// 94
+		virtualMethodRef CryptoHandler/verifySignature(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		// 95
+		staticMethodRef PinHandler/verifyPin(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		// 96
+		staticMethodRef PinHandler/changePin(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		// 97
+		staticMethodRef PinHandler/unblockPin(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+	}
+
+	.class public CommonHandler 0 extends 0.0 {		// extends java/lang/Object
+
+		.publicMethodTable 1 {
+			equals(Ljava/lang/Object;)Z;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>()V 0 {
+			.stack 1;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 51;		// java/lang/Object.<init>()V
+					return;
+		}
+
+		.method public static finishPersonalization(Ljavacard/framework/APDU;)V 1 {
+			.stack 2;
+			.locals 2;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_0;
+					invokevirtual 53;		// getBuffer()[B
+					astore_1;
+				L1:	aload_1;
+					sconst_2;
+					baload;
+					sstore_2;
+				L2:	sload_2;
+					ifne L4;
+				L3:	bspush 55;
+					invokestatic 55;		// org/globalplatform/GPSystem.setCardContentState(B)Z
+					pop;
+					goto L5;
+				L4:	bspush 23;
+					invokestatic 55;		// org/globalplatform/GPSystem.setCardContentState(B)Z
+					pop;
+				L5:	return;
+		}
+
+		.method public static getAppInfo(Ljavacard/framework/APDU;)V 2 {
+			.stack 3;
+			.locals 2;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_0;
+					invokevirtual 53;		// getBuffer()[B
+					astore_1;
+				L1:	sconst_1;
+					sstore_2;
+				L2:	aload_0;
+					invokevirtual 60;		// setOutgoing()S
+					pop;
+					aload_0;
+					sload_2;
+					invokevirtual 62;		// setOutgoingLength(S)V
+					aload_1;
+					sconst_0;
+					invokestatic 75;		// org/globalplatform/GPSystem.getCardContentState()B
+					bastore;
+					aload_0;
+					sconst_0;
+					sload_2;
+					invokevirtual 49;		// sendBytes(SS)V
+					return;
+		}
+
+	}
+
+	.class public Constants 1 extends 0.0 {		// extends java/lang/Object
+
+		.fields {
+			public static final short SW_AUTH_FAILED = -25598;		// S
+			public static final short SW_INVALID_PARAMETER = -25585;		// S
+			public static final short SW_IDENTITY_BLOCKED = -25588;		// S
+			public static final short SW_INCORRECT_P1 = -25584;		// S
+			public static final short SW_INCORRECT_P2 = -25583;		// S
+			public static final short SW_UNAUTHORIZED = -25594;		// S
+			public static final short SW_UNSUPPORTED_FEATURE = -25595;		// S
+			public static final short SW_INCORRECT_ALG = -25591;		// S
+			public static final short SW_DATA_FOR_SIGNING_IS_TOO_LONG = -25590;		// S
+			public static final short SW_OPERATION_NOT_ALLOWED = -25597;		// S
+			public static final short SW_INTERNAL_ERROR = -25345;		// S
+			public static final byte APP_INSTALLED = 7;		// B
+			public static final byte APP_PERSONALIZED = 23;		// B
+			public static final byte APP_BLOCKED = 39;		// B
+			public static final byte APP_DEVELOPER_MODE = 55;		// B
+		}
+
+		.publicMethodTable 1 {
+			equals(Ljava/lang/Object;)Z;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>()V 0 {
+			.stack 1;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 51;		// java/lang/Object.<init>()V
+					return;
+		}
+
+	}
+
+	.class public abstract CryptoHandler 2 extends 0.0 {		// extends java/lang/Object
+
+		.fields {
+			protected short sigLen 0;		// S
+			protected short numberOfBytesReceived 1;		// S
+			protected short dataForSigningTotalLen 2;		// S
+			protected byte[] dataForSigning 3;		// [B
+			protected byte[] signatureBytes 4;		// [B
+			protected byte[] tmpBuffer 5;		// [B
+			public static final short KEY_SIZE = 32;		// S
+			public static final short DATA_FOR_SIGNING_MAX_SIZE_IN_BYTES = 1024;		// S
+			public static final short SIGNATURE_MAX_SIZE_IN_BYTES = 100;		// S
+			public static final short TMP_BUFFER_SIZE = 512;		// S
+		}
+
+		.publicMethodTable 1 {
+			equals(Ljava/lang/Object;)Z;
+			setDataForSigning(Ljavacard/framework/APDU;)V;
+			importSeed(Ljavacard/framework/APDU;)V;
+			setupKeys(Ljavacard/framework/APDU;)V;
+			importPublicKey(Ljavacard/framework/APDU;)V;
+			importPrivateKey(Ljavacard/framework/APDU;)V;
+			getPublicMasterKey(Ljavacard/framework/APDU;)V;
+			signMessage(Ljavacard/framework/APDU;)V;
+			verifySignature(Ljavacard/framework/APDU;)V;
+			setupMasterKeyWithoutSeed()V;
+			setupMasterKeyFromRandomSeed()V;
+			importSeed([B)V;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>()V 0 {
+			.stack 3;
+			.locals 1;
+
+				L0:	aload_0;
+					invokespecial 51;		// java/lang/Object.<init>()V
+					aload_0;
+					sconst_0;
+					putfield_s 0;		// short wallet/CryptoHandler.sigLen
+					aload_0;
+					sconst_0;
+					putfield_s 1;		// short wallet/CryptoHandler.numberOfBytesReceived
+					aload_0;
+					sconst_0;
+					putfield_s 2;		// short wallet/CryptoHandler.dataForSigningTotalLen
+				L1:	aload_0;
+					bspush 100;
+					sconst_2;
+					invokestatic 57;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					putfield_a 3;		// reference wallet/CryptoHandler.signatureBytes
+				L2:	goto L5;
+				L3:	astore_1;
+				L4:	aload_0;
+					bspush 100;
+					newarray 11;
+					putfield_a 3;		// reference wallet/CryptoHandler.signatureBytes
+				L5:	aload_0;
+					sspush 1024;
+					sconst_2;
+					invokestatic 57;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					putfield_a 4;		// reference wallet/CryptoHandler.dataForSigning
+				L6:	goto L9;
+				L7:	astore_1;
+				L8:	aload_0;
+					sspush 1024;
+					newarray 11;
+					putfield_a 4;		// reference wallet/CryptoHandler.dataForSigning
+				L9:	aload_0;
+					sspush 512;
+					sconst_2;
+					invokestatic 57;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					putfield_a 5;		// reference wallet/CryptoHandler.tmpBuffer
+				L10:	goto L13;
+				L11:	astore_1;
+				L12:	aload_0;
+					sspush 512;
+					newarray 11;
+					putfield_a 5;		// reference wallet/CryptoHandler.tmpBuffer
+				L13:	return;
+			.exceptionTable {
+				// start_block end_block handler_block catch_type_index
+				L1 L2 L3 50;
+				L5 L6 L7 50;
+				L9 L10 L11 50;
+			}
+		}
+
+		.method public setDataForSigning(Ljavacard/framework/APDU;)V 1 {
+			.stack 5;
+			.locals 4;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	invokestatic 76;		// wallet/PinHandler.checkPinWithoutReset()V
+					aload_1;
+					invokevirtual 53;		// getBuffer()[B
+					astore_2;
+				L1:	aload_2;
+					sconst_4;
+					baload;
+					sspush 255;
+					sand;
+					sstore_3;
+				L2:	aload_1;
+					invokevirtual 80;		// setIncomingAndReceive()S
+					sstore 4;
+				L3:	sload_3;
+					sload 4;
+					if_scmpeq L5;
+				L4:	sspush 26368;
+					invokestatic 17;		// javacard/framework/ISOException.throwIt(S)V
+				L5:	aload_2;
+					sconst_5;
+					getfield_a_this 4;		// reference wallet/CryptoHandler.dataForSigning
+					getfield_s_this 1;		// short wallet/CryptoHandler.numberOfBytesReceived
+					sload_3;
+					invokestatic 18;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					aload_2;
+					sconst_2;
+					baload;
+					sstore 5;
+				L6:	aload_0;
+					dup;
+					getfield_s 1;		// short wallet/CryptoHandler.numberOfBytesReceived
+					sload_3;
+					sadd;
+					putfield_s 1;		// short wallet/CryptoHandler.numberOfBytesReceived
+					sload 5;
+					sconst_1;
+					if_scmpne L10;
+				L7:	aload_0;
+					getfield_s_this 1;		// short wallet/CryptoHandler.numberOfBytesReceived
+					putfield_s 2;		// short wallet/CryptoHandler.dataForSigningTotalLen
+					getfield_s_this 2;		// short wallet/CryptoHandler.dataForSigningTotalLen
+					sspush 1024;
+					if_scmple L9;
+				L8:	sspush -25590;
+					invokestatic 17;		// javacard/framework/ISOException.throwIt(S)V
+				L9:	aload_0;
+					sconst_0;
+					putfield_s 1;		// short wallet/CryptoHandler.numberOfBytesReceived
+					invokestatic 19;		// wallet/PinHandler.resetPin()V
+				L10:	return;
+		}
+
+		.method public importSeed(Ljavacard/framework/APDU;)V 2 {
+			.stack 2;
+			.locals 1;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	invokestatic 20;		// wallet/PinHandler.checkPin()V
+					aload_1;
+					invokevirtual 53;		// getBuffer()[B
+					astore_2;
+				L1:	aload_0;
+					aload_2;
+					invokevirtual 21;		// importSeed([B)V
+					return;
+		}
+
+		.method public abstract setupKeys(Ljavacard/framework/APDU;)V 3 {
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		}
+
+		.method public abstract importPublicKey(Ljavacard/framework/APDU;)V 4 {
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		}
+
+		.method public abstract importPrivateKey(Ljavacard/framework/APDU;)V 5 {
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		}
+
+		.method public abstract getPublicMasterKey(Ljavacard/framework/APDU;)V 6 {
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		}
+
+		.method public abstract signMessage(Ljavacard/framework/APDU;)V 7 {
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		}
+
+		.method public abstract verifySignature(Ljavacard/framework/APDU;)V 8 {
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		}
+
+		.method public abstract setupMasterKeyWithoutSeed()V 9 {
+		}
+
+		.method public abstract setupMasterKeyFromRandomSeed()V 10 {
+		}
+
+		.method public abstract importSeed([B)V 11 {
+		}
+
+	}
+
+	.class public HmacSha512 3 extends 0.0 {		// extends java/lang/Object
+
+		.fields {
+			public static final short BLOCKSIZE = 128;		// S
+			public static final short HASHSIZE = 64;		// S
+			private static final short SW_UNSUPPORTED_KEYSIZE = -25586;		// S
+			private static final short SW_UNSUPPORTED_MSGSIZE = -25585;		// S
+			private static byte[] data;		// [B
+		}
+
+		.publicMethodTable 1 {
+			equals(Ljava/lang/Object;)Z;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>()V 0 {
+			.stack 1;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 51;		// java/lang/Object.<init>()V
+					return;
+		}
+
+		.method public static init([B)V 1 {
+			.stack 1;
+			.locals 0;
+
+				L0:	aload_0;
+					putstatic_a 22;		// reference wallet/HmacSha512.data
+					return;
+		}
+
+		.method public static computeHmacSha512([BSS[BSS[BS)S 2 {
+			.stack 5;
+			.locals 1;
+
+				L0:	sload_2;
+					sspush 128;
+					if_scmpgt L2;
+				L1:	sload_2;
+					ifge L3;
+				L2:	sspush -25586;
+					invokestatic 17;		// javacard/framework/ISOException.throwIt(S)V
+				L3:	sload 5;
+					bspush 64;
+					if_scmpgt L5;
+				L4:	sload 5;
+					ifge L6;
+				L5:	sspush -25585;
+					invokestatic 17;		// javacard/framework/ISOException.throwIt(S)V
+				L6:	sconst_0;
+					sstore 8;
+				L7:	sload 8;
+					sload_2;
+					if_scmpge L9;
+				L8:	getstatic_a 22;		// reference wallet/HmacSha512.data
+					sload 8;
+					aload_0;
+					sload_1;
+					sload 8;
+					sadd;
+					baload;
+					bspush 54;
+					sxor;
+					bastore;
+					sinc 8 1;
+					goto L7;
+				L9:	getstatic_a 22;		// reference wallet/HmacSha512.data
+					sload_2;
+					sspush 128;
+					sload_2;
+					ssub;
+					bspush 54;
+					invokestatic 23;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					aload_3;
+					sload 4;
+					getstatic_a 22;		// reference wallet/HmacSha512.data
+					sspush 128;
+					sload 5;
+					invokestatic 18;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					getstatic_a 22;		// reference wallet/HmacSha512.data
+					sconst_0;
+					sspush 128;
+					sload 5;
+					sadd;
+					getstatic_a 22;		// reference wallet/HmacSha512.data
+					sspush 128;
+					invokestatic 24;		// wallet/SHA512.resetUpdateDoFinal([BSS[BS)S
+					pop;
+					sconst_0;
+					sstore 8;
+				L10:	sload 8;
+					sload_2;
+					if_scmpge L12;
+				L11:	getstatic_a 22;		// reference wallet/HmacSha512.data
+					sload 8;
+					aload_0;
+					sload_1;
+					sload 8;
+					sadd;
+					baload;
+					bspush 92;
+					sxor;
+					bastore;
+					sinc 8 1;
+					goto L10;
+				L12:	getstatic_a 22;		// reference wallet/HmacSha512.data
+					sload_2;
+					sspush 128;
+					sload_2;
+					ssub;
+					bspush 92;
+					invokestatic 23;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					getstatic_a 22;		// reference wallet/HmacSha512.data
+					sconst_0;
+					sspush 192;
+					aload 6;
+					sload 7;
+					invokestatic 24;		// wallet/SHA512.resetUpdateDoFinal([BSS[BS)S
+					pop;
+					bspush 64;
+					sreturn;
+		}
+
+	}
+
+	.class public PinHandler 4 extends 0.0 {		// extends java/lang/Object
+
+		.fields {
+			public static final short SW_PIN_IS_NOT_INITIALIZED = -25589;		// S
+			private static final byte MIN_PIN_TRIES_NUM = 3;		// B
+			private static final byte MAX_PIN_TRIES_NUM = 10;		// B
+			private static final byte PIN_MIN_SIZE = 4;		// B
+			private static final byte PIN_MAX_SIZE = 16;		// B
+			private static final byte MAX_WRITE_PIN_INPUT_SIZE = 34;		// B
+			private static final byte MIN_WRITE_PIN_INPUT_SIZE = 10;		// B
+			private static final byte[] PIN_INIT_VALUE = {0,0,0,0};		// [B
+			private static 1.9 pin;		// Ljavacard/framework/OwnerPIN;
+			private static 1.9 unblockingPin;		// Ljavacard/framework/OwnerPIN;
+		}
+
+		.publicMethodTable 1 {
+			equals(Ljava/lang/Object;)Z;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>()V 0 {
+			.stack 1;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 51;		// java/lang/Object.<init>()V
+					return;
+		}
+
+		.method public static writePin(Ljavacard/framework/APDU;)V 1 {
+			.stack 4;
+			.locals 6;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_0;
+					invokevirtual 53;		// getBuffer()[B
+					astore_1;
+				L1:	aload_1;
+					sconst_4;
+					baload;
+					sspush 255;
+					sand;
+					sstore_2;
+				L2:	aload_0;
+					invokevirtual 80;		// setIncomingAndReceive()S
+					sstore_3;
+				L3:	sload_2;
+					sload_3;
+					if_scmpne L6;
+				L4:	sload_2;
+					bspush 34;
+					if_scmpgt L6;
+				L5:	sload_2;
+					bspush 10;
+					if_scmpge L7;
+				L6:	sspush 26368;
+					invokestatic 17;		// javacard/framework/ISOException.throwIt(S)V
+				L7:	aload_1;
+					sconst_2;
+					baload;
+					sstore 4;
+				L8:	sload 4;
+					sconst_3;
+					if_scmplt L10;
+				L9:	sload 4;
+					bspush 10;
+					if_scmple L11;
+				L10:	sspush -25585;
+					invokestatic 17;		// javacard/framework/ISOException.throwIt(S)V
+				L11:	aload_1;
+					sconst_5;
+					baload;
+					sstore 5;
+				L12:	sload 5;
+					invokestatic 25;		// wallet/PinHandler.checkPinPolicy(S)Z
+					ifne L14;
+				L13:	sspush -25585;
+					invokestatic 17;		// javacard/framework/ISOException.throwIt(S)V
+				L14:	aload_1;
+					bspush 6;
+					sload 5;
+					sadd;
+					baload;
+					sstore 6;
+				L15:	sload 6;
+					invokestatic 25;		// wallet/PinHandler.checkPinPolicy(S)Z
+					ifne L17;
+				L16:	sspush -25585;
+					invokestatic 17;		// javacard/framework/ISOException.throwIt(S)V
+				L17:	new 26;		// javacard/framework/OwnerPIN
+					dup;
+					sload 4;
+					bspush 16;
+					invokespecial 27;		// javacard/framework/OwnerPIN.<init>(BB)V
+					putstatic_a 28;		// reference wallet/PinHandler.pin
+					getstatic_a 28;		// reference wallet/PinHandler.pin
+					aload_1;
+					bspush 6;
+					sload 5;
+					invokevirtual 29;		// update([BSB)V
+					new 26;		// javacard/framework/OwnerPIN
+					dup;
+					sconst_3;
+					bspush 16;
+					invokespecial 27;		// javacard/framework/OwnerPIN.<init>(BB)V
+					putstatic_a 30;		// reference wallet/PinHandler.unblockingPin
+					getstatic_a 30;		// reference wallet/PinHandler.unblockingPin
+					aload_1;
+					bspush 6;
+					sload 5;
+					sadd;
+					sconst_1;
+					sadd;
+					s2b;
+					sload 6;
+					invokevirtual 29;		// update([BSB)V
+					return;
+		}
+
+		.method public static verifyPin(Ljavacard/framework/APDU;)V 2 {
+			.stack 4;
+			.locals 3;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_0;
+					invokevirtual 53;		// getBuffer()[B
+					astore_1;
+				L1:	aload_1;
+					invokestatic 31;		// wallet/PinHandler.validateApduParamsAndPins([B)V
+					aload_1;
+					sconst_4;
+					baload;
+					sspush 255;
+					sand;
+					sstore_2;
+				L2:	aload_0;
+					invokevirtual 80;		// setIncomingAndReceive()S
+					sstore_3;
+				L3:	sload_2;
+					sload_3;
+					if_scmpeq L5;
+				L4:	sspush -25585;
+					invokestatic 17;		// javacard/framework/ISOException.throwIt(S)V
+				L5:	sload_2;
+					invokestatic 25;		// wallet/PinHandler.checkPinPolicy(S)Z
+					ifne L7;
+				L6:	sspush -25585;
+					invokestatic 17;		// javacard/framework/ISOException.throwIt(S)V
+				L7:	getstatic_a 28;		// reference wallet/PinHandler.pin
+					invokevirtual 32;		// getTriesRemaining()B
+					ifne L9;
+				L8:	bspush 39;
+					invokestatic 55;		// org/globalplatform/GPSystem.setCardContentState(B)Z
+					pop;
+					sspush -25588;
+					invokestatic 17;		// javacard/framework/ISOException.throwIt(S)V
+				L9:	getstatic_a 28;		// reference wallet/PinHandler.pin
+					aload_1;
+					sconst_5;
+					sload_2;
+					s2b;
+					invokevirtual 33;		// check([BSB)Z
+					ifne L11;
+				L10:	sspush -25598;
+					invokestatic 17;		// javacard/framework/ISOException.throwIt(S)V
+				L11:	return;
+		}
+
+		.method public static changePin(Ljavacard/framework/APDU;)V 3 {
+			.stack 4;
+			.locals 5;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_0;
+					invokevirtual 53;		// getBuffer()[B
+					astore_1;
+				L1:	aload_1;
+					invokestatic 31;		// wallet/PinHandler.validateApduParamsAndPins([B)V
+					aload_1;
+					sconst_4;
+					baload;
+					sspush 255;
+					sand;
+					sstore_2;
+				L2:	aload_0;
+					invokevirtual 80;		// setIncomingAndReceive()S
+					sstore_3;
+				L3:	sload_2;
+					sload_3;
+					if_scmpne L6;
+				L4:	sload_2;
+					bspush 34;
+					if_scmpgt L6;
+				L5:	sload_2;
+					bspush 10;
+					if_scmpge L7;
+				L6:	sspush 26368;
+					invokestatic 17;		// javacard/framework/ISOException.throwIt(S)V
+				L7:	aload_1;
+					sconst_5;
+					baload;
+					sstore 4;
+				L8:	sload 4;
+					invokestatic 25;		// wallet/PinHandler.checkPinPolicy(S)Z
+					ifne L10;
+				L9:	sspush -25585;
+					invokestatic 17;		// javacard/framework/ISOException.throwIt(S)V
+				L10:	aload_1;
+					bspush 6;
+					sload 4;
+					sadd;
+					baload;
+					sstore 5;
+				L11:	sload 5;
+					invokestatic 25;		// wallet/PinHandler.checkPinPolicy(S)Z
+					ifne L13;
+				L12:	sspush -25585;
+					invokestatic 17;		// javacard/framework/ISOException.throwIt(S)V
+				L13:	getstatic_a 28;		// reference wallet/PinHandler.pin
+					invokevirtual 32;		// getTriesRemaining()B
+					ifne L15;
+				L14:	bspush 39;
+					invokestatic 55;		// org/globalplatform/GPSystem.setCardContentState(B)Z
+					pop;
+					sspush -25588;
+					invokestatic 17;		// javacard/framework/ISOException.throwIt(S)V
+				L15:	getstatic_a 28;		// reference wallet/PinHandler.pin
+					aload_1;
+					bspush 6;
+					sload 4;
+					invokevirtual 33;		// check([BSB)Z
+					ifne L17;
+				L16:	sspush -25598;
+					invokestatic 17;		// javacard/framework/ISOException.throwIt(S)V
+				L17:	getstatic_a 28;		// reference wallet/PinHandler.pin
+					aload_1;
+					bspush 6;
+					sload 4;
+					sadd;
+					sconst_1;
+					sadd;
+					sload 5;
+					invokevirtual 29;		// update([BSB)V
+					return;
+		}
+
+		.method public static unblockPin(Ljavacard/framework/APDU;)V 4 {
+			.stack 4;
+			.locals 3;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_0;
+					invokevirtual 53;		// getBuffer()[B
+					astore_1;
+				L1:	aload_1;
+					invokestatic 31;		// wallet/PinHandler.validateApduParamsAndPins([B)V
+					getstatic_a 28;		// reference wallet/PinHandler.pin
+					invokevirtual 32;		// getTriesRemaining()B
+					ifeq L3;
+				L2:	sspush -25597;
+					invokestatic 17;		// javacard/framework/ISOException.throwIt(S)V
+				L3:	aload_1;
+					sconst_4;
+					baload;
+					sspush 255;
+					sand;
+					sstore_2;
+				L4:	aload_0;
+					invokevirtual 80;		// setIncomingAndReceive()S
+					sstore_3;
+				L5:	sload_2;
+					sload_3;
+					if_scmpeq L7;
+				L6:	sspush 26368;
+					invokestatic 17;		// javacard/framework/ISOException.throwIt(S)V
+				L7:	sload_2;
+					invokestatic 25;		// wallet/PinHandler.checkPinPolicy(S)Z
+					ifne L9;
+				L8:	sspush -25585;
+					invokestatic 17;		// javacard/framework/ISOException.throwIt(S)V
+				L9:	getstatic_a 30;		// reference wallet/PinHandler.unblockingPin
+					aload_1;
+					sconst_5;
+					sload_2;
+					s2b;
+					invokevirtual 33;		// check([BSB)Z
+					ifne L11;
+				L10:	sspush -25598;
+					invokestatic 17;		// javacard/framework/ISOException.throwIt(S)V
+				L11:	getstatic_a 28;		// reference wallet/PinHandler.pin
+					invokevirtual 34;		// resetAndUnblock()V
+					bspush 23;
+					invokestatic 55;		// org/globalplatform/GPSystem.setCardContentState(B)Z
+					pop;
+					return;
+		}
+
+		.method private static checkPinPolicy(S)Z {
+			.stack 2;
+			.locals 0;
+
+				L0:	sload_0;
+					sconst_4;
+					if_scmplt L3;
+				L1:	sload_0;
+					bspush 16;
+					if_scmpgt L3;
+				L2:	sconst_1;
+					goto L4;
+				L3:	sconst_0;
+				L4:	sreturn;
+		}
+
+		.method public static checkPinWithoutReset()V 5 {
+			.stack 1;
+			.locals 0;
+
+				L0:	getstatic_a 28;		// reference wallet/PinHandler.pin
+					invokevirtual 35;		// isValidated()Z
+					ifne L2;
+				L1:	sspush -25594;
+					invokestatic 17;		// javacard/framework/ISOException.throwIt(S)V
+				L2:	return;
+		}
+
+		.method public static resetPin()V 6 {
+			.stack 1;
+			.locals 0;
+
+				L0:	getstatic_a 28;		// reference wallet/PinHandler.pin
+					invokevirtual 36;		// reset()V
+					return;
+		}
+
+		.method public static checkPin()V 7 {
+			.stack 0;
+			.locals 0;
+
+				L0:	invokestatic 76;		// wallet/PinHandler.checkPinWithoutReset()V
+					invokestatic 19;		// wallet/PinHandler.resetPin()V
+					return;
+		}
+
+		.method private static validateApduParamsAndPins([B)V {
+			.stack 2;
+			.locals 0;
+
+				L0:	getstatic_a 28;		// reference wallet/PinHandler.pin
+					ifnull L2;
+				L1:	getstatic_a 30;		// reference wallet/PinHandler.unblockingPin
+					ifnonnull L3;
+				L2:	sspush -25589;
+					invokestatic 17;		// javacard/framework/ISOException.throwIt(S)V
+				L3:	aload_0;
+					sconst_2;
+					baload;
+					ifeq L5;
+				L4:	sspush -25584;
+					invokestatic 17;		// javacard/framework/ISOException.throwIt(S)V
+				L5:	aload_0;
+					sconst_3;
+					baload;
+					ifeq L7;
+				L6:	sspush -25583;
+					invokestatic 17;		// javacard/framework/ISOException.throwIt(S)V
+				L7:	return;
+		}
+
+	}
+
+	.class public SHA512 5 extends 0.0 {		// extends java/lang/Object
+
+		.fields {
+			private static final short[] H_INIT_SHORT = {27145,-6553,-3140,-14072,-17561,-20859,-31542,-22725,15470,-3214,-364,-2005,-23217,-2758,24349,14065,20750,21119,-21018,-32047,-25851,26764,11070,27679,8067,-9813,-1215,-17045,23520,-13031,4990,8569};		// [S
+			private static final short[] K_SHORT = {17034,12184,-10456,-20958,28983,17553,9199,26061,-19008,-1073,-5043,15151,-5707,-9307,-32375,-9284,14678,-15781,-3256,-19144,23025,4593,-18939,-12263,-28097,-32092,-20711,20379,-21732,24277,-9619,-32488,-10233,-21864,-23805,578,4739,23297,17776,28606,9265,-31298,20196,-19828,21772,32195,-10753,-19230,29374,23924,-3461,-30353,-32546,-19970,15126,-26959,-25636,1703,9671,4661,-15973,-3724,-12439,9876,-7013,27073,-24847,19154,-4162,18310,14415,9699,4033,-25146,-29812,-10827,9228,-24116,30636,-25499,11753,11375,22827,629,19060,-31574,28326,-7037,23728,-22052,-17087,-1068,30457,-30502,-31983,21429,-26562,20818,-4506,-8277,-22479,-14739,11700,12816,-20477,10184,-26373,8511,-16551,32711,-16657,3812,-14624,3059,15784,-28734,-10841,-28345,-27894,-22747,1738,25425,-8189,-32145,5161,10599,2574,28272,10167,2693,18130,12284,11803,8504,23590,-14042,19756,28156,23236,10989,21304,3347,-25195,-19489,25866,29524,-29777,25566,30314,2747,15479,-19800,-32318,-14034,18413,-20762,-28046,11397,5250,13627,-23873,-5983,19697,868,-22502,26187,-17342,12289,-15797,-29840,-12040,-26735,-14484,20899,1620,-16848,-11886,-6119,-10513,21016,-10599,1572,21861,-22256,-3058,13701,22385,8234,4202,-24464,12987,-11848,6564,-16106,-18222,-12088,7735,27656,20801,-21677,10056,30540,-8306,-5223,13488,-17227,-7781,18600,14620,3251,-14903,23139,20184,-21942,-7359,-30005,23452,-13745,30563,-7309,26670,28659,-10574,-18269,29839,-32018,24047,-19716,30885,25455,17175,12128,-31544,30740,-24080,-21646,-29497,520,6756,14828,-28482,-6,9059,7720,-23472,27883,-8574,-16919,-16647,-23561,-19770,30997,-14735,30962,-7310,21291,-13785,16078,-5594,24988,-11898,-18233,8640,-15865,-5414,32214,-12832,-5346,-2691,20351,-4498,-11912,1776,26538,29207,28602,2659,32197,-23864,-26458,4415,-26620,-16647,3502,7025,2869,4892,18203,10459,30709,8964,32132,13002,-21637,16583,9363,15518,-16886,5577,-16708,17181,26564,-25584,3404,19653,-11074,-13506,17078,22911,10652,-923,32298,24523,28587,15062,-1300,27716,6540,19015,22551};		// [S
+			private static short[] h_short;		// [S
+			private static short[] w_short;		// [S
+			private static short[] hashState;		// [S
+			private static byte[] buffer;		// [B
+			private static short bufferOff;		// S
+			private static short bufferLeft;		// S
+		}
+
+		.publicMethodTable 1 {
+			equals(Ljava/lang/Object;)Z;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>()V 0 {
+			.stack 1;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 51;		// java/lang/Object.<init>()V
+					return;
+		}
+
+		.method public static init()V 1 {
+			.stack 2;
+			.locals 0;
+
+				L0:	bspush 64;
+					sconst_2;
+					invokestatic 37;		// javacard/framework/JCSystem.makeTransientShortArray(SB)[S
+					putstatic_a 38;		// reference wallet/SHA512.w_short
+					bspush 32;
+					sconst_2;
+					invokestatic 37;		// javacard/framework/JCSystem.makeTransientShortArray(SB)[S
+					putstatic_a 39;		// reference wallet/SHA512.h_short
+					bspush 32;
+					sconst_2;
+					invokestatic 37;		// javacard/framework/JCSystem.makeTransientShortArray(SB)[S
+					putstatic_a 40;		// reference wallet/SHA512.hashState
+					sspush 128;
+					sconst_2;
+					invokestatic 57;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					putstatic_a 41;		// reference wallet/SHA512.buffer
+					return;
+		}
+
+		.method public static resetUpdateDoFinal([BSS[BS)S 2 {
+			.stack 5;
+			.locals 7;
+
+				L0:	sconst_0;
+					putstatic_s 42;		// short wallet/SHA512.bufferOff
+					sspush 128;
+					putstatic_s 43;		// short wallet/SHA512.bufferLeft
+					aload_0;
+					sload_1;
+					getstatic_a 41;		// reference wallet/SHA512.buffer
+					getstatic_s 42;		// short wallet/SHA512.bufferOff
+					getstatic_s 43;		// short wallet/SHA512.bufferLeft
+					invokestatic 18;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					sload_1;
+					getstatic_s 43;		// short wallet/SHA512.bufferLeft
+					sadd;
+					sstore_1;
+					sspush 128;
+					putstatic_s 43;		// short wallet/SHA512.bufferLeft
+					sconst_0;
+					putstatic_s 42;		// short wallet/SHA512.bufferOff
+					sconst_0;
+					sstore 10;
+				L1:	sload 10;
+					bspush 32;
+					if_scmpge L3;
+				L2:	getstatic_a 40;		// reference wallet/SHA512.hashState
+					sload 10;
+					getstatic_a 44;		// reference wallet/SHA512.H_INIT_SHORT
+					sload 10;
+					saload;
+					sastore;
+					getstatic_a 39;		// reference wallet/SHA512.h_short
+					sload 10;
+					getstatic_a 40;		// reference wallet/SHA512.hashState
+					sload 10;
+					saload;
+					sastore;
+					sinc 10 1;
+					goto L1;
+				L3:	getstatic_a 39;		// reference wallet/SHA512.h_short
+					sconst_0;
+					getstatic_a 41;		// reference wallet/SHA512.buffer
+					sconst_0;
+					invokestatic 45;		// wallet/SHA512.compressionFunction([SS[BS)V
+					sconst_0;
+					sstore 10;
+				L4:	sload 10;
+					bspush 32;
+					if_scmpge_w L11;
+				L5:	sconst_0;
+					sstore 5;
+				L6:	sload 10;
+					sconst_3;
+					sadd;
+					sstore 6;
+				L7:	sload 10;
+					sconst_3;
+					sadd;
+					sstore 7;
+				L8:	getstatic_a 40;		// reference wallet/SHA512.hashState
+					sload 7;
+					saload;
+					sstore 8;
+				L9:	getstatic_a 39;		// reference wallet/SHA512.h_short
+					sload 6;
+					saload;
+					sstore 9;
+				L10:	getstatic_a 40;		// reference wallet/SHA512.hashState
+					sload 7;
+					sload 8;
+					sload 9;
+					sadd;
+					sload 5;
+					sadd;
+					sastore;
+					sload 8;
+					sload 9;
+					sand;
+					sload 8;
+					sload 9;
+					sor;
+					getstatic_a 40;		// reference wallet/SHA512.hashState
+					sload 7;
+					saload;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 5;
+					sinc 6 -1;
+					sinc 7 -1;
+					getstatic_a 40;		// reference wallet/SHA512.hashState
+					sload 7;
+					saload;
+					sstore 8;
+					getstatic_a 39;		// reference wallet/SHA512.h_short
+					sload 6;
+					saload;
+					sstore 9;
+					getstatic_a 40;		// reference wallet/SHA512.hashState
+					sload 7;
+					sload 8;
+					sload 9;
+					sadd;
+					sload 5;
+					sadd;
+					sastore;
+					sload 8;
+					sload 9;
+					sand;
+					sload 8;
+					sload 9;
+					sor;
+					getstatic_a 40;		// reference wallet/SHA512.hashState
+					sload 7;
+					saload;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 5;
+					sinc 6 -1;
+					sinc 7 -1;
+					getstatic_a 40;		// reference wallet/SHA512.hashState
+					sload 7;
+					saload;
+					sstore 8;
+					getstatic_a 39;		// reference wallet/SHA512.h_short
+					sload 6;
+					saload;
+					sstore 9;
+					getstatic_a 40;		// reference wallet/SHA512.hashState
+					sload 7;
+					sload 8;
+					sload 9;
+					sadd;
+					sload 5;
+					sadd;
+					sastore;
+					sload 8;
+					sload 9;
+					sand;
+					sload 8;
+					sload 9;
+					sor;
+					getstatic_a 40;		// reference wallet/SHA512.hashState
+					sload 7;
+					saload;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 5;
+					sinc 6 -1;
+					sinc 7 -1;
+					getstatic_a 40;		// reference wallet/SHA512.hashState
+					sload 7;
+					saload;
+					sstore 8;
+					getstatic_a 39;		// reference wallet/SHA512.h_short
+					sload 6;
+					saload;
+					sstore 9;
+					getstatic_a 40;		// reference wallet/SHA512.hashState
+					sload 7;
+					sload 8;
+					sload 9;
+					sadd;
+					sload 5;
+					sadd;
+					sastore;
+					sinc 10 4;
+					goto_w L4;
+				L11:	sload_2;
+					sspush 128;
+					ssub;
+					sstore 10;
+				L12:	aload_0;
+					sload_1;
+					getstatic_a 41;		// reference wallet/SHA512.buffer
+					getstatic_s 42;		// short wallet/SHA512.bufferOff
+					sload 10;
+					invokestatic 18;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					getstatic_s 43;		// short wallet/SHA512.bufferLeft
+					sload 10;
+					ssub;
+					putstatic_s 43;		// short wallet/SHA512.bufferLeft
+					getstatic_s 42;		// short wallet/SHA512.bufferOff
+					sload 10;
+					sadd;
+					putstatic_s 42;		// short wallet/SHA512.bufferOff
+					getstatic_a 41;		// reference wallet/SHA512.buffer
+					getstatic_s 42;		// short wallet/SHA512.bufferOff
+					bspush -128;
+					bastore;
+					getstatic_s 43;		// short wallet/SHA512.bufferLeft
+					sconst_1;
+					ssub;
+					putstatic_s 43;		// short wallet/SHA512.bufferLeft
+					getstatic_s 42;		// short wallet/SHA512.bufferOff
+					sconst_1;
+					sadd;
+					putstatic_s 42;		// short wallet/SHA512.bufferOff
+					getstatic_a 41;		// reference wallet/SHA512.buffer
+					getstatic_s 42;		// short wallet/SHA512.bufferOff
+					getstatic_s 43;		// short wallet/SHA512.bufferLeft
+					sconst_0;
+					invokestatic 23;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					getstatic_a 41;		// reference wallet/SHA512.buffer
+					getstatic_a 41;		// reference wallet/SHA512.buffer
+					arraylength;
+					sconst_2;
+					ssub;
+					bspush 8;
+					sload_2;
+					smul;
+					bspush 8;
+					sshr;
+					sspush 255;
+					sand;
+					s2b;
+					bastore;
+					getstatic_a 41;		// reference wallet/SHA512.buffer
+					getstatic_a 41;		// reference wallet/SHA512.buffer
+					arraylength;
+					sconst_1;
+					ssub;
+					bspush 8;
+					sload_2;
+					smul;
+					sspush 255;
+					sand;
+					s2b;
+					bastore;
+					sconst_0;
+					sstore 11;
+				L13:	sload 11;
+					bspush 32;
+					if_scmpge L15;
+				L14:	getstatic_a 39;		// reference wallet/SHA512.h_short
+					sload 11;
+					getstatic_a 40;		// reference wallet/SHA512.hashState
+					sload 11;
+					saload;
+					sastore;
+					sinc 11 1;
+					goto L13;
+				L15:	getstatic_a 39;		// reference wallet/SHA512.h_short
+					sconst_0;
+					getstatic_a 41;		// reference wallet/SHA512.buffer
+					sconst_0;
+					invokestatic 45;		// wallet/SHA512.compressionFunction([SS[BS)V
+					sconst_0;
+					sstore 11;
+				L16:	sload 11;
+					bspush 32;
+					if_scmpge_w L23;
+				L17:	sconst_0;
+					sstore 5;
+				L18:	sload 11;
+					sconst_3;
+					sadd;
+					sstore 6;
+				L19:	sload 11;
+					sconst_3;
+					sadd;
+					sstore 7;
+				L20:	getstatic_a 40;		// reference wallet/SHA512.hashState
+					sload 7;
+					saload;
+					sstore 8;
+				L21:	getstatic_a 39;		// reference wallet/SHA512.h_short
+					sload 6;
+					saload;
+					sstore 9;
+				L22:	getstatic_a 40;		// reference wallet/SHA512.hashState
+					sload 7;
+					sload 8;
+					sload 9;
+					sadd;
+					sload 5;
+					sadd;
+					sastore;
+					sload 8;
+					sload 9;
+					sand;
+					sload 8;
+					sload 9;
+					sor;
+					getstatic_a 40;		// reference wallet/SHA512.hashState
+					sload 7;
+					saload;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 5;
+					sinc 6 -1;
+					sinc 7 -1;
+					getstatic_a 40;		// reference wallet/SHA512.hashState
+					sload 7;
+					saload;
+					sstore 8;
+					getstatic_a 39;		// reference wallet/SHA512.h_short
+					sload 6;
+					saload;
+					sstore 9;
+					getstatic_a 40;		// reference wallet/SHA512.hashState
+					sload 7;
+					sload 8;
+					sload 9;
+					sadd;
+					sload 5;
+					sadd;
+					sastore;
+					sload 8;
+					sload 9;
+					sand;
+					sload 8;
+					sload 9;
+					sor;
+					getstatic_a 40;		// reference wallet/SHA512.hashState
+					sload 7;
+					saload;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 5;
+					sinc 6 -1;
+					sinc 7 -1;
+					getstatic_a 40;		// reference wallet/SHA512.hashState
+					sload 7;
+					saload;
+					sstore 8;
+					getstatic_a 39;		// reference wallet/SHA512.h_short
+					sload 6;
+					saload;
+					sstore 9;
+					getstatic_a 40;		// reference wallet/SHA512.hashState
+					sload 7;
+					sload 8;
+					sload 9;
+					sadd;
+					sload 5;
+					sadd;
+					sastore;
+					sload 8;
+					sload 9;
+					sand;
+					sload 8;
+					sload 9;
+					sor;
+					getstatic_a 40;		// reference wallet/SHA512.hashState
+					sload 7;
+					saload;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 5;
+					sinc 6 -1;
+					sinc 7 -1;
+					getstatic_a 40;		// reference wallet/SHA512.hashState
+					sload 7;
+					saload;
+					sstore 8;
+					getstatic_a 39;		// reference wallet/SHA512.h_short
+					sload 6;
+					saload;
+					sstore 9;
+					getstatic_a 40;		// reference wallet/SHA512.hashState
+					sload 7;
+					sload 8;
+					sload 9;
+					sadd;
+					sload 5;
+					sadd;
+					sastore;
+					sinc 11 4;
+					goto_w L16;
+				L23:	sconst_0;
+					sstore 11;
+				L24:	sload 11;
+					bspush 32;
+					if_scmpge L26;
+				L25:	aload_3;
+					sload 4;
+					getstatic_a 40;		// reference wallet/SHA512.hashState
+					sload 11;
+					saload;
+					bspush 8;
+					sshr;
+					sspush 255;
+					sand;
+					s2b;
+					bastore;
+					sinc 4 1;
+					aload_3;
+					sload 4;
+					getstatic_a 40;		// reference wallet/SHA512.hashState
+					sload 11;
+					saload;
+					sspush 255;
+					sand;
+					s2b;
+					bastore;
+					sinc 4 1;
+					sinc 11 1;
+					goto L24;
+				L26:	bspush 64;
+					sreturn;
+		}
+
+		.method private static compressionFunction([SS[BS)V {
+			.stack 6;
+			.locals 18;
+
+				L0:	sconst_0;
+					sstore 19;
+				L1:	sload 19;
+					bspush 64;
+					if_scmpge L3;
+				L2:	getstatic_a 38;		// reference wallet/SHA512.w_short
+					sload 19;
+					aload_2;
+					sload_3;
+					sconst_2;
+					sload 19;
+					smul;
+					sadd;
+					invokestatic 46;		// javacard/framework/Util.getShort([BS)S
+					sastore;
+					sinc 19 1;
+					goto L1;
+				L3:	sconst_0;
+					sstore 19;
+				L4:	sconst_0;
+					sstore 20;
+				L5:	sconst_0;
+					sstore 21;
+				L6:	sload 21;
+					bspush 80;
+					if_scmpge_w L23;
+				L7:	sload 20;
+					bspush 56;
+					sadd;
+					bspush 64;
+					srem;
+					sstore 4;
+				L8:	sload 20;
+					bspush 36;
+					sadd;
+					bspush 64;
+					srem;
+					sstore 5;
+				L9:	sload 20;
+					sconst_4;
+					sadd;
+					bspush 64;
+					srem;
+					sstore 6;
+				L10:	getstatic_a 38;		// reference wallet/SHA512.w_short
+					sload 4;
+					saload;
+					sstore 15;
+				L11:	getstatic_a 38;		// reference wallet/SHA512.w_short
+					sload 4;
+					sconst_1;
+					sadd;
+					saload;
+					sstore 16;
+				L12:	getstatic_a 38;		// reference wallet/SHA512.w_short
+					sload 4;
+					sconst_2;
+					sadd;
+					saload;
+					sstore 17;
+				L13:	getstatic_a 38;		// reference wallet/SHA512.w_short
+					sload 4;
+					sconst_3;
+					sadd;
+					saload;
+					sstore 18;
+				L14:	sload 18;
+					sconst_3;
+					sushr;
+					sspush 8191;
+					sand;
+					sload 17;
+					bspush 13;
+					sshl;
+					sor;
+					sload 16;
+					bspush 13;
+					sushr;
+					bspush 7;
+					sand;
+					sload 15;
+					sconst_3;
+					sshl;
+					sor;
+					sxor;
+					sload 15;
+					bspush 6;
+					sushr;
+					sspush 1023;
+					sand;
+					sxor;
+					sstore 7;
+				L15:	sload 15;
+					sconst_3;
+					sushr;
+					sspush 8191;
+					sand;
+					sload 18;
+					bspush 13;
+					sshl;
+					sor;
+					sload 17;
+					bspush 13;
+					sushr;
+					bspush 7;
+					sand;
+					sload 16;
+					sconst_3;
+					sshl;
+					sor;
+					sxor;
+					sload 16;
+					bspush 6;
+					sushr;
+					sspush 1023;
+					sand;
+					sload 15;
+					bspush 10;
+					sshl;
+					sor;
+					sxor;
+					sstore 8;
+				L16:	sload 16;
+					sconst_3;
+					sushr;
+					sspush 8191;
+					sand;
+					sload 15;
+					bspush 13;
+					sshl;
+					sor;
+					sload 18;
+					bspush 13;
+					sushr;
+					bspush 7;
+					sand;
+					sload 17;
+					sconst_3;
+					sshl;
+					sor;
+					sxor;
+					sload 17;
+					bspush 6;
+					sushr;
+					sspush 1023;
+					sand;
+					sload 16;
+					bspush 10;
+					sshl;
+					sor;
+					sxor;
+					sstore 9;
+				L17:	sload 17;
+					sconst_3;
+					sushr;
+					sspush 8191;
+					sand;
+					sload 16;
+					bspush 13;
+					sshl;
+					sor;
+					sload 15;
+					bspush 13;
+					sushr;
+					bspush 7;
+					sand;
+					sload 18;
+					sconst_3;
+					sshl;
+					sor;
+					sxor;
+					sload 18;
+					bspush 6;
+					sushr;
+					sspush 1023;
+					sand;
+					sload 17;
+					bspush 10;
+					sshl;
+					sor;
+					sxor;
+					sstore 10;
+				L18:	getstatic_a 38;		// reference wallet/SHA512.w_short
+					sload 5;
+					saload;
+					sstore 11;
+				L19:	getstatic_a 38;		// reference wallet/SHA512.w_short
+					sload 5;
+					sconst_1;
+					sadd;
+					saload;
+					sstore 12;
+				L20:	getstatic_a 38;		// reference wallet/SHA512.w_short
+					sload 5;
+					sconst_2;
+					sadd;
+					saload;
+					sstore 13;
+				L21:	getstatic_a 38;		// reference wallet/SHA512.w_short
+					sload 5;
+					sconst_3;
+					sadd;
+					saload;
+					sstore 14;
+				L22:	sload 10;
+					sstore 15;
+					sload 10;
+					sload 14;
+					sadd;
+					sstore 10;
+					sload 15;
+					sload 14;
+					sand;
+					sload 15;
+					sload 14;
+					sor;
+					sload 10;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					sload 9;
+					sstore 15;
+					sload 9;
+					sload 13;
+					sadd;
+					sload 17;
+					sadd;
+					sstore 9;
+					sload 15;
+					sload 13;
+					sand;
+					sload 15;
+					sload 13;
+					sor;
+					sload 9;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					sload 8;
+					sstore 15;
+					sload 8;
+					sload 12;
+					sadd;
+					sload 17;
+					sadd;
+					sstore 8;
+					sload 15;
+					sload 12;
+					sand;
+					sload 15;
+					sload 12;
+					sor;
+					sload 8;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					sload 7;
+					sload 11;
+					sadd;
+					sload 17;
+					sadd;
+					sstore 7;
+					getstatic_a 38;		// reference wallet/SHA512.w_short
+					sload 6;
+					saload;
+					sstore 15;
+					getstatic_a 38;		// reference wallet/SHA512.w_short
+					sload 6;
+					sconst_1;
+					sadd;
+					saload;
+					sstore 16;
+					getstatic_a 38;		// reference wallet/SHA512.w_short
+					sload 6;
+					sconst_2;
+					sadd;
+					saload;
+					sstore 17;
+					getstatic_a 38;		// reference wallet/SHA512.w_short
+					sload 6;
+					sconst_3;
+					sadd;
+					saload;
+					sstore 18;
+					sload 15;
+					sconst_1;
+					sushr;
+					sspush 32767;
+					sand;
+					sload 18;
+					bspush 15;
+					sshl;
+					sor;
+					sload 15;
+					bspush 8;
+					sushr;
+					sspush 255;
+					sand;
+					sload 18;
+					bspush 8;
+					sshl;
+					sor;
+					sxor;
+					sload 15;
+					bspush 7;
+					sushr;
+					sspush 511;
+					sand;
+					sxor;
+					sstore 11;
+					sload 16;
+					sconst_1;
+					sushr;
+					sspush 32767;
+					sand;
+					sload 15;
+					bspush 15;
+					sshl;
+					sor;
+					sload 16;
+					bspush 8;
+					sushr;
+					sspush 255;
+					sand;
+					sload 15;
+					bspush 8;
+					sshl;
+					sor;
+					sxor;
+					sload 16;
+					bspush 7;
+					sushr;
+					sspush 511;
+					sand;
+					sload 15;
+					bspush 9;
+					sshl;
+					sor;
+					sxor;
+					sstore 12;
+					sload 17;
+					sconst_1;
+					sushr;
+					sspush 32767;
+					sand;
+					sload 16;
+					bspush 15;
+					sshl;
+					sor;
+					sload 17;
+					bspush 8;
+					sushr;
+					sspush 255;
+					sand;
+					sload 16;
+					bspush 8;
+					sshl;
+					sor;
+					sxor;
+					sload 17;
+					bspush 7;
+					sushr;
+					sspush 511;
+					sand;
+					sload 16;
+					bspush 9;
+					sshl;
+					sor;
+					sxor;
+					sstore 13;
+					sload 18;
+					sconst_1;
+					sushr;
+					sspush 32767;
+					sand;
+					sload 17;
+					bspush 15;
+					sshl;
+					sor;
+					sload 18;
+					bspush 8;
+					sushr;
+					sspush 255;
+					sand;
+					sload 17;
+					bspush 8;
+					sshl;
+					sor;
+					sxor;
+					sload 18;
+					bspush 7;
+					sushr;
+					sspush 511;
+					sand;
+					sload 17;
+					bspush 9;
+					sshl;
+					sor;
+					sxor;
+					sstore 14;
+					sload 10;
+					sstore 15;
+					sload 10;
+					sload 14;
+					sadd;
+					sstore 10;
+					sload 15;
+					sload 14;
+					sand;
+					sload 15;
+					sload 14;
+					sor;
+					sload 10;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					sload 9;
+					sstore 15;
+					sload 9;
+					sload 13;
+					sadd;
+					sload 17;
+					sadd;
+					sstore 9;
+					sload 15;
+					sload 13;
+					sand;
+					sload 15;
+					sload 13;
+					sor;
+					sload 9;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					sload 8;
+					sstore 15;
+					sload 8;
+					sload 12;
+					sadd;
+					sload 17;
+					sadd;
+					sstore 8;
+					sload 15;
+					sload 12;
+					sand;
+					sload 15;
+					sload 12;
+					sor;
+					sload 8;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					sload 7;
+					sload 11;
+					sadd;
+					sload 17;
+					sadd;
+					sstore 7;
+					getstatic_a 38;		// reference wallet/SHA512.w_short
+					sload 20;
+					saload;
+					sstore 11;
+					getstatic_a 38;		// reference wallet/SHA512.w_short
+					sload 20;
+					sconst_1;
+					sadd;
+					saload;
+					sstore 12;
+					getstatic_a 38;		// reference wallet/SHA512.w_short
+					sload 20;
+					sconst_2;
+					sadd;
+					saload;
+					sstore 13;
+					getstatic_a 38;		// reference wallet/SHA512.w_short
+					sload 20;
+					sconst_3;
+					sadd;
+					saload;
+					sstore 14;
+					sload 10;
+					sstore 15;
+					sload 10;
+					sload 14;
+					sadd;
+					sstore 10;
+					sload 15;
+					sload 14;
+					sand;
+					sload 15;
+					sload 14;
+					sor;
+					sload 10;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					sload 9;
+					sstore 15;
+					sload 9;
+					sload 13;
+					sadd;
+					sload 17;
+					sadd;
+					sstore 9;
+					sload 15;
+					sload 13;
+					sand;
+					sload 15;
+					sload 13;
+					sor;
+					sload 9;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					sload 8;
+					sstore 15;
+					sload 8;
+					sload 12;
+					sadd;
+					sload 17;
+					sadd;
+					sstore 8;
+					sload 15;
+					sload 12;
+					sand;
+					sload 15;
+					sload 12;
+					sor;
+					sload 8;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					sload 7;
+					sload 11;
+					sadd;
+					sload 17;
+					sadd;
+					sstore 7;
+					getstatic_a 38;		// reference wallet/SHA512.w_short
+					sload 20;
+					saload;
+					sstore 11;
+					getstatic_a 38;		// reference wallet/SHA512.w_short
+					sload 20;
+					sconst_1;
+					sadd;
+					saload;
+					sstore 12;
+					getstatic_a 38;		// reference wallet/SHA512.w_short
+					sload 20;
+					sconst_2;
+					sadd;
+					saload;
+					sstore 13;
+					getstatic_a 38;		// reference wallet/SHA512.w_short
+					sload 20;
+					sconst_3;
+					sadd;
+					saload;
+					sstore 14;
+					getstatic_a 38;		// reference wallet/SHA512.w_short
+					sload 20;
+					sload 7;
+					sastore;
+					getstatic_a 38;		// reference wallet/SHA512.w_short
+					sload 20;
+					sconst_1;
+					sadd;
+					sload 8;
+					sastore;
+					getstatic_a 38;		// reference wallet/SHA512.w_short
+					sload 20;
+					sconst_2;
+					sadd;
+					sload 9;
+					sastore;
+					getstatic_a 38;		// reference wallet/SHA512.w_short
+					sload 20;
+					sconst_3;
+					sadd;
+					sload 10;
+					sastore;
+					sload 20;
+					sconst_4;
+					sadd;
+					bspush 64;
+					srem;
+					sstore 20;
+					sload 19;
+					bspush 28;
+					sadd;
+					bspush 32;
+					srem;
+					sstore 4;
+					sconst_4;
+					sload 21;
+					smul;
+					sstore 5;
+					aload_0;
+					sload 4;
+					sconst_3;
+					sadd;
+					saload;
+					sstore 15;
+					getstatic_a 47;		// reference wallet/SHA512.K_SHORT
+					sload 5;
+					sconst_3;
+					sadd;
+					saload;
+					sstore 16;
+					sload 15;
+					sload 16;
+					sadd;
+					sstore 10;
+					sload 15;
+					sload 16;
+					sand;
+					sload 15;
+					sload 16;
+					sor;
+					sload 10;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					aload_0;
+					sload 4;
+					sconst_2;
+					sadd;
+					saload;
+					sstore 15;
+					getstatic_a 47;		// reference wallet/SHA512.K_SHORT
+					sload 5;
+					sconst_2;
+					sadd;
+					saload;
+					sstore 16;
+					sload 15;
+					sload 16;
+					sadd;
+					sload 17;
+					sadd;
+					sstore 9;
+					sload 15;
+					sload 16;
+					sand;
+					sload 15;
+					sload 16;
+					sor;
+					sload 9;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					aload_0;
+					sload 4;
+					sconst_1;
+					sadd;
+					saload;
+					sstore 15;
+					getstatic_a 47;		// reference wallet/SHA512.K_SHORT
+					sload 5;
+					sconst_1;
+					sadd;
+					saload;
+					sstore 16;
+					sload 15;
+					sload 16;
+					sadd;
+					sload 17;
+					sadd;
+					sstore 8;
+					sload 15;
+					sload 16;
+					sand;
+					sload 15;
+					sload 16;
+					sor;
+					sload 8;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					aload_0;
+					sload 4;
+					saload;
+					getstatic_a 47;		// reference wallet/SHA512.K_SHORT
+					sload 5;
+					saload;
+					sadd;
+					sload 17;
+					sadd;
+					sstore 7;
+					sload 10;
+					sstore 15;
+					sload 10;
+					sload 14;
+					sadd;
+					sstore 10;
+					sload 15;
+					sload 14;
+					sand;
+					sload 15;
+					sload 14;
+					sor;
+					sload 10;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					sload 9;
+					sstore 15;
+					sload 9;
+					sload 13;
+					sadd;
+					sload 17;
+					sadd;
+					sstore 9;
+					sload 15;
+					sload 13;
+					sand;
+					sload 15;
+					sload 13;
+					sor;
+					sload 9;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					sload 8;
+					sstore 15;
+					sload 8;
+					sload 12;
+					sadd;
+					sload 17;
+					sadd;
+					sstore 8;
+					sload 15;
+					sload 12;
+					sand;
+					sload 15;
+					sload 12;
+					sor;
+					sload 8;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					sload 7;
+					sload 11;
+					sadd;
+					sload 17;
+					sadd;
+					sstore 7;
+					sload 19;
+					bspush 16;
+					sadd;
+					bspush 32;
+					srem;
+					sstore 4;
+					sload 19;
+					bspush 20;
+					sadd;
+					bspush 32;
+					srem;
+					sstore 5;
+					sload 19;
+					bspush 24;
+					sadd;
+					bspush 32;
+					srem;
+					sstore 6;
+					aload_0;
+					sload 4;
+					saload;
+					sstore 15;
+					sload 15;
+					aload_0;
+					sload 5;
+					saload;
+					sand;
+					sload 15;
+					sconst_m1;
+					sxor;
+					aload_0;
+					sload 6;
+					saload;
+					sand;
+					sxor;
+					sstore 11;
+					aload_0;
+					sload 4;
+					sconst_1;
+					sadd;
+					saload;
+					sstore 15;
+					sload 15;
+					aload_0;
+					sload 5;
+					sconst_1;
+					sadd;
+					saload;
+					sand;
+					sload 15;
+					sconst_m1;
+					sxor;
+					aload_0;
+					sload 6;
+					sconst_1;
+					sadd;
+					saload;
+					sand;
+					sxor;
+					sstore 12;
+					aload_0;
+					sload 4;
+					sconst_2;
+					sadd;
+					saload;
+					sstore 15;
+					sload 15;
+					aload_0;
+					sload 5;
+					sconst_2;
+					sadd;
+					saload;
+					sand;
+					sload 15;
+					sconst_m1;
+					sxor;
+					aload_0;
+					sload 6;
+					sconst_2;
+					sadd;
+					saload;
+					sand;
+					sxor;
+					sstore 13;
+					aload_0;
+					sload 4;
+					sconst_3;
+					sadd;
+					saload;
+					sstore 15;
+					sload 15;
+					aload_0;
+					sload 5;
+					sconst_3;
+					sadd;
+					saload;
+					sand;
+					sload 15;
+					sconst_m1;
+					sxor;
+					aload_0;
+					sload 6;
+					sconst_3;
+					sadd;
+					saload;
+					sand;
+					sxor;
+					sstore 14;
+					sload 10;
+					sstore 15;
+					sload 10;
+					sload 14;
+					sadd;
+					sstore 10;
+					sload 15;
+					sload 14;
+					sand;
+					sload 15;
+					sload 14;
+					sor;
+					sload 10;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					sload 9;
+					sstore 15;
+					sload 9;
+					sload 13;
+					sadd;
+					sload 17;
+					sadd;
+					sstore 9;
+					sload 15;
+					sload 13;
+					sand;
+					sload 15;
+					sload 13;
+					sor;
+					sload 9;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					sload 8;
+					sstore 15;
+					sload 8;
+					sload 12;
+					sadd;
+					sload 17;
+					sadd;
+					sstore 8;
+					sload 15;
+					sload 12;
+					sand;
+					sload 15;
+					sload 12;
+					sor;
+					sload 8;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					sload 7;
+					sload 11;
+					sadd;
+					sload 17;
+					sadd;
+					sstore 7;
+					sload 19;
+					bspush 16;
+					sadd;
+					bspush 32;
+					srem;
+					sstore 4;
+					aload_0;
+					sload 4;
+					saload;
+					sstore 15;
+					aload_0;
+					sload 4;
+					sconst_1;
+					sadd;
+					saload;
+					sstore 16;
+					aload_0;
+					sload 4;
+					sconst_2;
+					sadd;
+					saload;
+					sstore 17;
+					aload_0;
+					sload 4;
+					sconst_3;
+					sadd;
+					saload;
+					sstore 18;
+					sload 15;
+					bspush 14;
+					sushr;
+					sconst_3;
+					sand;
+					sload 18;
+					sconst_2;
+					sshl;
+					sor;
+					sload 18;
+					sconst_2;
+					sushr;
+					sspush 16383;
+					sand;
+					sload 17;
+					bspush 14;
+					sshl;
+					sor;
+					sxor;
+					sload 17;
+					bspush 9;
+					sushr;
+					bspush 127;
+					sand;
+					sload 16;
+					bspush 7;
+					sshl;
+					sor;
+					sxor;
+					sstore 11;
+					sload 16;
+					bspush 14;
+					sushr;
+					sconst_3;
+					sand;
+					sload 15;
+					sconst_2;
+					sshl;
+					sor;
+					sload 15;
+					sconst_2;
+					sushr;
+					sspush 16383;
+					sand;
+					sload 18;
+					bspush 14;
+					sshl;
+					sor;
+					sxor;
+					sload 18;
+					bspush 9;
+					sushr;
+					bspush 127;
+					sand;
+					sload 17;
+					bspush 7;
+					sshl;
+					sor;
+					sxor;
+					sstore 12;
+					sload 17;
+					bspush 14;
+					sushr;
+					sconst_3;
+					sand;
+					sload 16;
+					sconst_2;
+					sshl;
+					sor;
+					sload 16;
+					sconst_2;
+					sushr;
+					sspush 16383;
+					sand;
+					sload 15;
+					bspush 14;
+					sshl;
+					sor;
+					sxor;
+					sload 15;
+					bspush 9;
+					sushr;
+					bspush 127;
+					sand;
+					sload 18;
+					bspush 7;
+					sshl;
+					sor;
+					sxor;
+					sstore 13;
+					sload 18;
+					bspush 14;
+					sushr;
+					sconst_3;
+					sand;
+					sload 17;
+					sconst_2;
+					sshl;
+					sor;
+					sload 17;
+					sconst_2;
+					sushr;
+					sspush 16383;
+					sand;
+					sload 16;
+					bspush 14;
+					sshl;
+					sor;
+					sxor;
+					sload 16;
+					bspush 9;
+					sushr;
+					bspush 127;
+					sand;
+					sload 15;
+					bspush 7;
+					sshl;
+					sor;
+					sxor;
+					sstore 14;
+					sload 10;
+					sstore 15;
+					sload 10;
+					sload 14;
+					sadd;
+					sstore 10;
+					sload 15;
+					sload 14;
+					sand;
+					sload 15;
+					sload 14;
+					sor;
+					sload 10;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					sload 9;
+					sstore 15;
+					sload 9;
+					sload 13;
+					sadd;
+					sload 17;
+					sadd;
+					sstore 9;
+					sload 15;
+					sload 13;
+					sand;
+					sload 15;
+					sload 13;
+					sor;
+					sload 9;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					sload 8;
+					sstore 15;
+					sload 8;
+					sload 12;
+					sadd;
+					sload 17;
+					sadd;
+					sstore 8;
+					sload 15;
+					sload 12;
+					sand;
+					sload 15;
+					sload 12;
+					sor;
+					sload 8;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					sload 7;
+					sload 11;
+					sadd;
+					sload 17;
+					sadd;
+					sstore 7;
+					sload 19;
+					bspush 12;
+					sadd;
+					bspush 32;
+					srem;
+					sstore 4;
+					sload 4;
+					sconst_3;
+					sadd;
+					sstore 15;
+					aload_0;
+					sload 15;
+					saload;
+					sstore 16;
+					aload_0;
+					sload 15;
+					sload 16;
+					sload 10;
+					sadd;
+					sastore;
+					sload 16;
+					sload 10;
+					sand;
+					sload 16;
+					sload 10;
+					sor;
+					aload_0;
+					sload 15;
+					saload;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					sload 4;
+					sconst_2;
+					sadd;
+					sstore 15;
+					aload_0;
+					sload 15;
+					saload;
+					sstore 16;
+					aload_0;
+					sload 15;
+					sload 16;
+					sload 9;
+					sadd;
+					sload 17;
+					sadd;
+					sastore;
+					sload 16;
+					sload 9;
+					sand;
+					sload 16;
+					sload 9;
+					sor;
+					aload_0;
+					sload 15;
+					saload;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					sload 4;
+					sconst_1;
+					sadd;
+					sstore 15;
+					aload_0;
+					sload 15;
+					saload;
+					sstore 16;
+					aload_0;
+					sload 15;
+					sload 16;
+					sload 8;
+					sadd;
+					sload 17;
+					sadd;
+					sastore;
+					sload 16;
+					sload 8;
+					sand;
+					sload 16;
+					sload 8;
+					sor;
+					aload_0;
+					sload 15;
+					saload;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					sload 4;
+					sstore 15;
+					aload_0;
+					sload 15;
+					saload;
+					sstore 16;
+					aload_0;
+					sload 15;
+					sload 16;
+					sload 7;
+					sadd;
+					sload 17;
+					sadd;
+					sastore;
+					sload 19;
+					sconst_4;
+					sadd;
+					bspush 32;
+					srem;
+					sstore 4;
+					sload 19;
+					bspush 8;
+					sadd;
+					bspush 32;
+					srem;
+					sstore 5;
+					aload_0;
+					sload 19;
+					saload;
+					sstore 15;
+					aload_0;
+					sload 4;
+					saload;
+					sstore 16;
+					aload_0;
+					sload 5;
+					saload;
+					sstore 17;
+					sload 15;
+					sload 16;
+					sand;
+					sload 15;
+					sload 17;
+					sand;
+					sxor;
+					sload 16;
+					sload 17;
+					sand;
+					sxor;
+					sstore 11;
+					aload_0;
+					sload 19;
+					sconst_1;
+					sadd;
+					saload;
+					sstore 15;
+					aload_0;
+					sload 4;
+					sconst_1;
+					sadd;
+					saload;
+					sstore 16;
+					aload_0;
+					sload 5;
+					sconst_1;
+					sadd;
+					saload;
+					sstore 17;
+					sload 15;
+					sload 16;
+					sand;
+					sload 15;
+					sload 17;
+					sand;
+					sxor;
+					sload 16;
+					sload 17;
+					sand;
+					sxor;
+					sstore 12;
+					aload_0;
+					sload 19;
+					sconst_2;
+					sadd;
+					saload;
+					sstore 15;
+					aload_0;
+					sload 4;
+					sconst_2;
+					sadd;
+					saload;
+					sstore 16;
+					aload_0;
+					sload 5;
+					sconst_2;
+					sadd;
+					saload;
+					sstore 17;
+					sload 15;
+					sload 16;
+					sand;
+					sload 15;
+					sload 17;
+					sand;
+					sxor;
+					sload 16;
+					sload 17;
+					sand;
+					sxor;
+					sstore 13;
+					aload_0;
+					sload 19;
+					sconst_3;
+					sadd;
+					saload;
+					sstore 15;
+					aload_0;
+					sload 4;
+					sconst_3;
+					sadd;
+					saload;
+					sstore 16;
+					aload_0;
+					sload 5;
+					sconst_3;
+					sadd;
+					saload;
+					sstore 17;
+					sload 15;
+					sload 16;
+					sand;
+					sload 15;
+					sload 17;
+					sand;
+					sxor;
+					sload 16;
+					sload 17;
+					sand;
+					sxor;
+					sstore 14;
+					sload 10;
+					sstore 15;
+					sload 10;
+					sload 14;
+					sadd;
+					sstore 10;
+					sload 15;
+					sload 14;
+					sand;
+					sload 15;
+					sload 14;
+					sor;
+					sload 10;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					sload 9;
+					sstore 15;
+					sload 9;
+					sload 13;
+					sadd;
+					sload 17;
+					sadd;
+					sstore 9;
+					sload 15;
+					sload 13;
+					sand;
+					sload 15;
+					sload 13;
+					sor;
+					sload 9;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					sload 8;
+					sstore 15;
+					sload 8;
+					sload 12;
+					sadd;
+					sload 17;
+					sadd;
+					sstore 8;
+					sload 15;
+					sload 12;
+					sand;
+					sload 15;
+					sload 12;
+					sor;
+					sload 8;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					sload 7;
+					sload 11;
+					sadd;
+					sload 17;
+					sadd;
+					sstore 7;
+					aload_0;
+					sload 19;
+					saload;
+					sstore 15;
+					aload_0;
+					sload 19;
+					sconst_1;
+					sadd;
+					saload;
+					sstore 16;
+					aload_0;
+					sload 19;
+					sconst_2;
+					sadd;
+					saload;
+					sstore 17;
+					aload_0;
+					sload 19;
+					sconst_3;
+					sadd;
+					saload;
+					sstore 18;
+					sload 18;
+					bspush 12;
+					sushr;
+					bspush 15;
+					sand;
+					sload 17;
+					sconst_4;
+					sshl;
+					sor;
+					sload 17;
+					sconst_2;
+					sushr;
+					sspush 16383;
+					sand;
+					sload 16;
+					bspush 14;
+					sshl;
+					sor;
+					sxor;
+					sload 17;
+					bspush 7;
+					sushr;
+					sspush 511;
+					sand;
+					sload 16;
+					bspush 9;
+					sshl;
+					sor;
+					sxor;
+					sstore 11;
+					sload 15;
+					bspush 12;
+					sushr;
+					bspush 15;
+					sand;
+					sload 18;
+					sconst_4;
+					sshl;
+					sor;
+					sload 18;
+					sconst_2;
+					sushr;
+					sspush 16383;
+					sand;
+					sload 17;
+					bspush 14;
+					sshl;
+					sor;
+					sxor;
+					sload 18;
+					bspush 7;
+					sushr;
+					sspush 511;
+					sand;
+					sload 17;
+					bspush 9;
+					sshl;
+					sor;
+					sxor;
+					sstore 12;
+					sload 16;
+					bspush 12;
+					sushr;
+					bspush 15;
+					sand;
+					sload 15;
+					sconst_4;
+					sshl;
+					sor;
+					sload 15;
+					sconst_2;
+					sushr;
+					sspush 16383;
+					sand;
+					sload 18;
+					bspush 14;
+					sshl;
+					sor;
+					sxor;
+					sload 15;
+					bspush 7;
+					sushr;
+					sspush 511;
+					sand;
+					sload 18;
+					bspush 9;
+					sshl;
+					sor;
+					sxor;
+					sstore 13;
+					sload 17;
+					bspush 12;
+					sushr;
+					bspush 15;
+					sand;
+					sload 16;
+					sconst_4;
+					sshl;
+					sor;
+					sload 16;
+					sconst_2;
+					sushr;
+					sspush 16383;
+					sand;
+					sload 15;
+					bspush 14;
+					sshl;
+					sor;
+					sxor;
+					sload 16;
+					bspush 7;
+					sushr;
+					sspush 511;
+					sand;
+					sload 15;
+					bspush 9;
+					sshl;
+					sor;
+					sxor;
+					sstore 14;
+					sload 10;
+					sstore 15;
+					sload 10;
+					sload 14;
+					sadd;
+					sstore 10;
+					sload 15;
+					sload 14;
+					sand;
+					sload 15;
+					sload 14;
+					sor;
+					sload 10;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					sload 9;
+					sstore 15;
+					sload 9;
+					sload 13;
+					sadd;
+					sload 17;
+					sadd;
+					sstore 9;
+					sload 15;
+					sload 13;
+					sand;
+					sload 15;
+					sload 13;
+					sor;
+					sload 9;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					sload 8;
+					sstore 15;
+					sload 8;
+					sload 12;
+					sadd;
+					sload 17;
+					sadd;
+					sstore 8;
+					sload 15;
+					sload 12;
+					sand;
+					sload 15;
+					sload 12;
+					sor;
+					sload 8;
+					sconst_m1;
+					sxor;
+					sand;
+					sor;
+					bspush 15;
+					sshr;
+					sconst_1;
+					sand;
+					sstore 17;
+					sload 7;
+					sload 11;
+					sadd;
+					sload 17;
+					sadd;
+					sstore 7;
+					aload_0;
+					sload 19;
+					bspush 28;
+					sadd;
+					bspush 32;
+					srem;
+					sload 7;
+					sastore;
+					aload_0;
+					sload 19;
+					bspush 29;
+					sadd;
+					bspush 32;
+					srem;
+					sload 8;
+					sastore;
+					aload_0;
+					sload 19;
+					bspush 30;
+					sadd;
+					bspush 32;
+					srem;
+					sload 9;
+					sastore;
+					aload_0;
+					sload 19;
+					bspush 31;
+					sadd;
+					bspush 32;
+					srem;
+					sload 10;
+					sastore;
+					bspush 32;
+					sload 19;
+					sadd;
+					sconst_4;
+					ssub;
+					bspush 32;
+					srem;
+					sstore 19;
+					sinc 21 1;
+					goto_w L6;
+				L23:	return;
+		}
+
+	}
+
+	.class public TonCryptoHandler 6 extends CryptoHandler {
+
+		.fields {
+			private byte[] priKeyBufForTest 0;		// [B
+			private byte[] pubKeyBufForTest 1;		// [B
+			private byte[] seedBuf 2;		// [B
+			private byte[] privateExponent 3;		// [B
+			private byte[] privateSault 4;		// [B
+			private 3.16 kp 5;		// Ljavacard/security/KeyPair;
+			private 4.4 publicKey 6;		// Lcom/ftsafe/security/XECPublicKey;
+			private 4.3 privateKey 7;		// Lcom/ftsafe/security/XECPrivateKey;
+			private 4.6 params 8;		// Lcom/ftsafe/security/NamedParameterSpec;
+			private 3.15 sig 9;		// Ljavacard/security/Signature;
+			private 3.22 keyAgreement 10;		// Ljavacard/security/KeyAgreement;
+			private 3.14 randomData 11;		// Ljavacard/security/RandomData;
+			public static final short MAX_SEED_SIZE = 64;		// S
+			private static final byte[] BITCOIN_SEED = {66,105,116,99,111,105,110,32,115,101,101,100};		// [B
+			private static final byte[] BITCOIN_SIGNED_MESSAGE_HEADER = {24,66,105,116,99,111,105,110,32,83,105,103,110,101,100,32,77,101,115,115,97,103,101,58,10};		// [B
+		}
+
+		.publicMethodTable 3 {
+			equals(Ljava/lang/Object;)Z;
+			setDataForSigning(Ljavacard/framework/APDU;)V;
+			importSeed(Ljavacard/framework/APDU;)V;
+			setupKeys(Ljavacard/framework/APDU;)V;
+			importPublicKey(Ljavacard/framework/APDU;)V;
+			importPrivateKey(Ljavacard/framework/APDU;)V;
+			getPublicMasterKey(Ljavacard/framework/APDU;)V;
+			signMessage(Ljavacard/framework/APDU;)V;
+			verifySignature(Ljavacard/framework/APDU;)V;
+			setupMasterKeyWithoutSeed()V;
+			setupMasterKeyFromRandomSeed()V;
+			importSeed([B)V;
+			getPublicMasterKeyUsingKeyAgreement(Ljavacard/framework/APDU;)V;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>()V 0 {
+			.stack 5;
+			.locals 1;
+
+				L0:	aload_0;
+					invokespecial 48;		// wallet/CryptoHandler.<init>()V
+					aload_0;
+					bspush 32;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 76;
+					bastore;
+					dup;
+					sconst_1;
+					bspush -51;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 8;
+					bastore;
+					dup;
+					sconst_3;
+					bspush -101;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 40;
+					bastore;
+					dup;
+					sconst_5;
+					sconst_m1;
+					bastore;
+					dup;
+					bspush 6;
+					bspush -106;
+					bastore;
+					dup;
+					bspush 7;
+					bspush -38;
+					bastore;
+					dup;
+					bspush 8;
+					bspush -99;
+					bastore;
+					dup;
+					bspush 9;
+					bspush -74;
+					bastore;
+					dup;
+					bspush 10;
+					bspush -61;
+					bastore;
+					dup;
+					bspush 11;
+					bspush 70;
+					bastore;
+					dup;
+					bspush 12;
+					bspush -20;
+					bastore;
+					dup;
+					bspush 13;
+					bspush 17;
+					bastore;
+					dup;
+					bspush 14;
+					bspush 78;
+					bastore;
+					dup;
+					bspush 15;
+					bspush 15;
+					bastore;
+					dup;
+					bspush 16;
+					bspush 91;
+					bastore;
+					dup;
+					bspush 17;
+					bspush -118;
+					bastore;
+					dup;
+					bspush 18;
+					bspush 49;
+					bastore;
+					dup;
+					bspush 19;
+					bspush -97;
+					bastore;
+					dup;
+					bspush 20;
+					bspush 53;
+					bastore;
+					dup;
+					bspush 21;
+					bspush -85;
+					bastore;
+					dup;
+					bspush 22;
+					bspush -90;
+					bastore;
+					dup;
+					bspush 23;
+					bspush 36;
+					bastore;
+					dup;
+					bspush 24;
+					bspush -38;
+					bastore;
+					dup;
+					bspush 25;
+					bspush -116;
+					bastore;
+					dup;
+					bspush 26;
+					bspush -10;
+					bastore;
+					dup;
+					bspush 27;
+					bspush -19;
+					bastore;
+					dup;
+					bspush 28;
+					bspush 79;
+					bastore;
+					dup;
+					bspush 29;
+					bspush -72;
+					bastore;
+					dup;
+					bspush 30;
+					bspush -90;
+					bastore;
+					dup;
+					bspush 31;
+					bspush -5;
+					bastore;
+					putfield_a 6;		// reference wallet/TonCryptoHandler.priKeyBufForTest
+					aload_0;
+					bspush 32;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 61;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 64;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 23;
+					bastore;
+					dup;
+					sconst_3;
+					bspush -61;
+					bastore;
+					dup;
+					sconst_4;
+					bspush -24;
+					bastore;
+					dup;
+					sconst_5;
+					bspush 67;
+					bastore;
+					dup;
+					bspush 6;
+					bspush -119;
+					bastore;
+					dup;
+					bspush 7;
+					bspush 90;
+					bastore;
+					dup;
+					bspush 8;
+					bspush -110;
+					bastore;
+					dup;
+					bspush 9;
+					bspush -73;
+					bastore;
+					dup;
+					bspush 10;
+					bspush 10;
+					bastore;
+					dup;
+					bspush 11;
+					bspush -89;
+					bastore;
+					dup;
+					bspush 12;
+					bspush 77;
+					bastore;
+					dup;
+					bspush 13;
+					bspush 27;
+					bastore;
+					dup;
+					bspush 14;
+					bspush 126;
+					bastore;
+					dup;
+					bspush 15;
+					bspush -68;
+					bastore;
+					dup;
+					bspush 16;
+					bspush -100;
+					bastore;
+					dup;
+					bspush 17;
+					bspush -104;
+					bastore;
+					dup;
+					bspush 18;
+					bspush 44;
+					bastore;
+					dup;
+					bspush 19;
+					bspush -49;
+					bastore;
+					dup;
+					bspush 20;
+					bspush 46;
+					bastore;
+					dup;
+					bspush 21;
+					bspush -60;
+					bastore;
+					dup;
+					bspush 22;
+					bspush -106;
+					bastore;
+					dup;
+					bspush 23;
+					bspush -116;
+					bastore;
+					dup;
+					bspush 24;
+					bspush -64;
+					bastore;
+					dup;
+					bspush 25;
+					bspush -51;
+					bastore;
+					dup;
+					bspush 26;
+					bspush 85;
+					bastore;
+					dup;
+					bspush 27;
+					bspush -15;
+					bastore;
+					dup;
+					bspush 28;
+					bspush 42;
+					bastore;
+					dup;
+					bspush 29;
+					bspush -12;
+					bastore;
+					dup;
+					bspush 30;
+					bspush 102;
+					bastore;
+					dup;
+					bspush 31;
+					bspush 12;
+					bastore;
+					putfield_a 7;		// reference wallet/TonCryptoHandler.pubKeyBufForTest
+					aload_0;
+					bspush 64;
+					newarray 11;
+					putfield_a 8;		// reference wallet/TonCryptoHandler.seedBuf
+					aload_0;
+					sconst_2;
+					invokestatic 52;		// javacard/security/RandomData.getInstance(B)Ljavacard/security/RandomData;
+					putfield_a 9;		// reference wallet/TonCryptoHandler.randomData
+					aload_0;
+					sconst_0;
+					bspush 9;
+					sconst_0;
+					sconst_0;
+					invokestatic 54;		// javacard/security/Signature.getInstance(BBBZ)Ljavacard/security/Signature;
+					putfield_a 10;		// reference wallet/TonCryptoHandler.sig
+					aload_0;
+					sspush 257;
+					invokestatic 56;		// com/ftsafe/security/NamedParameterSpec.getInstance(S)Lcom/ftsafe/security/NamedParameterSpec;
+					putfield_a 11;		// reference wallet/TonCryptoHandler.params
+					sspush -32768;
+					sstore_1;
+				L1:	sload_1;
+					sconst_0;
+					sor;
+					sstore_1;
+					aload_0;
+					getfield_a_this 11;		// reference wallet/TonCryptoHandler.params
+					sload_1;
+					sconst_0;
+					invokestatic 58;		// com/ftsafe/security/KeyBuilderX.buildXECKey(Lcom/ftsafe/security/NamedParameterSpec;SZ)Ljavacard/security/Key;
+					checkcast 0 59;		// T_CLASSORINTERFACE com/ftsafe/security/XECPrivateKey
+					putfield_a 12;		// reference wallet/TonCryptoHandler.privateKey
+					sconst_0;
+					sstore_1;
+					sload_1;
+					sconst_0;
+					sor;
+					sstore_1;
+					aload_0;
+					getfield_a_this 11;		// reference wallet/TonCryptoHandler.params
+					sload_1;
+					sconst_0;
+					invokestatic 58;		// com/ftsafe/security/KeyBuilderX.buildXECKey(Lcom/ftsafe/security/NamedParameterSpec;SZ)Ljavacard/security/Key;
+					checkcast 0 61;		// T_CLASSORINTERFACE com/ftsafe/security/XECPublicKey
+					putfield_a 13;		// reference wallet/TonCryptoHandler.publicKey
+					invokestatic 63;		// wallet/SHA512.init()V
+					return;
+		}
+
+		.method public setupKeys(Ljavacard/framework/APDU;)V 3 {
+			.stack 4;
+			.locals 0;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	getfield_a_this 12;		// reference wallet/TonCryptoHandler.privateKey
+					getfield_a_this 6;		// reference wallet/TonCryptoHandler.priKeyBufForTest
+					sconst_0;
+					bspush 32;
+					invokeinterface 4 59 3;		// com/ftsafe/security/XECPrivateKey
+					getfield_a_this 13;		// reference wallet/TonCryptoHandler.publicKey
+					getfield_a_this 7;		// reference wallet/TonCryptoHandler.pubKeyBufForTest
+					sconst_0;
+					bspush 32;
+					invokeinterface 4 61 3;		// com/ftsafe/security/XECPublicKey
+					return;
+		}
+
+		.method public setupMasterKeyWithoutSeed()V 9 {
+			.stack 0;
+			.locals 0;
+
+				L0:	return;
+		}
+
+		.method public setupMasterKeyFromRandomSeed()V 10 {
+			.stack 8;
+			.locals 0;
+
+				L0:	getfield_a_this 9;		// reference wallet/TonCryptoHandler.randomData
+					getfield_a_this 8;		// reference wallet/TonCryptoHandler.seedBuf
+					sconst_0;
+					bspush 64;
+					invokevirtual 64;		// generateData([BSS)V
+					getstatic_a 65;		// reference wallet/TonCryptoHandler.BITCOIN_SEED
+					sconst_0;
+					getstatic_a 65;		// reference wallet/TonCryptoHandler.BITCOIN_SEED
+					arraylength;
+					getfield_a_this 8;		// reference wallet/TonCryptoHandler.seedBuf
+					sconst_0;
+					bspush 64;
+					getfield_a_this 5;		// reference wallet/CryptoHandler.tmpBuffer
+					sconst_0;
+					invokestatic 66;		// wallet/HmacSha512.computeHmacSha512([BSS[BSS[BS)S
+					pop;
+					getfield_a_this 12;		// reference wallet/TonCryptoHandler.privateKey
+					getfield_a_this 5;		// reference wallet/CryptoHandler.tmpBuffer
+					sconst_0;
+					bspush 32;
+					invokeinterface 4 59 3;		// com/ftsafe/security/XECPrivateKey
+					return;
+		}
+
+		.method public importSeed([B)V 11 {
+			.stack 8;
+			.locals 1;
+
+				L0:	aload_1;
+					sconst_2;
+					baload;
+					sstore_2;
+				L1:	sload_2;
+					iflt L3;
+				L2:	sload_2;
+					bspush 64;
+					if_scmple L4;
+				L3:	sspush 26368;
+					invokestatic 17;		// javacard/framework/ISOException.throwIt(S)V
+				L4:	getstatic_a 65;		// reference wallet/TonCryptoHandler.BITCOIN_SEED
+					sconst_0;
+					getstatic_a 65;		// reference wallet/TonCryptoHandler.BITCOIN_SEED
+					arraylength;
+					aload_1;
+					sconst_5;
+					sload_2;
+					getfield_a_this 5;		// reference wallet/CryptoHandler.tmpBuffer
+					sconst_0;
+					invokestatic 66;		// wallet/HmacSha512.computeHmacSha512([BSS[BSS[BS)S
+					pop;
+					getfield_a_this 12;		// reference wallet/TonCryptoHandler.privateKey
+					getfield_a_this 5;		// reference wallet/CryptoHandler.tmpBuffer
+					sconst_0;
+					bspush 32;
+					invokeinterface 4 59 3;		// com/ftsafe/security/XECPrivateKey
+					return;
+		}
+
+		.method public importPrivateKey(Ljavacard/framework/APDU;)V 5 {
+			.stack 4;
+			.locals 3;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	invokestatic 20;		// wallet/PinHandler.checkPin()V
+				L1:	aload_1;
+					invokevirtual 53;		// getBuffer()[B
+					astore_2;
+				L2:	aload_2;
+					sconst_4;
+					baload;
+					sspush 255;
+					sand;
+					sstore_3;
+				L3:	aload_1;
+					invokevirtual 80;		// setIncomingAndReceive()S
+					sstore 4;
+				L4:	sload_3;
+					sload 4;
+					if_scmpeq L7;
+				L5:	sload_3;
+					bspush 32;
+					if_scmpeq L7;
+				L6:	sspush 26368;
+					invokestatic 17;		// javacard/framework/ISOException.throwIt(S)V
+				L7:	getfield_a_this 12;		// reference wallet/TonCryptoHandler.privateKey
+					aload_2;
+					sconst_5;
+					bspush 32;
+					invokeinterface 4 59 3;		// com/ftsafe/security/XECPrivateKey
+				L8:	goto L11;
+				L9:	astore_2;
+				L10:	aload_2;
+					invokevirtual 68;		// getReason()S
+					invokestatic 17;		// javacard/framework/ISOException.throwIt(S)V
+				L11:	return;
+			.exceptionTable {
+				// start_block end_block handler_block catch_type_index
+				L1 L8 L9 67;
+			}
+		}
+
+		.method public importPublicKey(Ljavacard/framework/APDU;)V 4 {
+			.stack 4;
+			.locals 3;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	invokestatic 20;		// wallet/PinHandler.checkPin()V
+				L1:	aload_1;
+					invokevirtual 53;		// getBuffer()[B
+					astore_2;
+				L2:	aload_2;
+					sconst_4;
+					baload;
+					sspush 255;
+					sand;
+					sstore_3;
+				L3:	aload_1;
+					invokevirtual 80;		// setIncomingAndReceive()S
+					sstore 4;
+				L4:	sload_3;
+					sload 4;
+					if_scmpeq L7;
+				L5:	sload_3;
+					bspush 32;
+					if_scmpeq L7;
+				L6:	sspush 26368;
+					invokestatic 17;		// javacard/framework/ISOException.throwIt(S)V
+				L7:	getfield_a_this 13;		// reference wallet/TonCryptoHandler.publicKey
+					aload_2;
+					sconst_5;
+					bspush 32;
+					invokeinterface 4 61 3;		// com/ftsafe/security/XECPublicKey
+				L8:	goto L11;
+				L9:	astore_2;
+				L10:	aload_2;
+					invokevirtual 68;		// getReason()S
+					invokestatic 17;		// javacard/framework/ISOException.throwIt(S)V
+				L11:	return;
+			.exceptionTable {
+				// start_block end_block handler_block catch_type_index
+				L1 L8 L9 67;
+			}
+		}
+
+		.method public getPublicMasterKey(Ljavacard/framework/APDU;)V 6 {
+			.stack 4;
+			.locals 2;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	invokestatic 20;		// wallet/PinHandler.checkPin()V
+				L1:	aload_1;
+					invokevirtual 53;		// getBuffer()[B
+					astore_2;
+				L2:	getfield_a_this 13;		// reference wallet/TonCryptoHandler.publicKey
+					aload_2;
+					sconst_2;
+					invokeinterface 3 61 2;		// com/ftsafe/security/XECPublicKey
+					sstore_3;
+				L3:	aload_2;
+					sconst_0;
+					sload_3;
+					invokestatic 69;		// javacard/framework/Util.setShort([BSS)S
+					pop;
+					aload_1;
+					sconst_0;
+					sload_3;
+					sconst_2;
+					sadd;
+					invokevirtual 70;		// setOutgoingAndSend(SS)V
+				L4:	goto L7;
+				L5:	astore_2;
+				L6:	aload_2;
+					invokevirtual 68;		// getReason()S
+					invokestatic 17;		// javacard/framework/ISOException.throwIt(S)V
+				L7:	return;
+			.exceptionTable {
+				// start_block end_block handler_block catch_type_index
+				L1 L4 L5 67;
+			}
+		}
+
+		.method public getPublicMasterKeyUsingKeyAgreement(Ljavacard/framework/APDU;)V 12 {
+			.stack 0;
+			.locals 0;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	return;
+		}
+
+		.method public signMessage(Ljavacard/framework/APDU;)V 7 {
+			.stack 7;
+			.locals 1;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	invokestatic 20;		// wallet/PinHandler.checkPin()V
+				L1:	aload_1;
+					invokevirtual 53;		// getBuffer()[B
+					astore_2;
+				L2:	getfield_a_this 10;		// reference wallet/TonCryptoHandler.sig
+					getfield_a_this 12;		// reference wallet/TonCryptoHandler.privateKey
+					sconst_1;
+					invokevirtual 71;		// init(Ljavacard/security/Key;B)V
+					aload_0;
+					getfield_a_this 10;		// reference wallet/TonCryptoHandler.sig
+					getfield_a_this 4;		// reference wallet/CryptoHandler.dataForSigning
+					sconst_0;
+					getfield_s_this 2;		// short wallet/CryptoHandler.dataForSigningTotalLen
+					getfield_a_this 3;		// reference wallet/CryptoHandler.signatureBytes
+					sconst_0;
+					invokevirtual 72;		// sign([BSS[BS)S
+					putfield_s 0;		// short wallet/CryptoHandler.sigLen
+					aload_2;
+					sconst_0;
+					getfield_s_this 0;		// short wallet/CryptoHandler.sigLen
+					invokestatic 69;		// javacard/framework/Util.setShort([BSS)S
+					pop;
+					getfield_a_this 3;		// reference wallet/CryptoHandler.signatureBytes
+					sconst_0;
+					aload_2;
+					sconst_2;
+					getfield_s_this 0;		// short wallet/CryptoHandler.sigLen
+					invokestatic 73;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					aload_1;
+					sconst_0;
+					getfield_s_this 0;		// short wallet/CryptoHandler.sigLen
+					sconst_2;
+					sadd;
+					invokevirtual 70;		// setOutgoingAndSend(SS)V
+				L3:	goto L6;
+				L4:	astore_2;
+				L5:	aload_2;
+					invokevirtual 68;		// getReason()S
+					invokestatic 17;		// javacard/framework/ISOException.throwIt(S)V
+				L6:	return;
+			.exceptionTable {
+				// start_block end_block handler_block catch_type_index
+				L1 L3 L4 67;
+			}
+		}
+
+		.method public verifySignature(Ljavacard/framework/APDU;)V 8 {
+			.stack 7;
+			.locals 2;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_1;
+					invokevirtual 53;		// getBuffer()[B
+					astore_2;
+				L1:	getfield_a_this 10;		// reference wallet/TonCryptoHandler.sig
+					getfield_a_this 13;		// reference wallet/TonCryptoHandler.publicKey
+					sconst_2;
+					invokevirtual 71;		// init(Ljavacard/security/Key;B)V
+					getfield_a_this 10;		// reference wallet/TonCryptoHandler.sig
+					getfield_a_this 4;		// reference wallet/CryptoHandler.dataForSigning
+					sconst_0;
+					getfield_s_this 2;		// short wallet/CryptoHandler.dataForSigningTotalLen
+					getfield_a_this 3;		// reference wallet/CryptoHandler.signatureBytes
+					sconst_0;
+					getfield_s_this 0;		// short wallet/CryptoHandler.sigLen
+					invokevirtual 74;		// verify([BSS[BSS)Z
+					sstore_3;
+				L2:	aload_2;
+					sconst_0;
+					sload_3;
+					sconst_1;
+					if_scmpne L4;
+				L3:	sconst_1;
+					goto L5;
+				L4:	sconst_0;
+				L5:	bastore;
+					aload_1;
+					sconst_0;
+					sconst_1;
+					invokevirtual 70;		// setOutgoingAndSend(SS)V
+				L6:	goto L9;
+				L7:	astore_2;
+				L8:	aload_2;
+					invokevirtual 68;		// getReason()S
+					invokestatic 17;		// javacard/framework/ISOException.throwIt(S)V
+				L9:	return;
+			.exceptionTable {
+				// start_block end_block handler_block catch_type_index
+				L0 L6 L7 67;
+			}
+		}
+
+		.method private getPrivateExponentAndSaultFromPrivateKeyBytes([B)V {
+			.stack 5;
+			.locals 0;
+
+				L0:	aload_1;
+					sconst_0;
+					bspush 32;
+					getfield_a_this 5;		// reference wallet/CryptoHandler.tmpBuffer
+					sconst_0;
+					invokestatic 24;		// wallet/SHA512.resetUpdateDoFinal([BSS[BS)S
+					pop;
+					getfield_a_this 5;		// reference wallet/CryptoHandler.tmpBuffer
+					sconst_0;
+					getfield_a_this 14;		// reference wallet/TonCryptoHandler.privateExponent
+					sconst_0;
+					bspush 32;
+					invokestatic 73;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					getfield_a_this 5;		// reference wallet/CryptoHandler.tmpBuffer
+					bspush 32;
+					getfield_a_this 15;		// reference wallet/TonCryptoHandler.privateSault
+					sconst_0;
+					bspush 32;
+					invokestatic 73;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					return;
+		}
+
+	}
+
+	.class public WalletApplet 7 extends 1.3 {		// extends javacard/framework/Applet
+
+		.fields {
+			private CryptoHandler cryptoHandler 0;		// Lwallet/CryptoHandler;
+			private static final byte WALLET_APPLET_CLA = -80;		// B
+			private static final byte INS_SETUP_KEY = 16;		// B
+			private static final byte INS_WRITE_PIN = 64;		// B
+			private static final byte INS_FINISH_PERS = -128;		// B
+			private static final byte INS_IMPORT_PRIVATE_KEY = 32;		// B
+			private static final byte INS_IMPORT_PUBLIC_KEY = 33;		// B
+			private static final byte INS_GET_PUBLIC_KEY = 48;		// B
+			private static final byte INS_VERIFY_PIN = 80;		// B
+			private static final byte INS_CHANGE_PIN = 96;		// B
+			private static final byte INS_SIGN_MESSAGE = 42;		// B
+			private static final byte INS_VERIFY_SIGNATURE = 43;		// B
+			private static final byte INS_SET_DATA_FOR_SIGNING = -8;		// B
+			private static final byte INS_GET_APP_INFO = -6;		// B
+			private static final byte INS_UNBLOCK_PIN = 112;		// B
+		}
+
+		.publicMethodTable 7 {
+			equals(Ljava/lang/Object;)Z;
+			register()V;
+			register([BSB)V;
+			selectingApplet()Z;
+			deselect()V;
+			getShareableInterfaceObject(Ljavacard/framework/AID;B)Ljavacard/framework/Shareable;;
+			select()Z;
+			process(Ljavacard/framework/APDU;)V;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>()V 0 {
+			.stack 3;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 77;		// javacard/framework/Applet.<init>()V
+					aload_0;
+					new 78;		// wallet/TonCryptoHandler
+					dup;
+					invokespecial 79;		// wallet/TonCryptoHandler.<init>()V
+					putfield_a 16;		// reference wallet/WalletApplet.cryptoHandler
+					return;
+		}
+
+		.method public static install([BSB)V 1 {
+			.stack 5;
+			.locals 0;
+
+				L0:	new 81;		// wallet/WalletApplet
+					dup;
+					invokespecial 82;		// wallet/WalletApplet.<init>()V
+					aload_0;
+					sload_1;
+					sconst_1;
+					sadd;
+					aload_0;
+					sload_1;
+					baload;
+					invokevirtual 83;		// register([BSB)V
+					return;
+		}
+
+		.method public process(Ljavacard/framework/APDU;)V 7 {
+			.stack 2;
+			.locals 3;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_0;
+					invokevirtual 84;		// selectingApplet()Z
+					ifeq L2;
+				L1:	return;
+				L2:	aload_1;
+					invokevirtual 53;		// getBuffer()[B
+					astore_2;
+				L3:	aload_2;
+					sconst_0;
+					baload;
+					sspush 255;
+					sand;
+					s2b;
+					sstore_3;
+				L4:	aload_2;
+					sconst_1;
+					baload;
+					sspush 255;
+					sand;
+					s2b;
+					sstore 4;
+				L5:	sload_3;
+					ifne L8;
+				L6:	sload 4;
+					bspush -92;
+					if_scmpne L8;
+				L7:	return;
+				L8:	sload_3;
+					bspush -80;
+					if_scmpeq L10;
+				L9:	sspush 28160;
+					invokestatic 17;		// javacard/framework/ISOException.throwIt(S)V
+				L10:	invokestatic 75;		// org/globalplatform/GPSystem.getCardContentState()B
+					slookupswitch L39 4 7 L11 23 L28 39 L36 55 L17;
+				L11:	sload 4;
+					slookupswitch L16 4 -128 L14 -6 L15 16 L12 64 L13;
+				L12:	getfield_a_this 16;		// reference wallet/WalletApplet.cryptoHandler
+					aload_1;
+					invokevirtual 85;		// setupKeys(Ljavacard/framework/APDU;)V
+					goto_w L40;
+				L13:	aload_1;
+					invokestatic 86;		// wallet/PinHandler.writePin(Ljavacard/framework/APDU;)V
+					goto_w L40;
+				L14:	aload_1;
+					invokestatic 87;		// wallet/CommonHandler.finishPersonalization(Ljavacard/framework/APDU;)V
+					goto_w L40;
+				L15:	aload_1;
+					invokestatic 88;		// wallet/CommonHandler.getAppInfo(Ljavacard/framework/APDU;)V
+					goto_w L40;
+				L16:	sspush 27904;
+					invokestatic 17;		// javacard/framework/ISOException.throwIt(S)V
+					goto_w L40;
+				L17:	sload 4;
+					slookupswitch L27 9 -8 L21 -6 L26 32 L19 33 L18 42 L22 43 L23 48 L20 80 L24 96 L25;
+				L18:	getfield_a_this 16;		// reference wallet/WalletApplet.cryptoHandler
+					aload_1;
+					invokevirtual 89;		// importPublicKey(Ljavacard/framework/APDU;)V
+					goto_w L40;
+				L19:	getfield_a_this 16;		// reference wallet/WalletApplet.cryptoHandler
+					aload_1;
+					invokevirtual 90;		// importPrivateKey(Ljavacard/framework/APDU;)V
+					goto_w L40;
+				L20:	getfield_a_this 16;		// reference wallet/WalletApplet.cryptoHandler
+					aload_1;
+					invokevirtual 91;		// getPublicMasterKey(Ljavacard/framework/APDU;)V
+					goto_w L40;
+				L21:	getfield_a_this 16;		// reference wallet/WalletApplet.cryptoHandler
+					aload_1;
+					invokevirtual 92;		// setDataForSigning(Ljavacard/framework/APDU;)V
+					goto_w L40;
+				L22:	getfield_a_this 16;		// reference wallet/WalletApplet.cryptoHandler
+					aload_1;
+					invokevirtual 93;		// signMessage(Ljavacard/framework/APDU;)V
+					goto_w L40;
+				L23:	getfield_a_this 16;		// reference wallet/WalletApplet.cryptoHandler
+					aload_1;
+					invokevirtual 94;		// verifySignature(Ljavacard/framework/APDU;)V
+					goto_w L40;
+				L24:	aload_1;
+					invokestatic 95;		// wallet/PinHandler.verifyPin(Ljavacard/framework/APDU;)V
+					goto_w L40;
+				L25:	aload_1;
+					invokestatic 96;		// wallet/PinHandler.changePin(Ljavacard/framework/APDU;)V
+					goto_w L40;
+				L26:	aload_1;
+					invokestatic 88;		// wallet/CommonHandler.getAppInfo(Ljavacard/framework/APDU;)V
+					goto L40;
+				L27:	sspush 27904;
+					invokestatic 17;		// javacard/framework/ISOException.throwIt(S)V
+					goto L40;
+				L28:	sload 4;
+					slookupswitch L35 6 -8 L30 -6 L34 42 L31 48 L29 80 L32 96 L33;
+				L29:	getfield_a_this 16;		// reference wallet/WalletApplet.cryptoHandler
+					aload_1;
+					invokevirtual 91;		// getPublicMasterKey(Ljavacard/framework/APDU;)V
+					goto L40;
+				L30:	getfield_a_this 16;		// reference wallet/WalletApplet.cryptoHandler
+					aload_1;
+					invokevirtual 92;		// setDataForSigning(Ljavacard/framework/APDU;)V
+					goto L40;
+				L31:	getfield_a_this 16;		// reference wallet/WalletApplet.cryptoHandler
+					aload_1;
+					invokevirtual 93;		// signMessage(Ljavacard/framework/APDU;)V
+					goto L40;
+				L32:	aload_1;
+					invokestatic 95;		// wallet/PinHandler.verifyPin(Ljavacard/framework/APDU;)V
+					goto L40;
+				L33:	aload_1;
+					invokestatic 96;		// wallet/PinHandler.changePin(Ljavacard/framework/APDU;)V
+					goto L40;
+				L34:	aload_1;
+					invokestatic 88;		// wallet/CommonHandler.getAppInfo(Ljavacard/framework/APDU;)V
+					goto L40;
+				L35:	sspush 27904;
+					invokestatic 17;		// javacard/framework/ISOException.throwIt(S)V
+					goto L40;
+				L36:	sload 4;
+					slookupswitch L38 1 112 L37;
+				L37:	aload_1;
+					invokestatic 97;		// wallet/PinHandler.unblockPin(Ljavacard/framework/APDU;)V
+					goto L40;
+				L38:	sspush 27904;
+					invokestatic 17;		// javacard/framework/ISOException.throwIt(S)V
+					goto L40;
+				L39:	sspush 28160;
+					invokestatic 17;		// javacard/framework/ISOException.throwIt(S)V
+				L40:	return;
+		}
+
+	}
+
+}

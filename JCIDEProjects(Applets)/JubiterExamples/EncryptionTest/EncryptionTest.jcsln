@@ -1,0 +1,24 @@
+<JavaCardSolution name="EncryptionTest">
+    <JavaCardProjects>
+        <JavaCardProject path="EncryptionTest/EncryptionTest.jcproj" />
+    </JavaCardProjects>
+    <Build>
+        <BuildDependon />
+    </Build>
+    <Config activeconfig="EncryptionTest">
+        <ConfigItem name="EncryptionTest">
+            <InstallConfig>
+                <PKG project_name="EncryptionTest" pkg_name="testpack" aid="22 33 44 55 66 77" major="1" minor="1">
+                    <APPLET aid="22 33 44 55 66 77 00" authority="" instanceaid="" parameter="" privileges="" index="-12072" name="EncryptionTest" />
+                </PKG>
+            </InstallConfig>
+            <DebugInfo>
+                <Protocol name="T0|T1" />
+            </DebugInfo>
+        </ConfigItem>
+    </Config>
+    <Platform>
+        <ATR Value="" />
+        <ChipPack Name="Telegram" />
+    </Platform>
+</JavaCardSolution>

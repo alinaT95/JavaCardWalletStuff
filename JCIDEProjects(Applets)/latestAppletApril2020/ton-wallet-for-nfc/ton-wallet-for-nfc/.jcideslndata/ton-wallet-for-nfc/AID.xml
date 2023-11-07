@@ -1,0 +1,24 @@
+<JavaCardConfiguration name="ton-wallet-for-nfc">
+    <Config activeconfig="ton-wallet-for-nfc">
+        <ConfigItem name="ton-wallet-for-nfc">
+            <InstallConfig>
+                <PKG project_name="ton-wallet-for-nfc" pkg_name="tonwallet" aid="31 31 32 32 33 33 34 34 35 35 36 36" major="1" minor="0">
+                    <APPLET aid="31 31 32 32 33 33 34 34 35 35 36 36 00" authority="" instanceaid="" parameter="" privileges="" index="15592" name="TonWalletApplet" />
+                    <APPLET aid="" authority="" instanceaid="" parameter="" privileges="" index="23984" name="Utils" />
+                    <APPLET aid="" authority="" instanceaid="" parameter="" privileges="" index="27344" name="Constants" />
+                    <APPLET aid="" authority="" instanceaid="" parameter="" privileges="" index="23624" name="CommonHandler" />
+                    <APPLET aid="" authority="" instanceaid="" parameter="" privileges="" index="24104" name="SaultHandler" />
+                    <APPLET aid="" authority="" instanceaid="" parameter="" privileges="" index="26264" name="TonCryptoHandler" />
+                    <APPLET aid="" authority="" instanceaid="" parameter="" privileges="" index="26744" name="CardAuthenticationHandler" />
+                    <APPLET aid="" authority="" instanceaid="" parameter="" privileges="" index="26384" name="KeyChain" />
+                    <APPLET aid="" authority="" instanceaid="" parameter="" privileges="" index="23744" name="PinHandler" />
+                    <APPLET aid="" authority="" instanceaid="" parameter="" privileges="" index="24224" name="HmacSha256Impl" />
+                    <APPLET aid="" authority="" instanceaid="" parameter="" privileges="" index="29024" name="ApduDataProtectionHandler" />
+                    <APPLET aid="" authority="" instanceaid="" parameter="" privileges="" index="29144" name="ErrorCodes" />
+                    <APPLET aid="" authority="" instanceaid="" parameter="" privileges="" index="28304" name="CommonSecretHandler" />
+                </PKG>
+            </InstallConfig>
+            <ScriptConfig before_build="" after_build="" />
+        </ConfigItem>
+    </Config>
+</JavaCardConfiguration>

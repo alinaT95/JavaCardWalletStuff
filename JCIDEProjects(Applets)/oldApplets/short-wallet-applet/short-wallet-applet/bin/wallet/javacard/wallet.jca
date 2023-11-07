@@ -1,0 +1,956 @@
+// converted by version 1.3
+// on Thu Jul 18 16:51:30 MSK 2019
+
+.package wallet {
+	.aid 0x31:0x31:0x32:0x32:0x33:0x33:0x34:0x34:0x35:0x35:0x36:0x36;
+	.version 1.0;
+
+	.imports {
+		0xA0:0x0:0x0:0x0:0x62:0x0:0x1 1.0;		//java/lang
+		0xA0:0x0:0x0:0x0:0x62:0x1:0x2 1.5;		//javacard/security
+		0xA0:0x0:0x0:0x0:0x62:0x1:0x1 1.5;		//javacard/framework
+		0xA0:0x0:0x0:0x1:0x51:0x0 1.0;		//org/globalplatform
+	}
+
+	.applet {
+		0x31:0x31:0x32:0x32:0x33:0x33:0x34:0x34:0x35:0x35:0x36:0x36:0x0 wallet;
+	}
+
+	.constantPool {
+		// 0
+		instanceFieldRef short BtcCryptoHandler/numberOfBytesReceived;
+		// 1
+		instanceFieldRef short BtcCryptoHandler/dataForSigningTotalLen;
+		// 2
+		instanceFieldRef short BtcCryptoHandler/sigLen;
+		// 3
+		instanceFieldRef 1.22 BtcCryptoHandler/keyAgreement;
+		// 4
+		instanceFieldRef 1.15 BtcCryptoHandler/sig;
+		// 5
+		instanceFieldRef 1.15 BtcCryptoHandler/verifierSignature;
+		// 6
+		instanceFieldRef byte[] BtcCryptoHandler/dataForSigning;
+		// 7
+		instanceFieldRef byte[] BtcCryptoHandler/signatureBytes;
+		// 8
+		instanceFieldRef byte[] BtcCryptoHandler/tmpBuffer;
+		// 9
+		instanceFieldRef 1.18 BtcCryptoHandler/privateKey;
+		// 10
+		instanceFieldRef 1.19 BtcCryptoHandler/publicKey;
+		// 11
+		instanceFieldRef BtcCryptoHandler wallet/cryptoHandler;
+		// 12
+		staticMethodRef 1.15.0(BZ)Ljavacard/security/Signature;;		// javacard/security/Signature.getInstance(BZ)Ljavacard/security/Signature;
+			.descriptor	Ljavacard/security/Signature;	1.15;
+
+		// 13
+		staticMethodRef 0.0.0()V;		// java/lang/Object.<init>()V
+		// 14
+		classRef 1.16;		// javacard/security/KeyPair
+		// 15
+		staticMethodRef 1.16.0(BS)V;		// javacard/security/KeyPair.<init>(BS)V
+		// 16
+		staticFieldRef 1.16 BtcCryptoHandler/kp;
+		// 17
+		virtualMethodRef 1.16.1()V;		// genKeyPair()V
+		// 18
+		virtualMethodRef 1.16.2()Ljavacard/security/PrivateKey;;		// getPrivate()Ljavacard/security/PrivateKey;
+			.descriptor	Ljavacard/security/PrivateKey;	1.2;
+
+		// 19
+		classRef 1.18;		// javacard/security/ECPrivateKey
+		// 20
+		staticMethodRef 1.22.0(BZ)Ljavacard/security/KeyAgreement;;		// javacard/security/KeyAgreement.getInstance(BZ)Ljavacard/security/KeyAgreement;
+			.descriptor	Ljavacard/security/KeyAgreement;	1.22;
+
+		// 21
+		virtualMethodRef 1.16.3()Ljavacard/security/PublicKey;;		// getPublic()Ljavacard/security/PublicKey;
+			.descriptor	Ljavacard/security/PublicKey;	1.3;
+
+		// 22
+		classRef 1.19;		// javacard/security/ECPublicKey
+		// 23
+		staticMethodRef 2.8.13(SB)[B;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+		// 24
+		virtualMethodRef 2.10.1()[B;		// getBuffer()[B
+		// 25
+		staticMethodRef 2.16.6([BSS)S;		// javacard/framework/Util.setShort([BSS)S
+		// 26
+		virtualMethodRef 2.10.8(SS)V;		// setOutgoingAndSend(SS)V
+		// 27
+		staticMethodRef 2.7.1(S)V;		// javacard/framework/ISOException.throwIt(S)V
+		// 28
+		staticMethodRef Secp256k1/checkCurveParameters(Ljavacard/security/ECKey;[BS)Z;
+			.descriptor	Ljavacard/security/ECKey;	1.17;
+
+		// 29
+		virtualMethodRef 1.22.1(Ljavacard/security/PrivateKey;)V;		// init(Ljavacard/security/PrivateKey;)V
+			.descriptor	Ljavacard/security/PrivateKey;	1.2;
+
+		// 30
+		staticFieldRef byte[] Secp256k1/SECP256K1;
+		// 31
+		virtualMethodRef 1.22.3([BSS[BS)S;		// generateSecret([BSS[BS)S
+		// 32
+		virtualMethodRef 1.15.3(Ljavacard/security/Key;B)V;		// init(Ljavacard/security/Key;B)V
+			.descriptor	Ljavacard/security/Key;	1.0;
+
+		// 33
+		virtualMethodRef 1.15.5([BSS[BS)S;		// sign([BSS[BS)S
+		// 34
+		virtualMethodRef 2.10.6()S;		// setIncomingAndReceive()S
+		// 35
+		staticMethodRef 2.16.2([BS[BSS)S;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+		// 36
+		classRef 1.12;		// javacard/security/CryptoException
+		// 37
+		staticMethodRef 2.16.1([BS[BSS)S;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+		// 38
+		virtualMethodRef 1.12.1()S;		// getReason()S
+		// 39
+		staticMethodRef 3.3.8(B)Z;		// org/globalplatform/GPSystem.setCardContentState(B)Z
+		// 40
+		virtualMethodRef 2.10.7()S;		// setOutgoing()S
+		// 41
+		virtualMethodRef 2.10.9(S)V;		// setOutgoingLength(S)V
+		// 42
+		staticMethodRef 3.3.1()B;		// org/globalplatform/GPSystem.getCardContentState()B
+		// 43
+		virtualMethodRef 2.10.4(SS)V;		// sendBytes(SS)V
+		// 44
+		classRef 1.17;		// javacard/security/ECKey
+		// 45
+		staticMethodRef 2.16.0([BS[BSS)B;		// javacard/framework/Util.arrayCompare([BS[BSS)B
+		// 46
+		staticMethodRef 2.3.0()V;		// javacard/framework/Applet.<init>()V
+		// 47
+		classRef BtcCryptoHandler;
+		// 48
+		staticMethodRef BtcCryptoHandler/<init>()V;
+		// 49
+		classRef 2.13;		// javacard/framework/SystemException
+		// 50
+		classRef wallet;
+		// 51
+		staticMethodRef wallet/<init>()V;
+		// 52
+		virtualMethodRef 2.3.2([BSB)V;		// register([BSB)V
+		// 53
+		virtualMethodRef 2.3.3()Z;		// selectingApplet()Z
+		// 54
+		virtualMethodRef BtcCryptoHandler/setupMasterKeyWithoutSeed()V;
+		// 55
+		staticMethodRef CommonHandler/finishPersonalization(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	2.10;
+
+		// 56
+		staticMethodRef CommonHandler/getAppInfo(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	2.10;
+
+		// 57
+		virtualMethodRef BtcCryptoHandler/getPublicMasterKey(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	2.10;
+
+		// 58
+		virtualMethodRef BtcCryptoHandler/getPublicMasterKeyUsingKeyAgreement(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	2.10;
+
+		// 59
+		virtualMethodRef BtcCryptoHandler/setDataForSigning(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	2.10;
+
+		// 60
+		virtualMethodRef BtcCryptoHandler/signShortMessage(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	2.10;
+
+		// 61
+		virtualMethodRef BtcCryptoHandler/verifySignature(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	2.10;
+
+	}
+
+	.class public BtcCryptoHandler 0 extends 0.0 {		// extends java/lang/Object
+
+		.fields {
+			private 1.19 publicKey 0;		// Ljavacard/security/ECPublicKey;
+			private 1.18 privateKey 1;		// Ljavacard/security/ECPrivateKey;
+			private 1.22 keyAgreement 2;		// Ljavacard/security/KeyAgreement;
+			private byte[] dataForSigning 3;		// [B
+			private byte[] signatureBytes 4;		// [B
+			private byte[] tmpBuffer 5;		// [B
+			private 1.15 sig 6;		// Ljavacard/security/Signature;
+			private 1.15 verifierSignature 7;		// Ljavacard/security/Signature;
+			private short numberOfBytesReceived 8;		// S
+			private short dataForSigningTotalLen 9;		// S
+			private short sigLen 10;		// S
+			public static final short TMP_BUFFER_SIZE = 268;		// S
+			private static final byte[] BITCOIN_SIGNED_MESSAGE_HEADER = {24,66,105,116,99,111,105,110,32,83,105,103,110,101,100,32,77,101,115,115,97,103,101,58,10};		// [B
+			private static final short DATA_FOR_SIGNING_MAX_SIZE_IN_BYTES = 1024;		// S
+			private static final short SIGNATURE_MAX_SIZE_IN_BYTES = 74;		// S
+			private static final byte ALG_ECDSA_SHA_256 = 33;		// B
+			private static 1.16 kp;		// Ljavacard/security/KeyPair;
+		}
+
+		.publicMethodTable 1 {
+			equals(Ljava/lang/Object;)Z;
+			setupMasterKeyWithoutSeed()V;
+			getPublicMasterKey(Ljavacard/framework/APDU;)V;
+			getPublicMasterKeyUsingKeyAgreement(Ljavacard/framework/APDU;)V;
+			setDataForSigning(Ljavacard/framework/APDU;)V;
+			signShortMessage(Ljavacard/framework/APDU;)V;
+			verifySignature(Ljavacard/framework/APDU;)V;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>()V 0 {
+			.stack 3;
+			.locals 1;
+
+				L0:	aload_0;
+					invokespecial 13;		// java/lang/Object.<init>()V
+					aload_0;
+					sconst_0;
+					putfield_s 0;		// short wallet/BtcCryptoHandler.numberOfBytesReceived
+					aload_0;
+					sconst_0;
+					putfield_s 1;		// short wallet/BtcCryptoHandler.dataForSigningTotalLen
+					aload_0;
+					sconst_0;
+					putfield_s 2;		// short wallet/BtcCryptoHandler.sigLen
+					aload_0;
+					sconst_3;
+					sconst_0;
+					invokestatic 20;		// javacard/security/KeyAgreement.getInstance(BZ)Ljavacard/security/KeyAgreement;
+					putfield_a 3;		// reference wallet/BtcCryptoHandler.keyAgreement
+					aload_0;
+					bspush 17;
+					sconst_0;
+					invokestatic 12;		// javacard/security/Signature.getInstance(BZ)Ljavacard/security/Signature;
+					putfield_a 4;		// reference wallet/BtcCryptoHandler.sig
+					aload_0;
+					bspush 17;
+					sconst_0;
+					invokestatic 12;		// javacard/security/Signature.getInstance(BZ)Ljavacard/security/Signature;
+					putfield_a 5;		// reference wallet/BtcCryptoHandler.verifierSignature
+					aload_0;
+					sspush 1024;
+					sconst_2;
+					invokestatic 23;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					putfield_a 6;		// reference wallet/BtcCryptoHandler.dataForSigning
+					aload_0;
+					bspush 74;
+					sconst_2;
+					invokestatic 23;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					putfield_a 7;		// reference wallet/BtcCryptoHandler.signatureBytes
+				L1:	aload_0;
+					sspush 268;
+					sconst_2;
+					invokestatic 23;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					putfield_a 8;		// reference wallet/BtcCryptoHandler.tmpBuffer
+				L2:	goto L5;
+				L3:	astore_1;
+				L4:	aload_0;
+					sspush 268;
+					newarray 11;
+					putfield_a 8;		// reference wallet/BtcCryptoHandler.tmpBuffer
+				L5:	return;
+			.exceptionTable {
+				// start_block end_block handler_block catch_type_index
+				L1 L2 L3 49;
+			}
+		}
+
+		.method public setupMasterKeyWithoutSeed()V 1 {
+			.stack 4;
+			.locals 0;
+
+				L0:	new 14;		// javacard/security/KeyPair
+					dup;
+					sconst_5;
+					sspush 192;
+					invokespecial 15;		// javacard/security/KeyPair.<init>(BS)V
+					putstatic_a 16;		// reference wallet/BtcCryptoHandler.kp
+					getstatic_a 16;		// reference wallet/BtcCryptoHandler.kp
+					invokevirtual 17;		// genKeyPair()V
+					aload_0;
+					getstatic_a 16;		// reference wallet/BtcCryptoHandler.kp
+					invokevirtual 18;		// getPrivate()Ljavacard/security/PrivateKey;
+					checkcast 0 19;		// T_CLASSORINTERFACE javacard/security/ECPrivateKey
+					putfield_a 9;		// reference wallet/BtcCryptoHandler.privateKey
+					aload_0;
+					getstatic_a 16;		// reference wallet/BtcCryptoHandler.kp
+					invokevirtual 21;		// getPublic()Ljavacard/security/PublicKey;
+					checkcast 0 22;		// T_CLASSORINTERFACE javacard/security/ECPublicKey
+					putfield_a 10;		// reference wallet/BtcCryptoHandler.publicKey
+					return;
+		}
+
+		.method public getPublicMasterKey(Ljavacard/framework/APDU;)V 2 {
+			.stack 4;
+			.locals 2;
+
+			.descriptor	Ljavacard/framework/APDU;	2.10;
+
+				L0:	aload_1;
+					invokevirtual 24;		// getBuffer()[B
+					astore_2;
+				L1:	getfield_a_this 10;		// reference wallet/BtcCryptoHandler.publicKey
+					aload_2;
+					sconst_2;
+					invokeinterface 3 22 19;		// javacard/security/ECPublicKey
+					sstore_3;
+				L2:	aload_2;
+					sconst_0;
+					sload_3;
+					invokestatic 25;		// javacard/framework/Util.setShort([BSS)S
+					pop;
+					aload_1;
+					sconst_0;
+					sload_3;
+					sconst_2;
+					sadd;
+					invokevirtual 26;		// setOutgoingAndSend(SS)V
+					return;
+		}
+
+		.method public getPublicMasterKeyUsingKeyAgreement(Ljavacard/framework/APDU;)V 3 {
+			.stack 7;
+			.locals 3;
+
+			.descriptor	Ljavacard/framework/APDU;	2.10;
+
+				L0:	aload_1;
+					invokevirtual 24;		// getBuffer()[B
+					astore_2;
+				L1:	getfield_a_this 9;		// reference wallet/BtcCryptoHandler.privateKey
+					invokeinterface 1 19 2;		// javacard/security/ECPrivateKey
+					bspush 12;
+					if_scmpne L10;
+				L2:	getfield_a_this 9;		// reference wallet/BtcCryptoHandler.privateKey
+					invokeinterface 1 19 1;		// javacard/security/ECPrivateKey
+					sspush 256;
+					if_scmpeq L4;
+				L3:	sspush -25591;
+					invokestatic 27;		// javacard/framework/ISOException.throwIt(S)V
+				L4:	getfield_a_this 9;		// reference wallet/BtcCryptoHandler.privateKey
+					getfield_a_this 8;		// reference wallet/BtcCryptoHandler.tmpBuffer
+					sconst_0;
+					invokestatic 28;		// wallet/Secp256k1.checkCurveParameters(Ljavacard/security/ECKey;[BS)Z
+					ifne L6;
+				L5:	sspush -25591;
+					invokestatic 27;		// javacard/framework/ISOException.throwIt(S)V
+				L6:	getfield_a_this 3;		// reference wallet/BtcCryptoHandler.keyAgreement
+					getfield_a_this 9;		// reference wallet/BtcCryptoHandler.privateKey
+					invokevirtual 29;		// init(Ljavacard/security/PrivateKey;)V
+					getfield_a_this 3;		// reference wallet/BtcCryptoHandler.keyAgreement
+					getstatic_a 30;		// reference wallet/Secp256k1.SECP256K1
+					sspush 128;
+					bspush 65;
+					aload_2;
+					sconst_2;
+					invokevirtual 31;		// generateSecret([BSS[BS)S
+					sstore_3;
+				L7:	aload_2;
+					sconst_0;
+					sload_3;
+					invokestatic 25;		// javacard/framework/Util.setShort([BSS)S
+					pop;
+					getfield_a_this 4;		// reference wallet/BtcCryptoHandler.sig
+					getfield_a_this 9;		// reference wallet/BtcCryptoHandler.privateKey
+					sconst_1;
+					invokevirtual 32;		// init(Ljavacard/security/Key;B)V
+					getfield_a_this 4;		// reference wallet/BtcCryptoHandler.sig
+					aload_2;
+					sconst_0;
+					sload_3;
+					sconst_2;
+					sadd;
+					aload_2;
+					sload_3;
+					sconst_4;
+					sadd;
+					invokevirtual 33;		// sign([BSS[BS)S
+					sstore 4;
+				L8:	aload_2;
+					sload_3;
+					sconst_2;
+					sadd;
+					sload 4;
+					invokestatic 25;		// javacard/framework/Util.setShort([BSS)S
+					pop;
+					aload_1;
+					sconst_0;
+					sconst_2;
+					sload_3;
+					sadd;
+					sconst_2;
+					sadd;
+					sload 4;
+					sadd;
+					invokevirtual 26;		// setOutgoingAndSend(SS)V
+				L9:	goto L11;
+				L10:	sspush -25591;
+					invokestatic 27;		// javacard/framework/ISOException.throwIt(S)V
+				L11:	return;
+		}
+
+		.method public setDataForSigning(Ljavacard/framework/APDU;)V 4 {
+			.stack 5;
+			.locals 4;
+
+			.descriptor	Ljavacard/framework/APDU;	2.10;
+
+				L0:	aload_1;
+					invokevirtual 24;		// getBuffer()[B
+					astore_2;
+				L1:	aload_2;
+					sconst_4;
+					baload;
+					sspush 255;
+					sand;
+					sstore_3;
+				L2:	aload_1;
+					invokevirtual 34;		// setIncomingAndReceive()S
+					sstore 4;
+				L3:	sload_3;
+					sload 4;
+					if_scmpeq L5;
+				L4:	sspush 26368;
+					invokestatic 27;		// javacard/framework/ISOException.throwIt(S)V
+				L5:	aload_2;
+					sconst_5;
+					getfield_a_this 6;		// reference wallet/BtcCryptoHandler.dataForSigning
+					getfield_s_this 0;		// short wallet/BtcCryptoHandler.numberOfBytesReceived
+					sload_3;
+					invokestatic 35;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					aload_2;
+					sconst_2;
+					baload;
+					sstore 5;
+				L6:	aload_0;
+					dup;
+					getfield_s 0;		// short wallet/BtcCryptoHandler.numberOfBytesReceived
+					sload_3;
+					sadd;
+					putfield_s 0;		// short wallet/BtcCryptoHandler.numberOfBytesReceived
+					sload 5;
+					sconst_1;
+					if_scmpne L10;
+				L7:	aload_0;
+					getfield_s_this 0;		// short wallet/BtcCryptoHandler.numberOfBytesReceived
+					putfield_s 1;		// short wallet/BtcCryptoHandler.dataForSigningTotalLen
+					getfield_s_this 1;		// short wallet/BtcCryptoHandler.dataForSigningTotalLen
+					sspush 1024;
+					if_scmple L9;
+				L8:	sspush -25590;
+					invokestatic 27;		// javacard/framework/ISOException.throwIt(S)V
+				L9:	aload_0;
+					sconst_0;
+					putfield_s 0;		// short wallet/BtcCryptoHandler.numberOfBytesReceived
+				L10:	return;
+		}
+
+		.method public signShortMessage(Ljavacard/framework/APDU;)V 5 {
+			.stack 6;
+			.locals 2;
+
+			.descriptor	Ljavacard/framework/APDU;	2.10;
+
+				L0:	aload_1;
+					invokevirtual 24;		// getBuffer()[B
+					astore_2;
+				L1:	getfield_a_this 4;		// reference wallet/BtcCryptoHandler.sig
+					getfield_a_this 9;		// reference wallet/BtcCryptoHandler.privateKey
+					sconst_1;
+					invokevirtual 32;		// init(Ljavacard/security/Key;B)V
+					getfield_a_this 4;		// reference wallet/BtcCryptoHandler.sig
+					getfield_a_this 6;		// reference wallet/BtcCryptoHandler.dataForSigning
+					sconst_0;
+					getfield_s_this 1;		// short wallet/BtcCryptoHandler.dataForSigningTotalLen
+					getfield_a_this 7;		// reference wallet/BtcCryptoHandler.signatureBytes
+					sconst_0;
+					invokevirtual 33;		// sign([BSS[BS)S
+					sstore_3;
+				L2:	aload_2;
+					sconst_0;
+					sload_3;
+					invokestatic 25;		// javacard/framework/Util.setShort([BSS)S
+					pop;
+					getfield_a_this 7;		// reference wallet/BtcCryptoHandler.signatureBytes
+					sconst_0;
+					aload_2;
+					sconst_2;
+					sload_3;
+					invokestatic 37;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					aload_1;
+					sconst_0;
+					sload_3;
+					sconst_2;
+					sadd;
+					invokevirtual 26;		// setOutgoingAndSend(SS)V
+				L3:	goto L6;
+				L4:	astore_3;
+				L5:	iipush 39680;
+					aload_3;
+					invokevirtual 38;		// getReason()S
+					s2i;
+					ior;
+					i2s;
+					invokestatic 27;		// javacard/framework/ISOException.throwIt(S)V
+				L6:	return;
+			.exceptionTable {
+				// start_block end_block handler_block catch_type_index
+				L1 L3 L4 36;
+			}
+		}
+
+		.method public verifySignature(Ljavacard/framework/APDU;)V 6 {
+			.stack 4;
+			.locals 2;
+
+			.descriptor	Ljavacard/framework/APDU;	2.10;
+
+				L0:	aload_1;
+					invokevirtual 24;		// getBuffer()[B
+					astore_2;
+				L1:	getfield_a_this 5;		// reference wallet/BtcCryptoHandler.verifierSignature
+					getfield_a_this 10;		// reference wallet/BtcCryptoHandler.publicKey
+					sconst_2;
+					invokevirtual 32;		// init(Ljavacard/security/Key;B)V
+					sconst_1;
+					sstore_3;
+				L2:	aload_2;
+					sconst_0;
+					sload_3;
+					sconst_1;
+					if_scmpne L4;
+				L3:	sconst_1;
+					goto L5;
+				L4:	sconst_0;
+				L5:	bastore;
+					aload_1;
+					sconst_0;
+					sconst_1;
+					invokevirtual 26;		// setOutgoingAndSend(SS)V
+				L6:	goto L9;
+				L7:	astore_3;
+				L8:	aload_3;
+					invokevirtual 38;		// getReason()S
+					invokestatic 27;		// javacard/framework/ISOException.throwIt(S)V
+				L9:	return;
+			.exceptionTable {
+				// start_block end_block handler_block catch_type_index
+				L1 L6 L7 36;
+			}
+		}
+
+	}
+
+	.class public CommonHandler 1 extends 0.0 {		// extends java/lang/Object
+
+		.publicMethodTable 1 {
+			equals(Ljava/lang/Object;)Z;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>()V 0 {
+			.stack 1;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 13;		// java/lang/Object.<init>()V
+					return;
+		}
+
+		.method public static finishPersonalization(Ljavacard/framework/APDU;)V 1 {
+			.stack 1;
+			.locals 0;
+
+			.descriptor	Ljavacard/framework/APDU;	2.10;
+
+				L0:	bspush 23;
+					invokestatic 39;		// org/globalplatform/GPSystem.setCardContentState(B)Z
+					pop;
+					return;
+		}
+
+		.method public static getAppInfo(Ljavacard/framework/APDU;)V 2 {
+			.stack 3;
+			.locals 2;
+
+			.descriptor	Ljavacard/framework/APDU;	2.10;
+
+				L0:	aload_0;
+					invokevirtual 24;		// getBuffer()[B
+					astore_1;
+				L1:	sconst_1;
+					sstore_2;
+				L2:	aload_0;
+					invokevirtual 40;		// setOutgoing()S
+					pop;
+					aload_0;
+					sload_2;
+					invokevirtual 41;		// setOutgoingLength(S)V
+					aload_1;
+					sconst_0;
+					invokestatic 42;		// org/globalplatform/GPSystem.getCardContentState()B
+					bastore;
+					aload_0;
+					sconst_0;
+					sload_2;
+					invokevirtual 43;		// sendBytes(SS)V
+					return;
+		}
+
+	}
+
+	.class public Constants 2 extends 0.0 {		// extends java/lang/Object
+
+		.fields {
+			public static final short SW_INCORRECT_ALG = -25591;		// S
+			public static final short SW_DATA_FOR_SIGNING_IS_TOO_LONG = -25590;		// S
+			public static final short LENGTH_EC_FP_256 = 256;		// S
+			public static final byte ALG_EC_SVDP_DH_PLAIN = 3;		// B
+			public static final byte APP_INSTALLED = 7;		// B
+			public static final byte APP_PERSONALIZED = 23;		// B
+		}
+
+		.publicMethodTable 1 {
+			equals(Ljava/lang/Object;)Z;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>()V 0 {
+			.stack 1;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 13;		// java/lang/Object.<init>()V
+					return;
+		}
+
+	}
+
+	.class public Secp256k1 3 extends 0.0 {		// extends java/lang/Object
+
+		.fields {
+			public static final byte ALG_ECDSA_SHA_256 = 33;		// B
+			public static final byte ALG_EC_SVDP_DH_PLAIN = 3;		// B
+			public static final short LENGTH_EC_FP_256 = 256;		// S
+			public static final short SECP256K1_K = 1;		// S
+			public static final short OFFSET_SECP256K1_P = 0;		// S
+			public static final short OFFSET_SECP256K1_a = 32;		// S
+			public static final short OFFSET_SECP256K1_b = 64;		// S
+			public static final short OFFSET_SECP256K1_R = 96;		// S
+			public static final short OFFSET_SECP256K1_G = 128;		// S
+			public static final byte[] SECP256K1 0 = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-2,-1,-1,-4,47,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-2,-70,-82,-36,-26,-81,72,-96,59,-65,-46,94,-116,-48,54,65,65,4,121,-66,102,126,-7,-36,-69,-84,85,-96,98,-107,-50,-121,11,7,2,-101,-4,-37,45,-50,40,-39,89,-14,-127,91,22,-8,23,-104,72,58,-38,119,38,-93,-60,101,93,-92,-5,-4,14,17,8,-88,-3,23,-76,72,-90,-123,84,25,-100,71,-48,-113,-5,16,-44,-72};		// [B
+		}
+
+		.publicMethodTable 1 {
+			equals(Ljava/lang/Object;)Z;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>()V 0 {
+			.stack 1;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 13;		// java/lang/Object.<init>()V
+					return;
+		}
+
+		.method public static setCommonCurveParameters(Ljavacard/security/ECKey;)V 1 {
+			.stack 4;
+			.locals 0;
+
+			.descriptor	Ljavacard/security/ECKey;	1.17;
+
+				L0:	aload_0;
+					getstatic_a 30;		// reference wallet/Secp256k1.SECP256K1
+					sconst_0;
+					bspush 32;
+					invokeinterface 4 44 0;		// javacard/security/ECKey
+					aload_0;
+					getstatic_a 30;		// reference wallet/Secp256k1.SECP256K1
+					bspush 32;
+					bspush 32;
+					invokeinterface 4 44 3;		// javacard/security/ECKey
+					aload_0;
+					getstatic_a 30;		// reference wallet/Secp256k1.SECP256K1
+					bspush 64;
+					bspush 32;
+					invokeinterface 4 44 4;		// javacard/security/ECKey
+					aload_0;
+					getstatic_a 30;		// reference wallet/Secp256k1.SECP256K1
+					bspush 96;
+					bspush 32;
+					invokeinterface 4 44 6;		// javacard/security/ECKey
+					aload_0;
+					getstatic_a 30;		// reference wallet/Secp256k1.SECP256K1
+					sspush 128;
+					bspush 65;
+					invokeinterface 4 44 5;		// javacard/security/ECKey
+					aload_0;
+					sconst_1;
+					invokeinterface 2 44 7;		// javacard/security/ECKey
+					return;
+		}
+
+		.method public static checkCurveParameters(Ljavacard/security/ECKey;[BS)Z 2 {
+			.stack 6;
+			.locals 0;
+
+			.descriptor	Ljavacard/security/ECKey;	1.17;
+
+				L0:	aload_0;
+					aload_1;
+					sload_2;
+					invokeinterface 3 44 9;		// javacard/security/ECKey
+					pop;
+					sconst_0;
+					aload_1;
+					sload_2;
+					getstatic_a 30;		// reference wallet/Secp256k1.SECP256K1
+					bspush 32;
+					bspush 32;
+					invokestatic 45;		// javacard/framework/Util.arrayCompare([BS[BSS)B
+					if_scmpeq L2;
+				L1:	sconst_0;
+					sreturn;
+				L2:	aload_0;
+					aload_1;
+					sload_2;
+					invokeinterface 3 44 10;		// javacard/security/ECKey
+					pop;
+					sconst_0;
+					aload_1;
+					sload_2;
+					getstatic_a 30;		// reference wallet/Secp256k1.SECP256K1
+					bspush 64;
+					bspush 32;
+					invokestatic 45;		// javacard/framework/Util.arrayCompare([BS[BSS)B
+					if_scmpeq L4;
+				L3:	sconst_0;
+					sreturn;
+				L4:	aload_0;
+					aload_1;
+					sload_2;
+					invokeinterface 3 44 11;		// javacard/security/ECKey
+					pop;
+					sconst_0;
+					aload_1;
+					sload_2;
+					getstatic_a 30;		// reference wallet/Secp256k1.SECP256K1
+					sspush 128;
+					bspush 65;
+					invokestatic 45;		// javacard/framework/Util.arrayCompare([BS[BSS)B
+					if_scmpeq L6;
+				L5:	sconst_0;
+					sreturn;
+				L6:	aload_0;
+					aload_1;
+					sload_2;
+					invokeinterface 3 44 12;		// javacard/security/ECKey
+					pop;
+					sconst_0;
+					aload_1;
+					sload_2;
+					getstatic_a 30;		// reference wallet/Secp256k1.SECP256K1
+					bspush 96;
+					bspush 32;
+					invokestatic 45;		// javacard/framework/Util.arrayCompare([BS[BSS)B
+					if_scmpeq L8;
+				L7:	sconst_0;
+					sreturn;
+				L8:	aload_0;
+					aload_1;
+					sload_2;
+					invokeinterface 3 44 8;		// javacard/security/ECKey
+					pop;
+					sconst_0;
+					aload_1;
+					sload_2;
+					getstatic_a 30;		// reference wallet/Secp256k1.SECP256K1
+					sconst_0;
+					bspush 32;
+					invokestatic 45;		// javacard/framework/Util.arrayCompare([BS[BSS)B
+					if_scmpeq L10;
+				L9:	sconst_0;
+					sreturn;
+				L10:	aload_0;
+					invokeinterface 1 44 13;		// javacard/security/ECKey
+					sconst_1;
+					if_scmpeq L12;
+				L11:	sconst_0;
+					sreturn;
+				L12:	sconst_1;
+					sreturn;
+		}
+
+	}
+
+	.class public wallet 4 extends 2.3 {		// extends javacard/framework/Applet
+
+		.fields {
+			private BtcCryptoHandler cryptoHandler 0;		// Lwallet/BtcCryptoHandler;
+			private static final byte WALLET_APPLET_CLA = -80;		// B
+			private static final byte INS_SETUP_KEY = 16;		// B
+			private static final byte INS_FINISH_PERS = -128;		// B
+			private static final byte INS_IMPORT_KEY = 32;		// B
+			private static final byte INS_GET_PUBLIC_KEY = 48;		// B
+			private static final byte INS_GET_PUBLIC_KEY_FROM_KEY_AGREEMENT = 49;		// B
+			private static final byte INS_SIGN_MESSAGE = 42;		// B
+			private static final byte INS_VERIFY_SIGNATURE = 43;		// B
+			private static final byte INS_SET_DATA_FOR_SIGNING = -8;		// B
+			private static final byte INS_GET_APP_INFO = -6;		// B
+		}
+
+		.publicMethodTable 7 {
+			equals(Ljava/lang/Object;)Z;
+			register()V;
+			register([BSB)V;
+			selectingApplet()Z;
+			deselect()V;
+			getShareableInterfaceObject(Ljavacard/framework/AID;B)Ljavacard/framework/Shareable;;
+			select()Z;
+			process(Ljavacard/framework/APDU;)V;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>()V 0 {
+			.stack 3;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 46;		// javacard/framework/Applet.<init>()V
+					aload_0;
+					new 47;		// wallet/BtcCryptoHandler
+					dup;
+					invokespecial 48;		// wallet/BtcCryptoHandler.<init>()V
+					putfield_a 11;		// reference wallet/wallet.cryptoHandler
+					return;
+		}
+
+		.method public static install([BSB)V 1 {
+			.stack 5;
+			.locals 0;
+
+				L0:	new 50;		// wallet/wallet
+					dup;
+					invokespecial 51;		// wallet/wallet.<init>()V
+					aload_0;
+					sload_1;
+					sconst_1;
+					sadd;
+					aload_0;
+					sload_1;
+					baload;
+					invokevirtual 52;		// register([BSB)V
+					return;
+		}
+
+		.method public process(Ljavacard/framework/APDU;)V 7 {
+			.stack 2;
+			.locals 3;
+
+			.descriptor	Ljavacard/framework/APDU;	2.10;
+
+				L0:	aload_0;
+					invokevirtual 53;		// selectingApplet()Z
+					ifeq L2;
+				L1:	return;
+				L2:	aload_1;
+					invokevirtual 24;		// getBuffer()[B
+					astore_2;
+				L3:	aload_2;
+					sconst_0;
+					baload;
+					sspush 255;
+					sand;
+					s2b;
+					sstore_3;
+				L4:	aload_2;
+					sconst_1;
+					baload;
+					sspush 255;
+					sand;
+					s2b;
+					sstore 4;
+				L5:	sload_3;
+					ifne L8;
+				L6:	sload 4;
+					bspush -92;
+					if_scmpne L8;
+				L7:	return;
+				L8:	sload_3;
+					bspush -80;
+					if_scmpeq L10;
+				L9:	sspush 28160;
+					invokestatic 27;		// javacard/framework/ISOException.throwIt(S)V
+				L10:	invokestatic 42;		// org/globalplatform/GPSystem.getCardContentState()B
+					slookupswitch L24 2 7 L11 23 L16;
+				L11:	sload 4;
+					slookupswitch L15 3 -128 L13 -6 L14 16 L12;
+				L12:	getfield_a_this 11;		// reference wallet/wallet.cryptoHandler
+					invokevirtual 54;		// setupMasterKeyWithoutSeed()V
+					goto L25;
+				L13:	aload_1;
+					invokestatic 55;		// wallet/CommonHandler.finishPersonalization(Ljavacard/framework/APDU;)V
+					goto L25;
+				L14:	aload_1;
+					invokestatic 56;		// wallet/CommonHandler.getAppInfo(Ljavacard/framework/APDU;)V
+					goto L25;
+				L15:	sspush 27904;
+					invokestatic 27;		// javacard/framework/ISOException.throwIt(S)V
+					goto L25;
+				L16:	sload 4;
+					slookupswitch L23 6 -8 L19 -6 L22 42 L20 43 L21 48 L17 49 L18;
+				L17:	getfield_a_this 11;		// reference wallet/wallet.cryptoHandler
+					aload_1;
+					invokevirtual 57;		// getPublicMasterKey(Ljavacard/framework/APDU;)V
+					goto L25;
+				L18:	getfield_a_this 11;		// reference wallet/wallet.cryptoHandler
+					aload_1;
+					invokevirtual 58;		// getPublicMasterKeyUsingKeyAgreement(Ljavacard/framework/APDU;)V
+					goto L25;
+				L19:	getfield_a_this 11;		// reference wallet/wallet.cryptoHandler
+					aload_1;
+					invokevirtual 59;		// setDataForSigning(Ljavacard/framework/APDU;)V
+					goto L25;
+				L20:	getfield_a_this 11;		// reference wallet/wallet.cryptoHandler
+					aload_1;
+					invokevirtual 60;		// signShortMessage(Ljavacard/framework/APDU;)V
+					goto L25;
+				L21:	getfield_a_this 11;		// reference wallet/wallet.cryptoHandler
+					aload_1;
+					invokevirtual 61;		// verifySignature(Ljavacard/framework/APDU;)V
+					goto L25;
+				L22:	aload_1;
+					invokestatic 56;		// wallet/CommonHandler.getAppInfo(Ljavacard/framework/APDU;)V
+					goto L25;
+				L23:	sspush 27904;
+					invokestatic 27;		// javacard/framework/ISOException.throwIt(S)V
+					goto L25;
+				L24:	sspush 28160;
+					invokestatic 27;		// javacard/framework/ISOException.throwIt(S)V
+				L25:	return;
+		}
+
+	}
+
+}

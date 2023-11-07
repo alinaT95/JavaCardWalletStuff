@@ -1,0 +1,12 @@
+<JavaCardConfiguration name="CoinPassBIO">
+    <Config activeconfig="">
+        <ConfigItem name="CoinPassBIO">
+            <InstallConfig>
+                <PKG project_name="CoinPassBIO" pkg_name="com.ftsafe.CoinPassBIO" aid="D1 56 00 01 32 83 00 42 4C 44 00 00 42 54 43">
+                    <APPLET aid="D1 56 00 01 32 83 00 42 4C 44 00 00 42 54 43 01" name="CoinPassBIO" />
+                </PKG>
+            </InstallConfig>
+            <ScriptConfig before_build="" after_build="" />
+        </ConfigItem>
+    </Config>
+</JavaCardConfiguration>

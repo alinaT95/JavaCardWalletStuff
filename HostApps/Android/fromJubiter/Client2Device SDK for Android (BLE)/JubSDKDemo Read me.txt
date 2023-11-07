@@ -1,0 +1,25 @@
+﻿Simple Guide for SDKDemo APK
+
+1. Connect Device:
+	1)Power on the JuBiter Device
+	2)Tap "Connect" in the mobile demo app
+	3)Select the JuBiter device in the Bluetooth deivece list. Note: The app needs to acquire location right to scan near by Bluetooth device.
+	4)Enter PIN
+	5)Connected
+2、send apdu:
+	Send whatever APDU to the JuBite device. Return 9000 if success.
+3、get_device_info
+	Get JuBiter device information. e.g. remaining PIN retries (Command:80CB800005DFFF028102) 
+4、enum_applets
+	List all applets in the device. Return applet ID and their versions. 
+5、set_time_out
+	Set time out duration. 0-600 seconds
+6、btc_get_address
+	get xpub
+7、btc_show_address
+	Get BTC address with change and index
+8、btc_trnsation
+	BTC transaction signing. And display transaction info on the device. Need PIN verification first (Command:00A4040010D1560001328300424C4400000042544301).
+	Default paramaters are in the json file.
+9、btc_set_my_address
+	Set BTC address with change and index. Return this address if success.

@@ -1,0 +1,12 @@
+<JavaCardConfiguration name="JuBiterEd25519">
+    <Config activeconfig="">
+        <ConfigItem name="JuBiterEd25519">
+            <InstallConfig>
+                <PKG project_name="JuBiterEd25519" pkg_name="JuBiterPackage" aid="D1 56 45 44 32 35 35 31 39 30 20">
+                    <APPLET aid="D1 56 45 44 32 35 35 31 39 30 20 00" name="JuBiterPackage" />
+                </PKG>
+            </InstallConfig>
+            <ScriptConfig before_build="" after_build="" />
+        </ConfigItem>
+    </Config>
+</JavaCardConfiguration>

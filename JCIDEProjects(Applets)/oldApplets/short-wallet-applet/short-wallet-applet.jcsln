@@ -1,0 +1,20 @@
+<JavaCardSolution name="short-wallet-applet">
+    <JavaCardProjects>
+        <JavaCardProject path="short-wallet-applet/short-wallet-applet.jcproj" />
+    </JavaCardProjects>
+    <Build>
+        <BuildDependon />
+    </Build>
+    <Config activeconfig="short-wallet-applet" ATR="3B 90 95 80 81 1F 03 18">
+        <ConfigItem name="short-wallet-applet">
+            <InstallConfig>
+                <PKG project_name="short-wallet-applet" pkg_name="wallet" aid="31 31 32 32 33 33 34 34 35 35 36 36" major="1" minor="0">
+                    <APPLET aid="31 31 32 32 33 33 34 34 35 35 36 36 00" authority="" instanceaid="" parameter="" privileges="" index="5296" name="wallet" />
+                </PKG>
+            </InstallConfig>
+            <DebugInfo>
+                <Protocol name="T0|T1" />
+            </DebugInfo>
+        </ConfigItem>
+    </Config>
+</JavaCardSolution>

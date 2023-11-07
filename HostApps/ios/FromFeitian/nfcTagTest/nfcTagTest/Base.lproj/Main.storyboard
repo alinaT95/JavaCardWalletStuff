@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xgA-21-nGe">
+                                <rect key="frame" x="32" y="424" width="159" height="48"/>
+                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="MvR-zB-3IL"/>
+                                </constraints>
+                                <state key="normal" title="1.SELECT_ISD">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="touch_select_isd:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nqV-Rk-53x"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cdT-np-nC3">
+                                <rect key="frame" x="223" y="424" width="159" height="48"/>
+                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="2.SELECT_ETH">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="touch_select_eth:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tbF-bT-eqr"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WRn-Mw-fel">
+                                <rect key="frame" x="32" y="92" width="350" height="300"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="CuZ-DH-LOB"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="MAQ-tR-4lD"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="m3u-T6-fkW"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="xgA-21-nGe" firstAttribute="top" secondItem="WRn-Mw-fel" secondAttribute="bottom" constant="32" id="6A4-12-ASl"/>
+                            <constraint firstItem="xgA-21-nGe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="6Y2-11-EXC"/>
+                            <constraint firstItem="cdT-np-nC3" firstAttribute="height" secondItem="xgA-21-nGe" secondAttribute="height" id="NJy-sD-0d5"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="WRn-Mw-fel" secondAttribute="trailing" constant="32" id="YdX-or-3Wy"/>
+                            <constraint firstItem="cdT-np-nC3" firstAttribute="leading" secondItem="xgA-21-nGe" secondAttribute="trailing" constant="32" id="fJL-oi-Qfg"/>
+                            <constraint firstItem="WRn-Mw-fel" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="48" id="fd7-Zz-88S"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="cdT-np-nC3" secondAttribute="trailing" constant="32" id="fqo-No-GOS"/>
+                            <constraint firstItem="cdT-np-nC3" firstAttribute="top" secondItem="WRn-Mw-fel" secondAttribute="bottom" constant="32" id="fyR-jg-hqc"/>
+                            <constraint firstItem="cdT-np-nC3" firstAttribute="width" secondItem="xgA-21-nGe" secondAttribute="width" id="sIh-k6-7NR"/>
+                            <constraint firstItem="WRn-Mw-fel" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="yLh-YQ-mqw"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="msgTableView" destination="WRn-Mw-fel" id="yPD-RX-5aU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="114.50892857142857"/>
+        </scene>
+    </scenes>
+</document>

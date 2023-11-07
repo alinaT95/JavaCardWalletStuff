@@ -1,0 +1,28 @@
+<JavaCardSolution name="ton-wallet-applet">
+    <JavaCardProjects>
+        <JavaCardProject path="ton-wallet-applet/ton-wallet-applet.jcproj" />
+        <JavaCardProject path="../../../../../workspace/hello-world/hello-world.jcproj" />
+        <JavaCardProject path="../../../../../workspace/hello/hello.jcproj" />
+    </JavaCardProjects>
+    <Build>
+        <BuildDependon />
+    </Build>
+    <Config activeconfig="ton-wallet-applet" ATR="3B 90 95 80 81 1F 03 18">
+        <ConfigItem name="ton-wallet-applet">
+            <InstallConfig>
+                <PKG project_name="ton-wallet-applet" pkg_name="wallet" aid="31 31 32 32 33 33 34 34 35 35 36 36" major="1" minor="0">
+                    <APPLET aid="31 31 32 32 33 33 34 34 35 35 36 36 00" authority="" instanceaid="" parameter="" privileges="" index="-27856" name="WalletApplet" />
+                </PKG>
+                <PKG project_name="hello-world" pkg_name="pack" aid="31 31 32 32 33 33 34 34 35 35 36 36" major="1" minor="0">
+                    <APPLET aid="31 31 32 32 33 33 34 34 35 35 36 36 00" authority="" instanceaid="" parameter="" privileges="" index="28384" name="Applet" />
+                </PKG>
+                <PKG project_name="hello" pkg_name="pack" aid="31 31 32 32 33 33 34 34 35 35 36 36" major="1" minor="0">
+                    <APPLET aid="31 31 32 32 33 33 34 34 35 35 36 36 00" authority="" instanceaid="" parameter="" privileges="" index="-16720" name="HelloApplet" />
+                </PKG>
+            </InstallConfig>
+            <DebugInfo>
+                <Protocol name="T0|T1" />
+            </DebugInfo>
+        </ConfigItem>
+    </Config>
+</JavaCardSolution>
